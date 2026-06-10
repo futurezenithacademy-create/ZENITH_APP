@@ -1009,8 +1009,10 @@ async function doAuth(){
         options:{data:{full_name:name,role:authRole,link_code:linkCode,parent_code:pcode||null}}});
       if(error)throw error;
       if(authRole==='student'&&pcode&&data.user){
-        const{data:pr}=await db.from('profiles').select('id').eq('link_code',pcode).single().catch(()=>({data:null}));
-        if(pr)await db.from('profiles').update({parent_id:pr.id}).eq('id',data.user.id).catch(()=>{});
+        try{
+          const{data:pr}=await db.from('profiles').select('id').eq('link_code',pcode).single();
+          if(pr)await db.from('profiles').update({parent_id:pr.id}).eq('id',data.user.id);
+        }catch(e){}
       }
       if(authRole==='parent'&&linkCode){
         document.getElementById('linkcode-val').textContent=linkCode;
@@ -1029,8 +1031,7 @@ async function onSignedIn(user){
   document.getElementById('portal').style.display='block';
   let profile=null;
   for(let i=0;i<3;i++){
-    const{data}=await db.from('profiles').select('*').eq('id',user.id).single().catch(()=>({data:null}));
-    if(data){profile=data;break;}
+    try{const{data}=await db.from('profiles').select('*').eq('id',user.id).single();if(data){profile=data;break;}}catch(e){}
     await new Promise(r=>setTimeout(r,800));
   }
   if(!profile)profile={id:user.id,full_name:user.user_metadata?.full_name||'',role:user.user_metadata?.role||'student',link_code:user.user_metadata?.link_code||null,parent_id:null};
@@ -1068,10 +1069,11 @@ async function loadStudentStats(){
   const name=currentProfile?.full_name?.split(' ')[0]||'Student';
   document.getElementById('home-welcome').textContent=`Welcome back, ${name}! 👋`;
 
-  const{data:answers}=await db.from('answers').select('*').eq('student_id',currentUser.id).catch(()=>({data:[]}));
-  const{data:sessions}=await db.from('sessions').select('id,created_at').eq('student_id',currentUser.id).catch(()=>({data:[]}));
+  let answers=[],sessions=[];
+  try{const r=await db.from('answers').select('*').eq('student_id',currentUser.id);answers=r.data||[];}catch(e){}
+  try{const r=await db.from('sessions').select('id,created_at').eq('student_id',currentUser.id);sessions=r.data||[];}catch(e){}
 
-  const allAnswers=answers||[];
+  const allAnswers=answers;
   const total=allAnswers.length;
   const correct=allAnswers.filter(a=>a.correct).length;
 
@@ -1083,7 +1085,7 @@ async function loadStudentStats(){
   document.getElementById('stat-today').textContent=todayAnswers.length;
   document.getElementById('stat-today-correct').textContent=`${todayCorrect} correct`;
   document.getElementById('stat-total').textContent=total;
-  document.getElementById('stat-sessions').textContent=`${sessions?.length||0} sessions`;
+  document.getElementById('stat-sessions').textContent=`${sessions.length||0} sessions`;
 
   if(total>0){
     const acc=Math.round((correct/total)*100);
@@ -1105,20 +1107,22 @@ async function loadParentDash(){
       `<div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink-lt);margin-bottom:6px">Your link code</div>
        <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--ink);letter-spacing:10px">${myCode}</div>`;
   }
-  const{data:children}=await db.from('profiles').select('*').eq('parent_id',currentUser.id).catch(()=>({data:[]}));
+  let children=[];
+  try{const r=await db.from('profiles').select('*').eq('parent_id',currentUser.id);children=r.data||[];}catch(e){}
   const childWrap=document.getElementById('linked-children');
   const unlinked=document.getElementById('unlinked-state');
   const dataEl=document.getElementById('parent-data');
-  if(!children||!children.length){
+  if(!children.length){
     childWrap.innerHTML='';unlinked.style.display='block';dataEl.style.display='none';return;
   }
   unlinked.style.display='none';dataEl.style.display='block';
   childWrap.innerHTML=children.map(c=>`<span class="child-pill">✓ ${c.full_name||'Student'}</span>`).join('');
 
   const child=children[0];
-  const{data:answers}=await db.from('answers').select('*').eq('student_id',child.id).catch(()=>({data:[]}));
-  const{data:sessions}=await db.from('sessions').select('*').eq('student_id',child.id).catch(()=>({data:[]}));
-  const allA=answers||[];
+  let answers=[],sessions2=[];
+  try{const r=await db.from('answers').select('*').eq('student_id',child.id);answers=r.data||[];}catch(e){}
+  try{const r=await db.from('sessions').select('*').eq('student_id',child.id);sessions2=r.data||[];}catch(e){}
+  const allA=answers;
   if(!allA.length){
     document.getElementById('p-score').textContent='—';
     document.getElementById('p-acc').textContent='—';
@@ -1134,7 +1138,7 @@ async function loadParentDash(){
   document.getElementById('p-score').textContent=estScore.toLocaleString();
   document.getElementById('p-acc').textContent=acc+'%';
   document.getElementById('p-total').textContent=total;
-  document.getElementById('p-sessions').textContent=sessions?.length||0;
+  document.getElementById('p-sessions').textContent=sessions2.length||0;
 
   // Gauge (arc = 283 units for the half-circle path)
   const gaugeOffset=283-(((estScore-800)/800)*283);
@@ -1192,9 +1196,10 @@ async function loadParentDash(){
 async function linkChild(){
   const code=document.getElementById('child-code-input').value.trim();
   if(!code||code.length!==6){alert('Please enter a valid 6-digit code.');return;}
-  const{data:cp}=await db.from('profiles').select('id,full_name').eq('link_code',code).single().catch(()=>({data:null}));
+  let cp=null;
+  try{const r=await db.from('profiles').select('id,full_name').eq('link_code',code).single();cp=r.data;}catch(e){}
   if(cp){
-    await db.from('profiles').update({parent_id:currentUser.id}).eq('id',cp.id).catch(()=>{});
+    try{await db.from('profiles').update({parent_id:currentUser.id}).eq('id',cp.id);}catch(e){}
     document.getElementById('child-code-input').value='';
     await loadParentDash();
   }else{alert('Code not found. Make sure your child has already signed up.');}
@@ -1284,7 +1289,7 @@ async function pick(idx){
   document.getElementById('exp-panel').classList.add('show');
   const nb=document.getElementById('next-btn');
   nb.textContent=qIdx===queue.length-1?'See Results →':'Next Question →';nb.classList.add('show');
-  if(currentUser){await db.from('answers').insert({student_id:currentUser.id,question_id:q.id,topic:q.topic,subject:q.subject,correct:ok,time_seconds:elapsed}).catch(()=>{});}
+  if(currentUser){try{await db.from('answers').insert({student_id:currentUser.id,question_id:q.id,topic:q.topic,subject:q.subject,correct:ok,time_seconds:elapsed});}catch(e){}}
   setTimeout(()=>document.getElementById('exp-panel').scrollIntoView({behavior:'smooth',block:'nearest'}),120);
 }
 function nextQ(){qIdx++;if(qIdx>=queue.length)showResults();else renderQ();}
@@ -1336,7 +1341,7 @@ async function showResults(){
   if(currentUser){
     const breakdown={};
     Object.entries(topicMap).forEach(([t,d])=>{breakdown[t]=Math.round((d.right/d.total)*100);});
-    await db.from('sessions').insert({student_id:currentUser.id,mode:'mixed',score,total,accuracy:pct,topic_breakdown:breakdown}).catch(()=>{});
+    try{await db.from('sessions').insert({student_id:currentUser.id,mode:'mixed',score,total,accuracy:pct,topic_breakdown:breakdown});}catch(e){}
   }
 }
 
@@ -1353,5 +1358,3 @@ db.auth.onAuthStateChange(async(event,session)=>{
 </script>
 </body>
 </html>
-ENDOFFILE
-echo "Done — $(wc -l < /mnt/user-data/outputs/zenith-v5.html) lines"
