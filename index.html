@@ -936,25 +936,28 @@ let QUESTIONS=[
 ];
 
 async function loadDriveQuestions() {
-  // Put your real Google Drive File ID between the quotes below
+  // 1. Keep your real File ID here
   const fileId = "1ibaiWJBbqQ-E2kj7TaWZaNAYIStFbjSx";
-  const url = `https://drive.google.com/file/d/1ibaiWJBbqQ-E2kj7TaWZaNAYIStFbjSx/view?usp=sharing is the `;
+  
+  // 2. We route the request through a reliable, open-source CORS proxy
+  const proxyUrl = "https://api.allorigins.win/raw?url=";
+  const driveUrl = encodeURIComponent(`https://drive.google.com/file/d/1ibaiWJBbqQ-E2kj7TaWZaNAYIStFbjSx/view?usp=sharing`);
+  const finalUrl = proxyUrl + driveUrl;
   
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Network response was not ok");
+    const res = await fetch(finalUrl);
+    if (!res.ok) throw new Error("Data center proxy timeout.");
     const data = await res.json();
     
-    // This updates the raw questions array your app uses to build quizzes
+    // Assign data to your global questions array
     questions = data; 
     console.log("Successfully synchronized with Google Drive data center. Total questions loaded:", questions.length);
   } catch (e) {
-    console.error("Failed to load questions from Drive:", e);
-    // Fallback: If Drive fails, initialize an empty array so the app doesn't crash
+    console.error("Failed to load questions from Drive via proxy:", e);
+    // Fallback: Leave an empty array so the app still opens gracefully
     questions = []; 
   }
 }
-
 // ══ MARKETING NAV ══
 function showPage(id){
   document.querySelectorAll('.mpage').forEach(p=>p.classList.remove('active'));
