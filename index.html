@@ -936,25 +936,18 @@ let QUESTIONS=[
 ];
 
 async function loadDriveQuestions() {
-  // 1. Keep your real File ID here
-  const fileId = "1ibaiWJBbqQ-E2kj7TaWZaNAYIStFbjSx";
-  
-  // 2. We route the request through a reliable, open-source CORS proxy
-  const proxyUrl = "https://api.allorigins.win/raw?url=";
-  const driveUrl = encodeURIComponent(`https://drive.google.com/file/d/1ibaiWJBbqQ-E2kj7TaWZaNAYIStFbjSx/view?usp=sharing`);
-  const finalUrl = proxyUrl + driveUrl;
+  // Since the API route lives on your own domain, there are zero CORS restrictions!
+  const url = "/api/questions";
   
   try {
-    const res = await fetch(finalUrl);
-    if (!res.ok) throw new Error("Data center proxy timeout.");
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Data center endpoint rejected request.");
     const data = await res.json();
     
-    // Assign data to your global questions array
     questions = data; 
     console.log("Successfully synchronized with Google Drive data center. Total questions loaded:", questions.length);
   } catch (e) {
-    console.error("Failed to load questions from Drive via proxy:", e);
-    // Fallback: Leave an empty array so the app still opens gracefully
+    console.error("Failed to load questions through secure Vercel gateway:", e);
     questions = []; 
   }
 }
