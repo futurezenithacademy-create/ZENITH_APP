@@ -935,14 +935,24 @@ let QUESTIONS=[
    exp:`<strong>Correct: D.</strong><br>Effort = thoughtfulness. Recipients prefer digital, but givers think digital = low effort = less thoughtful. D captures this.`}
 ];
 
-async function loadDriveQuestions(){
-  if(!GDRIVE_ID)return;
-  try{
-    const res=await fetch(`https://drive.google.com/uc?export=download&id=${GDRIVE_ID}`);
-    if(!res.ok)throw new Error('failed');
-    const data=await res.json();
-    if(Array.isArray(data)&&data.length){QUESTIONS=data;console.log(`✅ ${data.length} Qs from Drive`);}
-  }catch(e){console.warn('Drive load failed, using built-in Qs');}
+async function loadDriveQuestions() {
+  // Put your real Google Drive File ID between the quotes below
+  const fileId = "YOUR_GOOGLE_DRIVE_FILE_ID_HERE";
+  const url = `https://docs.google.com/uc?export=download&id=${fileId}`;
+  
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Network response was not ok");
+    const data = await res.json();
+    
+    // This updates the raw questions array your app uses to build quizzes
+    questions = data; 
+    console.log("Successfully synchronized with Google Drive data center. Total questions loaded:", questions.length);
+  } catch (e) {
+    console.error("Failed to load questions from Drive:", e);
+    // Fallback: If Drive fails, initialize an empty array so the app doesn't crash
+    questions = []; 
+  }
 }
 
 // ══ MARKETING NAV ══
