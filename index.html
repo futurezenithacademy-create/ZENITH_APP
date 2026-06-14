@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Zenith · SAT Prep</title>
+<title>Zenith Future Academy · SAT Prep</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -22,430 +22,421 @@
   --r:12px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
 
-/* MARKETING */
+/* ══════ MARKETING ══════ */
 .mpage{display:none}.mpage.active{display:block}
+.announce{background:var(--ink);color:rgba(255,255,255,0.78);text-align:center;font-size:0.8rem;font-weight:500;padding:10px 20px;letter-spacing:0.2px}
+.announce strong{color:#fff}
+
 .site-nav{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:20px 32px;border-bottom:1px solid var(--rule)}
 .site-logo{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.5px;cursor:pointer}
 .site-logo em{font-style:normal;color:var(--blue)}
+.site-links{display:flex;gap:32px;align-items:center;list-style:none}
+.site-links a{color:var(--ink-lt);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.15s;cursor:pointer}
+.site-links a:hover,.site-links a.active{color:var(--ink)}
 .nav-cta-wrap{display:flex;gap:10px;align-items:center}
 .nav-signin{border:1.5px solid var(--rule);color:var(--ink-mid);background:transparent;padding:9px 18px;border-radius:8px;font-size:0.85rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s}
 .nav-signin:hover{border-color:var(--ink-mid);color:var(--ink)}
 .nav-start{background:var(--ink);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:0.85rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s}
 .nav-start:hover{background:var(--blue)}
 
+/* ── HOME PAGE ── */
 .hero-wrap{max-width:1200px;margin:0 auto;padding:80px 32px 90px;display:grid;grid-template-columns:1fr 440px;gap:80px;align-items:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-pale);color:var(--blue);font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:20px}
+.hero-eyebrow::before{content:'';width:5px;height:5px;background:var(--blue);border-radius:50%;flex-shrink:0}
 .hero-h1{font-family:'Cormorant Garamond',serif;font-size:4.6rem;font-weight:700;line-height:1.08;letter-spacing:-1.5px;color:var(--ink);margin-bottom:20px}
 .hero-h1 em{font-style:italic;color:var(--blue)}
-.hero-p{font-size:1.02rem;color:var(--ink-lt);line-height:1.78;margin-bottom:34px}
-.btn-primary{width:100%;background:var(--ink);color:#fff;border:none;border-radius:9px;padding:14px 28px;font-size:0.93rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;box-shadow:var(--sh-sm)}
-.btn-primary:hover{background:var(--blue);transform:translateY(-1px)}
+.hero-p{font-size:1.02rem;color:var(--ink-lt);line-height:1.78;margin-bottom:34px;max-width:440px}
+.hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn-primary{background:var(--ink);color:#fff;border:none;border-radius:9px;padding:14px 28px;font-size:0.93rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;box-shadow:var(--sh-sm)}
+.btn-primary:hover{background:var(--blue);transform:translateY(-1px);box-shadow:var(--sh-md)}
+.btn-ghost-ink{background:transparent;color:var(--ink-mid);border:1.5px solid var(--rule);border-radius:9px;padding:13px 22px;font-size:0.88rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s}
+.btn-ghost-ink:hover{border-color:var(--ink-lt);color:var(--ink)}
 
-.hero-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:20px;padding:28px;box-shadow:var(--sh-lg);text-align:center}
+/* Hero right card Dashboard presentation layout */
+.hero-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:20px;padding:28px;box-shadow:var(--sh-lg);position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(26,86,219,0.08) 0%,transparent 70%);border-radius:50%}
+.hc-label{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.hc-score{text-align:center;margin-bottom:20px}
 .hc-score-num{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:700;color:var(--ink);line-height:1;display:block;letter-spacing:-2px}
-.hc-label{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-top:10px}
+.hc-score-trend{display:inline-flex;align-items:center;gap:4px;background:var(--green-bg);color:var(--green);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-top:6px}
+.hc-topic-list{display:flex;flex-direction:column;gap:10px}
+.hc-topic{display:flex;align-items:center;gap:10px}
+.hc-topic-name{font-size:0.78rem;color:var(--ink-mid);flex:1;font-weight:500}
+.hc-bar-track{flex:2;height:5px;background:var(--rule);border-radius:3px;overflow:hidden}
+.hc-bar-fill{height:100%;border-radius:3px;transition:width 1s ease}
+.fill-blue{background:var(--blue)}.fill-green{background:var(--green)}.fill-amber{background:var(--amber)}.fill-red{background:var(--red)}
+.hc-pct{font-size:0.72rem;color:var(--ink-lt);font-weight:700;width:30px;text-align:right}
 
-/* PORTAL CLOUD PANELS */
+/* Stats strip */
+.stats-strip{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg-soft)}
+.stats-inner{max-width:1200px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{text-align:center;padding:0 20px;border-right:1px solid var(--rule)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--ink);display:block;line-height:1;letter-spacing:-1px}
+.stat-desc{font-size:0.76rem;color:var(--ink-lt);margin-top:7px;font-weight:500;line-height:1.4}
+
+/* How it works */
+.how-section{max-width:1200px;margin:90px auto;padding:0 32px}
+.section-tag{font-size:0.67rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:block}
+.section-h2{font-family:'Cormorant Garamond',serif;font-size:2.9rem;font-weight:700;color:var(--ink);letter-spacing:-0.5px;line-height:1.15;margin-bottom:48px;max-width:520px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden}
+.how-cell{background:var(--bg);padding:38px 30px;transition:background 0.2s}
+.how-cell:hover{background:var(--bg-soft)}
+.how-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--rule-mid);display:block;margin-bottom:14px;line-height:1}
+.how-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:9px}
+.how-body{font-size:0.87rem;color:var(--ink-lt);line-height:1.72}
+
+/* Comparison table */
+.compare-section{background:var(--bg-soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:80px 32px}
+.compare-inner{max-width:900px;margin:0 auto}
+.compare-table{width:100%;border-collapse:collapse;margin-top:40px}
+.compare-table th{font-size:0.75rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--ink-lt);padding:12px 16px;border-bottom:2px solid var(--rule);text-align:left}
+.compare-table th:nth-child(2){color:var(--blue);background:var(--blue-pale);border-radius:8px 8px 0 0;text-align:center}
+.compare-table th:nth-child(3),.compare-table th:nth-child(4){text-align:center}
+.compare-table td{padding:14px 16px;border-bottom:1px solid var(--rule);font-size:0.88rem;color:var(--ink-mid)}
+.compare-table td:nth-child(2){background:var(--blue-pale);text-align:center;font-weight:700;color:var(--blue)}
+.compare-table td:nth-child(3),.compare-table td:nth-child(4){text-align:center;color:var(--ink-lt)}
+.compare-table tr:last-child td{border-bottom:none}
+
+/* Testimonials banner matrix */
+.t-section{max-width:1200px;margin:90px auto;padding:0 32px}
+.t-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.t-card{border:1px solid var(--rule);border-radius:16px;padding:30px;background:var(--bg);transition:box-shadow 0.2s}
+.t-card:hover{box-shadow:var(--sh-sm)}
+.t-card-stars{color:var(--amber);font-size:0.85rem;margin-bottom:14px;letter-spacing:2px}
+.t-card-quote{font-size:0.92rem;line-height:1.82;color:var(--ink-mid);margin-bottom:20px}
+.t-card-author{font-size:0.72rem;font-weight:700;color:var(--ink-lt);letter-spacing:0.5px;text-transform:uppercase}
+.t-card-author span{color:var(--blue)}
+
+/* ══════ APP PORTAL LAYOUTS ══════ */
 #portal{display:none}
-.screen{display:none;position:fixed;inset:0;overflow-y:auto;background:var(--bg)}
+.screen{display:none;position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--bg);padding-bottom:100px}
 .screen.active{display:block}
 
-.home-hdr{background:var(--ink);padding:50px 22px 28px}
-.home-brand{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:700;color:#fff;letter-spacing:-0.5px}
-.home-brand em{font-style:normal;color:#7EB3FF}
-.home-sub{color:rgba(255,255,255,0.4);font-size:0.75rem;margin-bottom:6px}
-.home-welcome{color:rgba(255,255,255,0.85);font-size:0.88rem;font-weight:600}
-.home-body{padding:20px 18px 80px}
-
-.stu-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.stu-stat{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:16px 14px;box-shadow:var(--sh-xs)}
-.stu-stat-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);display:block;line-height:1;margin-bottom:4px}
-.stu-stat-lbl{font-size:0.65rem;color:var(--ink-lt);font-weight:600;text-transform:uppercase;letter-spacing:0.8px}
-
-.acc-bar-wrap{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:16px;margin-bottom:22px;box-shadow:var(--sh-xs)}
-.acc-bar-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-.acc-bar-title{font-size:0.68rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--ink-lt)}
-.acc-bar-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--ink)}
-.acc-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden}
-.acc-bar-fill{height:100%;border-radius:4px;background:var(--blue);transition:width 0.8s ease}
-
-.mode-label{font-size:0.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:12px}
-.mode-card{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:18px 16px;margin-bottom:10px;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;gap:14px;box-shadow:var(--sh-xs)}
-.mode-card:hover{border-color:var(--blue);transform:translateX(2px)}
-.mode-icon{width:44px;height:44px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem}
-.mode-title{font-size:0.93rem;font-weight:700;color:var(--ink)}
-.mode-arrow{margin-left:auto;color:var(--ink-lt)}
-.signout-btn{width:100%;margin-top:18px;padding:13px;background:transparent;border:1px solid var(--rule);border-radius:9px;color:var(--ink-lt);font-family:'Outfit',sans-serif;font-size:0.87rem;cursor:pointer}
-
-/* AUTH PANELS */
-#auth{display:none;position:fixed;inset:0;background:var(--bg-soft);align-items:center;justify-content:center;padding:22px;z-index:9999}
+/* ── AUTH INTERFACE ── */
+#auth{display:none;position:fixed;inset:0;background:var(--bg-soft);overflow-y:auto;align-items:center;justify-content:center;padding:40px 22px;z-index:10000}
 #auth.active{display:flex}
-.auth-wrap{width:100%;max-width:400px}
-.auth-brand{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:16px}
+.auth-wrap{width:100%;max-width:420px}
+.auth-brand{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:2px;letter-spacing:-0.5px}
+.auth-brand em{font-style:normal;color:var(--blue)}
+.auth-tagline{text-align:center;font-size:0.8rem;color:var(--ink-lt);margin-bottom:26px;font-weight:500}
 .auth-panel{background:var(--bg);border:1px solid var(--rule);border-radius:18px;padding:30px 26px;box-shadow:var(--sh-md)}
 .auth-tabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:24px}
-.auth-tab{flex:1;padding:11px;border:none;background:transparent;font-size:0.88rem;font-weight:600;color:var(--ink-lt);cursor:pointer;border-bottom:2px solid transparent}
+.auth-tab{flex:1;padding:11px;border:none;background:transparent;font-size:0.88rem;font-weight:600;color:var(--ink-lt);cursor:pointer;font-family:'Outfit',sans-serif;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.18s}
 .auth-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
-.auth-input{width:100%;padding:12px 14px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:9px;color:var(--ink);font-size:0.92rem;outline:none;margin-bottom:14px}
-.auth-input:focus{border-color:var(--blue);background:var(--bg)}
-.auth-submit{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:9px;font-size:0.95rem;font-weight:700;cursor:pointer}
-.auth-msg{font-size:0.82rem;padding:10px 14px;border-radius:8px;margin-bottom:14px;display:none}
-.auth-msg.err{background:var(--red-bg);color:var(--red);border:1px solid rgba(192,57,43,0.2)}
-.auth-msg.ok{background:var(--green-bg);color:var(--green);border:1px solid rgba(15,123,78,0.2)}
-.auth-msg.show{display:block}
+.field-label{font-size:0.7rem;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:6px;display:block}
+.auth-input{width:100%;padding:12px 14px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:9px;color:var(--ink);font-size:0.92rem;font-family:'Outfit',sans-serif;outline:none;transition:all 0.18s;margin-bottom:14px}
+.auth-input:focus{border-color:var(--blue);background:var(--bg);box-shadow:0 0 0 3px rgba(26,86,219,0.08)}
+.auth-submit{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:9px;font-size:0.95rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;margin-top:2px}
+.auth-submit:hover{background:var(--blue)}
+.auth-msg{font-size:0.82rem;padding:10px 14px;border-radius:8px;margin-bottom:14px;font-weight:500;display:none}
+.auth-msg.err{background:var(--red-bg);color:var(--red);border:1px solid rgba(192,57,43,0.2);display:block}
+.auth-msg.ok{background:var(--green-bg);color:var(--green);border:1px solid rgba(15,123,78,0.2);display:block}
+.auth-back{text-align:center;margin-top:14px}
+.auth-back button{background:none;border:none;font-family:'Outfit',sans-serif;font-size:0.82rem;color:var(--ink-lt);cursor:pointer;text-decoration:underline}
 
-/* TESTING SYSTEM */
-.quiz-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--rule);position:sticky;top:0}
-.back-btn{background:var(--bg-soft);border:1px solid var(--rule);cursor:pointer;padding:7px 12px;border-radius:7px;font-size:0.82rem;font-weight:600}
-.quiz-body{padding:18px 16px 80px}
-.question-box{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;font-size:0.93rem;line-height:1.75;margin-bottom:16px;white-space:pre-line}
-.opt-btn{width:100%;background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:14px;margin-bottom:8px;text-align:left;cursor:pointer;font-family:'Outfit',sans-serif}
-.opt-btn.correct{border-color:var(--green);background:var(--green-bg)}
-.opt-btn.wrong{border-color:var(--red);background:var(--red-bg)}
-.opt-btn.dimmed{opacity:0.4}
-.exp-panel{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;margin-bottom:16px;display:none}
-.exp-panel.show{display:block}
-.exp-title{font-size:0.75rem;font-weight:700;color:var(--blue);margin-bottom:6px}
-.next-btn{width:100%;background:var(--ink);color:#fff;border:none;border-radius:10px;padding:15px;font-size:0.93rem;font-weight:700;cursor:pointer;display:none}
-.next-btn.show{display:block}
+/* ── PORTAL HOME ── */
+.home-hdr{background:var(--ink);padding:50px 22px 28px;position:relative;overflow:hidden}
+.home-brand{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:700;color:#fff}
+.home-brand em{font-style:normal;color:#7EB3FF}
+.home-welcome{color:rgba(255,255,255,0.85);font-size:0.88rem;font-weight:600;margin-top:4px}
+.home-body{padding:20px 18px}
+.stu-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.stu-stat{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:16px 14px;box-shadow:var(--sh-xs)}
+.stu-stat-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink)}
+.stu-stat-lbl{font-size:0.65rem;color:var(--ink-lt);font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-top:4px;display:block}
+.signout-btn{width:100%;margin-top:18px;padding:13px;background:transparent;border:1px solid var(--rule);border-radius:9px;color:var(--ink-lt);font-family:'Outfit',sans-serif;cursor:pointer}
 
-/* EVALUATION SPLIT */
-#results{padding:50px 20px;text-align:center}
-.res-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;margin-bottom:20px}
+footer{border-top:1px solid var(--rule);padding:32px;display:flex;justify-content:space-between;max-width:1200px;margin:40px auto 0;align-items:center}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem}
+.footer-logo em{color:var(--blue);font-style:normal}
 </style>
 </head>
 <body>
 
-<div id="marketing" class="mpage active">
+<div id="marketing-page" class="mpage active">
+  
+  <div class="announce">
+    <strong>Zenith Future Academy</strong> · Premium engineering metrics for top-tier test performance.
+  </div>
+
   <nav class="site-nav">
-    <div class="site-logo">Zenith</div>
+    <a href="#" class="site-logo" onclick="window.location.reload()">Zenith<em>.</em></a>
     <div class="nav-cta-wrap">
-      <button class="nav-signin" onclick="openAuth(false)">Sign In</button>
-      <button class="nav-start" onclick="openAuth(true)">Start Prep</button>
+      <button class="nav-signin" onclick="showAuthScreen('login')">Log In</button>
+      <button class="nav-start" onclick="showAuthScreen('signup')">Get Started</button>
     </div>
   </nav>
 
-  <div class="hero-wrap">
-    <div>
-      <div class="hero-eyebrow">Digital SAT Interface Node</div>
-      <h1 class="hero-h1">The minimalist way to <em>prep</em>.</h1>
-      <p class="hero-p">Direct connectivity to high-fidelity problem matrices. Streamlined data modules built directly for execution focus.</p>
-      <button class="btn-primary" style="width:auto; padding:14px 40px" onclick="openAuth(true)">Launch Workspace</button>
-    </div>
-    <div>
-      <div class="hero-card">
-        <span class="hc-score-num">1540</span>
-        <div class="hc-label">Target Metric Performance</div>
+  <section class="hero-wrap">
+    <div class="hero-text-side">
+      <span class="hero-eyebrow">Interactive SAT Platform</span>
+      <h1 class="hero-h1">Master the SAT with <em>Precision</em></h1>
+      <p class="hero-p">Tailored structural practice tracks, clean diagnostic breakdowns, and unified analysis matrices modeled to elevate testing metrics.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showAuthScreen('signup')">Begin Free Practice</button>
+        <button class="btn-ghost-ink" onclick="document.getElementById('how-it-works').scrollIntoView()">Explore Engine</button>
       </div>
     </div>
-  </div>
+
+    <div class="hero-card">
+      <span class="hc-label">Live Evaluation Diagnostics</span>
+      <div class="hc-score">
+        <span class="hc-score-num">1540</span>
+        <span class="hc-score-trend">↑ Target Score Projection</span>
+      </div>
+      <div class="hc-topic-list">
+        <div class="hc-topic">
+          <span class="hc-topic-name">Algebra & Data Systems</span>
+          <div class="hc-bar-track"><div class="hc-bar-fill fill-green" style="width: 88%"></div></div>
+          <span class="hc-pct">88%</span>
+        </div>
+        <div class="hc-topic">
+          <span class="hc-topic-name">Advanced Systems Foundations</span>
+          <div class="hc-bar-track"><div class="hc-bar-fill fill-blue" style="width: 76%"></div></div>
+          <span class="hc-pct">76%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item"><span class="stat-num">+90</span><span class="stat-desc">Average Point Increase</span></div>
+      <div class="stat-item"><span class="stat-num">4,200</span><span class="stat-desc">Curated Questions</span></div>
+      <div class="stat-item"><span class="stat-num">98%</span><span class="stat-desc">Top Tier Recommendation</span></div>
+      <div class="stat-item"><span class="stat-num">1510</span><span class="stat-desc">Median Graduate Metric</span></div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="how-section">
+    <span class="section-tag">Methodology Engine</span>
+    <h2 class="section-h2">Architected to remove systematic variance.</h2>
+    <div class="how-grid">
+      <div class="how-cell">
+        <span class="how-num">01</span>
+        <h4 class="how-title">Diagnostic Tracking</h4>
+        <p class="how-body">System isolation logic targets systemic patterns and reveals concept variance immediately upon evaluation loops.</p>
+      </div>
+      <div class="how-cell">
+        <span class="how-num">02</span>
+        <h4 class="how-title">Targeted Problem Sets</h4>
+        <p class="how-body">Adaptive problem models balance difficulty tracking directly to step-by-step user metric thresholds.</p>
+      </div>
+      <div class="how-cell">
+        <span class="how-num">03</span>
+        <h4 class="how-title">Unified Performance Matrix</h4>
+        <p class="how-body">Clean execution tables display timing performance models and raw accurate rates across core topics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="compare-section">
+    <div class="compare-inner">
+      <span class="section-tag">Competitive Comparison Matrix</span>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Functional Architecture</th>
+            <th>Zenith Platform</th>
+            <th>Standard Books</th>
+            <th>Legacy Courses</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>High-Fidelity Interface Tracking</td><td>Included</td><td>Absent</td><td>Manual</td></tr>
+          <tr><td>Real-Time Data Response Maps</td><td>Included</td><td>Absent</td><td>Absent</td></tr>
+          <tr><td>Targeted Topic Isolation Tracks</td><td>Included</td><td>Static</td><td>Fixed Blocks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="t-section">
+    <span class="section-tag">Student Evaluations</span>
+    <div class="t-cards">
+      <div class="t-card">
+        <div class="t-card-stars">★★★★★</div>
+        <p class="t-card-quote">"The clean data breakdowns allowed me to isolate weak areas in Advanced Mathematics and safely cross into the 1550+ performance block."</p>
+        <span class="t-card-author">A. Kulkarni — <span>1560 SAT Score</span></span>
+      </div>
+      <div class="t-card">
+        <div class="t-card-stars">★★★★★</div>
+        <p class="t-card-quote">"The dashboard metric reporting maps error vectors clearly. It completely outclasses standard practice sets or text manual loops."</p>
+        <span class="t-card-author">D. Bahr — <span>1540 SAT Score</span></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">Zenith<em>.</em></span>
+    <span class="footer-txt">© 2026 Zenith Future Academy. All computational assets preserved.</span>
+  </footer>
 </div>
+
 
 <div id="auth">
   <div class="auth-wrap">
-    <h2 class="auth-brand">Zenith</h2>
+    <div class="auth-brand">Zenith<em>.</em></div>
+    <div class="auth-tagline">Elite Test Platform Portal Access</div>
+    
     <div class="auth-panel">
+      <div id="auth-msg" class="auth-msg"></div>
+      
       <div class="auth-tabs">
         <button id="tab-login" class="auth-tab active" onclick="setAuthTab('login')">Sign In</button>
-        <button id="tab-register" class="auth-tab" onclick="setAuthTab('register')">Create Account</button>
+        <button id="tab-signup" class="auth-tab" onclick="setAuthTab('signup')">Create Account</button>
       </div>
-      <div id="auth-msg" class="auth-msg"></div>
-      <input type="email" id="auth-email" class="auth-input" placeholder="Email Coordinate"/>
-      <input type="password" id="auth-password" class="auth-input" placeholder="Security Password"/>
-      <button id="auth-btn" class="auth-submit" onclick="handleAuthSubmit()">Execute Sign In</button>
-      <div style="text-align:center; margin-top:14px"><button style="background:none; border:none; text-decoration:underline; cursor:pointer; color:var(--ink-lt)" onclick="closeAuth()">Cancel</button></div>
+
+      <form id="auth-form" onsubmit="handleAuthSubmit(event)">
+        <label class="field-label">Account Identity Email</label>
+        <input type="email" id="auth-email" class="auth-input" placeholder="name@domain.com" required />
+        
+        <label class="field-label">Security Credentials Token</label>
+        <input type="password" id="auth-password" class="auth-input" placeholder="••••••••" required />
+        
+        <button type="submit" id="auth-submit-btn" class="auth-submit">Continue Access Sequence</button>
+      </form>
+    </div>
+    
+    <div class="auth-back">
+      <button onclick="hideAuthScreen()">← Return to Main Page</button>
     </div>
   </div>
 </div>
 
+
 <div id="portal">
-  
-  <div id="home" class="screen">
+  <div id="home" class="screen active">
     <div class="home-hdr">
-      <div class="home-brand">Zenith<em>Workspace</em></div>
-      <div class="home-sub" id="user-email-lbl">Connecting...</div>
-      <div class="home-welcome">Active Learning Environment</div>
+      <div class="home-brand">Zenith<em>.</em> Portal</div>
+      <div id="user-display" class="home-welcome">Initializing session profile...</div>
     </div>
+    
     <div class="home-body">
       <div class="stu-stats">
-        <div class="stu-stat">
-          <span class="stu-stat-val" id="stat-total-q">0</span>
-          <span class="stu-stat-lbl">Questions Solved</span>
-        </div>
-        <div class="stu-stat">
-          <span class="stu-stat-val" id="stat-accuracy">0%</span>
-          <span class="stu-stat-lbl">Global Accuracy</span>
-        </div>
+        <div class="stu-stat"><span class="stu-stat-val" id="stat-score">1420</span><span class="stu-stat-lbl">Projected Diagnostic Metric</span></div>
+        <div class="stu-stat"><span class="stu-stat-val" id="stat-total">0</span><span class="stu-stat-lbl">Completed Problem Subsets</span></div>
       </div>
-
-      <div class="mode-label">Execute Problem Stream</div>
-      <div class="mode-card" onclick="startQuiz('mixed')">
-        <div class="mode-icon">⚡</div>
-        <div class="mode-title">Mixed Assessment Module</div>
-        <span class="mode-arrow">→</span>
-      </div>
-      <div class="mode-card" onclick="startQuiz('math')">
-        <div class="mode-icon">📐</div>
-        <div class="mode-title">Targeted Math Module</div>
-        <span class="mode-arrow">→</span>
-      </div>
-      <div class="mode-card" onclick="startQuiz('reading')">
-        <div class="mode-icon">📄</div>
-        <div class="mode-title">Reading Syntax Module</div>
-        <span class="mode-arrow">→</span>
-      </div>
-      <button class="signout-btn" onclick="signOut()">Disconnect Session</button>
+      
+      <button class="signout-btn" onclick="handleSignOut()">Terminate Security Session</button>
     </div>
-  </div>
-
-  <div id="quiz" class="screen">
-    <div class="quiz-topbar">
-      <button class="back-btn" onclick="confirmExit()">✕ Abort</button>
-      <div id="plbl" style="font-weight:600; font-size:0.88rem">Node 1 of 5</div>
-    </div>
-    <div class="quiz-body">
-      <div id="qplain" class="question-box"></div>
-      <div id="opts"></div>
-      <div id="exppanel" class="exp-panel">
-        <div class="exp-title">✦ Logic Resolution</div>
-        <div id="exptext" style="font-size:0.88rem; line-height:1.6; color:var(--ink-mid)"></div>
-      </div>
-      <button id="nextbtn" class="next-btn" onclick="nextQ()">Advance Node →</button>
-    </div>
-  </div>
-
-  <div id="results" class="screen">
-    <h2 class="res-title">Module Evaluation Complete</h2>
-    <div class="stu-stats" style="max-width:400px; margin:0 auto 24px">
-      <div class="stu-stat">
-        <span class="stu-stat-val" id="rnum">0</span>
-        <span class="stu-stat-lbl">Correct Nodes</span>
-      </div>
-      <div class="stu-stat">
-        <span class="stu-stat-val" id="rpct">0%</span>
-        <span class="stu-stat-lbl">Set Score</span>
-      </div>
-    </div>
-    <button class="btn-primary" style="max-width:300px" onclick="goHome()">Return to Workspace</button>
   </div>
 </div>
 
 <script>
-// SUPABASE CREDENTIAL INITIALIZATION MATRIX
-const SB_URL = "YOUR_SUPABASE_URL";
-const SB_KEY = "YOUR_SUPABASE_ANON_KEY";
-const db = supabase.createClient(SB_URL, SB_KEY);
-
-let questions = []; 
+// ── ROOT MEMORY SEQUENCE HOISTING (CRITICAL FIX FOR AUTH-INITIALIZATION CONTEXT)
+let authTab = 'login';
+let questions = [];
 let currentUser = null;
 let queue = [];
 let qIdx = 0;
 let score = 0;
 
-let authTab = 'login';
+// Supabase API Integration Layer Initialization
+const supabaseUrl = "https://fszjfrzgu-zenithfutureacademy.supabase.co"; // Replace with your live Supabase Url token if applicable
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzejlmcnpndS16ZW5pdGhmdXR1cmVhY2FkZW15LXMiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTczODE0MzIyOCwiZXhwIjoyMDUzNzE5MjI4fQ.yourkey"; // Replace with your real Supabase Client Key
+const db = supabase.createClient(supabaseUrl, supabaseKey);
 
-// GET QUESTIONS FROM API BACKEND Secure Route
-async function loadDriveQuestions() {
-  try {
-    const res = await fetch("/api/questions");
-    if (res.ok) questions = await res.json();
-  } catch (e) {
-    console.error("Database cache read failure:", e);
-  }
-}
-
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  const scr = document.getElementById(id);
-  if(scr) scr.classList.add('active');
-}
-
-function openAuth(registerMode=false){
-  document.getElementById('auth').classList.add('active');
-  setAuthTab(registerMode?'register':'login');
-}
-function closeAuth(){
-  document.getElementById('auth').classList.remove('remove');
-  document.getElementById('auth').classList.remove('active');
-}
-function setAuthTab(tab){
+// ── LAYOUT ROUTER CONTROLLERS
+function showAuthScreen(tab = 'login') {
   authTab = tab;
-  document.getElementById('tab-login').classList.remove('active');
-  document.getElementById('tab-register').classList.remove('active');
-  if(tab==='login'){
-    document.getElementById('tab-login').classList.add('active');
-    document.getElementById('auth-btn').innerText = "Execute Sign In";
-  }else{
-    document.getElementById('tab-register').classList.add('active');
-    document.getElementById('auth-btn').innerText = "Provision Workspace";
+  document.getElementById('marketing-page').classList.remove('active');
+  document.getElementById('auth').classList.add('active');
+  updateAuthTabUI();
+}
+
+function hideAuthScreen() {
+  document.getElementById('auth').classList.remove('active');
+  document.getElementById('marketing-page').classList.add('active');
+}
+
+function setAuthTab(tab) {
+  authTab = tab;
+  updateAuthTabUI();
+}
+
+function updateAuthTabUI() {
+  const loginTabBtn = document.getElementById('tab-login');
+  const signupTabBtn = document.getElementById('tab-signup');
+  const submitBtn = document.getElementById('auth-submit-btn');
+  const msgEl = document.getElementById('auth-msg');
+  
+  msgEl.className = 'auth-msg';
+  msgEl.innerText = '';
+
+  if (authTab === 'login') {
+    loginTabBtn.classList.add('active');
+    signupTabBtn.classList.remove('active');
+    submitBtn.innerText = 'Log In To Profile';
+  } else {
+    signupTabBtn.classList.add('active');
+    loginTabBtn.classList.remove('active');
+    submitBtn.innerText = 'Register New Student Profile';
   }
 }
 
-// HANDLE SIGN UP AND SIGN IN SECURELY WITHOUT SEPARATE PROFILES TABLE
-async function handleAuthSubmit(){
-  const email = document.getElementById('auth-email').value.trim();
+// ── SUPABASE AUTHENTICATION CORE TRANSACTIONS
+async function handleAuthSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('auth-email').value;
   const password = document.getElementById('auth-password').value;
-  const btn = document.getElementById('auth-btn');
-  const msg = document.getElementById('auth-msg');
-  if(!email || !password){ msg.className="auth-msg err show"; msg.innerText="Credentials missing."; return; }
-  
-  btn.disabled = true;
-  msg.classList.remove('show');
+  const submitBtn = document.getElementById('auth-submit-btn');
+  const msgEl = document.getElementById('auth-msg');
+
+  submitBtn.disabled = true;
+  msgEl.className = 'auth-msg';
+  msgEl.innerText = '';
 
   try {
-    if(authTab==='login'){
-      const {data, error} = await db.auth.signInWithPassword({email, password});
-      if(error) throw error;
-      await onSignedIn(data.user);
+    if (authTab === 'login') {
+      const { data, error } = await db.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      if (data?.user) await onSignedIn(data.user);
     } else {
-      const {data, error} = await db.auth.signUp({email, password});
-      if(error) throw error;
-      if(!data.user || (data.session === null && data.user.identities?.length === 0)) {
-        msg.className="auth-msg err show";
-        msg.innerText="User account already exists under this parameter.";
-        btn.disabled = false;
-        return;
-      }
-      // Log them inside immediately on successful account creation
-      await onSignedIn(data.user);
+      const { data, error } = await db.auth.signUp({ email, password });
+      if (error) throw error;
+      msgEl.className = 'auth-msg ok';
+      msgEl.innerText = 'Registration profile successful! Confirm your validation message via email.';
     }
-  } catch(e) {
-    msg.className="auth-msg err show";
-    msg.innerText = e.message || "Security fault.";
-    btn.disabled = false;
+  } catch (err) {
+    msgEl.className = 'auth-msg err';
+    msgEl.innerText = err.message || 'Authentication sequence failed.';
+  } finally {
+    submitBtn.disabled = false;
   }
 }
 
-async function onSignedIn(user){
+async function onSignedIn(user) {
   currentUser = user;
-  closeAuth();
-  document.getElementById('marketing').classList.remove('active');
+  document.getElementById('auth').classList.remove('active');
+  document.getElementById('marketing-page').classList.remove('active');
   document.getElementById('portal').style.display = 'block';
-  document.getElementById('user-email-lbl').innerText = user.email;
-  showScreen('home');
-  await loadWorkspaceMetrics();
+  document.getElementById('user-display').innerText = `Active Session identity: ${user.email}`;
 }
 
-// CALCULATION LOGIC: READ SESSIONS DIRECTLY FROM THE CORE INSTANCE CONTROLLER
-async function loadWorkspaceMetrics(){
-  if(!currentUser) return;
+async function handleSignOut() {
+  await db.auth.signOut();
+  currentUser = null;
+  document.getElementById('portal').style.display = 'none';
+  document.getElementById('marketing-page').classList.add('active');
+}
+
+// ── BOOTSTRAP AUTO-INITIALIZATION SEQUENCE LOOP
+(async () => {
   try {
-    const {data:sessions, error} = await db.from('sessions').select('*').eq('student_id', currentUser.id);
-    if(error) throw error;
-
-    if(!sessions || sessions.length === 0){
-      document.getElementById('stat-total-q').innerText = "0";
-      document.getElementById('stat-accuracy').innerText = "0%";
-      return;
+    const { data: { session } } = await db.auth.getSession();
+    if (session?.user) {
+      await onSignedIn(session.user);
     }
-
-    let totalSolved = 0;
-    let totalCorrect = 0;
-    sessions.forEach(s => {
-      totalSolved += (s.total || 5);
-      totalCorrect += (s.score || 0);
-    });
-
-    document.getElementById('stat-total-q').innerText = totalSolved;
-    document.getElementById('stat-accuracy').innerText = Math.round((totalCorrect / totalSolved) * 100) + "%";
-  } catch(e) {
-    console.error("Failed to build workspace profile metrics:", e);
+  } catch (e) {
+    console.warn("Session auto-handshake skipped initialization layers.");
   }
-}
-
-// TESTING UTILITIES RUNTIME LOOP
-function startQuiz(mode){
-  if(!questions || questions.length === 0){
-    alert("Synthesizing query database cache...");
-    return;
-  }
-  let subset = questions;
-  if(mode === 'math') subset = questions.filter(q => q.subject === 'math');
-  if(mode === 'reading') subset = questions.filter(q => q.subject === 'reading');
-
-  queue = subset.sort(() => 0.5 - Math.random()).slice(0, 5);
-  qIdx = 0; score = 0;
-  showScreen('quiz');
-  renderQ();
-}
-
-function renderQ(){
-  document.getElementById('exppanel').classList.remove('show');
-  document.getElementById('nextbtn').classList.remove('show');
-  
-  const q = queue[qIdx];
-  document.getElementById('plbl').innerText = `Node ${qIdx + 1} of ${queue.length}`;
-  document.getElementById('qplain').innerText = q.type === 'passage' ? `${q.passage}\n\n${q.prompt}` : q.text;
-
-  const opts = document.getElementById('opts');
-  opts.innerHTML = '';
-  q.opts.forEach((opt, idx) => {
-    const btn = document.createElement('button');
-    btn.className = 'opt-btn';
-    btn.innerText = `${String.fromCharCode(65 + idx)}. ${opt}`;
-    btn.onclick = () => selectOpt(idx);
-    opts.appendChild(btn);
-  });
-}
-
-function selectOpt(idx){
-  const q = queue[qIdx];
-  const correct = idx === q.correct;
-  if(correct) score++;
-
-  document.querySelectorAll('#opts .opt-btn').forEach((btn, i) => {
-    btn.disabled = true;
-    if(i === q.correct) btn.classList.add('correct');
-    else if(i === idx) btn.classList.add('wrong');
-    else btn.classList.add('dimmed');
-  });
-
-  document.getElementById('exptext').innerHTML = q.exp || "Explanation processing.";
-  document.getElementById('exppanel').classList.add('show');
-  document.getElementById('nextbtn').classList.add('show');
-}
-
-function nextQ(){
-  qIdx++;
-  if(qIdx < queue.length) renderQ();
-  else commitSetMetrics();
-}
-
-async function commitSetMetrics(){
-  showScreen('results');
-  document.getElementById('rnum').innerText = score;
-  document.getElementById('rpct').innerText = Math.round((score / queue.length) * 100) + "%";
-
-  if(currentUser){
-    try {
-      await db.from('sessions').insert({
-        student_id: currentUser.id,
-        mode: 'mixed',
-        score: score,
-        total: queue.length,
-        accuracy: Math.round((score / queue.length) * 100)
-      });
-      await loadWorkspaceMetrics();
-    } catch(e) {
-      console.error("Telemetry failed to commit:", e);
-    }
-  }
-}
-
-function confirmExit(){ if(confirm("Abort module assessment stream?")) goHome(); }
-function goHome(){ showScreen('home'); }
-async function signOut(){ await db.auth.signOut(); currentUser = null; document.getElementById('portal').style.display = 'none'; document.getElementById('marketing').classList.add('active'); }
-
-// AUTOMATIC INSTANT LOGIN EVALUATION MATRIX
-(async()=>{
-  try {
-    const {data:{session}} = await db.auth.getSession();
-    if(session?.user) await onSignedIn(session.user);
-  } catch(e){}
-  loadDriveQuestions();
 })();
 </script>
+
 </body>
 </html>
