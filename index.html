@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Zenith Future Academy · SAT Prep</title>
+<title>Zenith · SAT Prep</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -22,647 +22,140 @@
   --r:12px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
 
-/* ══════ MARKETING ══════ */
+/* MARKETING */
 .mpage{display:none}.mpage.active{display:block}
-.announce{background:var(--ink);color:rgba(255,255,255,0.78);text-align:center;font-size:0.8rem;font-weight:500;padding:10px 20px;letter-spacing:0.2px}
-.announce strong{color:#fff}
-
 .site-nav{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:20px 32px;border-bottom:1px solid var(--rule)}
 .site-logo{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.5px;cursor:pointer}
 .site-logo em{font-style:normal;color:var(--blue)}
-.site-links{display:flex;gap:32px;align-items:center;list-style:none}
-.site-links a{color:var(--ink-lt);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.15s;cursor:pointer}
-.site-links a:hover,.site-links a.active{color:var(--ink)}
 .nav-cta-wrap{display:flex;gap:10px;align-items:center}
 .nav-signin{border:1.5px solid var(--rule);color:var(--ink-mid);background:transparent;padding:9px 18px;border-radius:8px;font-size:0.85rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s}
 .nav-signin:hover{border-color:var(--ink-mid);color:var(--ink)}
 .nav-start{background:var(--ink);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:0.85rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s}
 .nav-start:hover{background:var(--blue)}
 
-/* ── HOME PAGE ── */
 .hero-wrap{max-width:1200px;margin:0 auto;padding:80px 32px 90px;display:grid;grid-template-columns:1fr 440px;gap:80px;align-items:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-pale);color:var(--blue);font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:20px}
-.hero-eyebrow::before{content:'';width:5px;height:5px;background:var(--blue);border-radius:50%;flex-shrink:0}
 .hero-h1{font-family:'Cormorant Garamond',serif;font-size:4.6rem;font-weight:700;line-height:1.08;letter-spacing:-1.5px;color:var(--ink);margin-bottom:20px}
 .hero-h1 em{font-style:italic;color:var(--blue)}
-.hero-p{font-size:1.02rem;color:var(--ink-lt);line-height:1.78;margin-bottom:34px;max-width:440px}
-.hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.btn-primary{background:var(--ink);color:#fff;border:none;border-radius:9px;padding:14px 28px;font-size:0.93rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;box-shadow:var(--sh-sm)}
-.btn-primary:hover{background:var(--blue);transform:translateY(-1px);box-shadow:var(--sh-md)}
-.btn-ghost-ink{background:transparent;color:var(--ink-mid);border:1.5px solid var(--rule);border-radius:9px;padding:13px 22px;font-size:0.88rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s}
-.btn-ghost-ink:hover{border-color:var(--ink-lt);color:var(--ink)}
-.hero-proof{display:flex;gap:22px;align-items:center;margin-top:28px;padding-top:28px;border-top:1px solid var(--rule)}
-.hero-proof-item{text-align:center}
-.hero-proof-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink);display:block;line-height:1}
-.hero-proof-lbl{font-size:0.65rem;color:var(--ink-lt);font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-top:3px}
-.hero-proof-div{width:1px;height:32px;background:var(--rule)}
+.hero-p{font-size:1.02rem;color:var(--ink-lt);line-height:1.78;margin-bottom:34px}
+.btn-primary{width:100%;background:var(--ink);color:#fff;border:none;border-radius:9px;padding:14px 28px;font-size:0.93rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;box-shadow:var(--sh-sm)}
+.btn-primary:hover{background:var(--blue);transform:translateY(-1px)}
 
-/* Hero right card */
-.hero-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:20px;padding:28px;box-shadow:var(--sh-lg);position:relative;overflow:hidden}
-.hero-card::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(26,86,219,0.08) 0%,transparent 70%);border-radius:50%}
-.hc-label{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
-.hc-score{text-align:center;margin-bottom:20px}
+.hero-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:20px;padding:28px;box-shadow:var(--sh-lg);text-align:center}
 .hc-score-num{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:700;color:var(--ink);line-height:1;display:block;letter-spacing:-2px}
-.hc-score-trend{display:inline-flex;align-items:center;gap:4px;background:var(--green-bg);color:var(--green);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-top:6px}
-.hc-topic-list{display:flex;flex-direction:column;gap:10px}
-.hc-topic{display:flex;align-items:center;gap:10px}
-.hc-topic-name{font-size:0.78rem;color:var(--ink-mid);flex:1;font-weight:500}
-.hc-bar-track{flex:2;height:5px;background:var(--rule);border-radius:3px;overflow:hidden}
-.hc-bar-fill{height:100%;border-radius:3px;transition:width 1s ease}
-.fill-blue{background:var(--blue)}.fill-green{background:var(--green)}.fill-amber{background:var(--amber)}.fill-red{background:var(--red)}
-.hc-pct{font-size:0.72rem;color:var(--ink-lt);font-weight:700;width:30px;text-align:right}
+.hc-label{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-top:10px}
 
-/* Stats strip */
-.stats-strip{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg-soft)}
-.stats-inner{max-width:1200px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat-item{text-align:center;padding:0 20px;border-right:1px solid var(--rule)}
-.stat-item:last-child{border-right:none}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--ink);display:block;line-height:1;letter-spacing:-1px}
-.stat-desc{font-size:0.76rem;color:var(--ink-lt);margin-top:7px;font-weight:500;line-height:1.4}
-
-/* How it works */
-.how-section{max-width:1200px;margin:90px auto;padding:0 32px}
-.section-tag{font-size:0.67rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:block}
-.section-h2{font-family:'Cormorant Garamond',serif;font-size:2.9rem;font-weight:700;color:var(--ink);letter-spacing:-0.5px;line-height:1.15;margin-bottom:48px;max-width:520px}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden}
-.how-cell{background:var(--bg);padding:38px 30px;transition:background 0.2s}
-.how-cell:hover{background:var(--bg-soft)}
-.how-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--rule-mid);display:block;margin-bottom:14px;line-height:1}
-.how-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:9px}
-.how-body{font-size:0.87rem;color:var(--ink-lt);line-height:1.72}
-
-/* Comparison table */
-.compare-section{background:var(--bg-soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:80px 32px}
-.compare-inner{max-width:900px;margin:0 auto}
-.compare-table{width:100%;border-collapse:collapse;margin-top:40px}
-.compare-table th{font-size:0.75rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--ink-lt);padding:12px 16px;border-bottom:2px solid var(--rule);text-align:left}
-.compare-table th:nth-child(2){color:var(--blue);background:var(--blue-pale);border-radius:8px 8px 0 0;text-align:center}
-.compare-table th:nth-child(3),.compare-table th:nth-child(4){text-align:center}
-.compare-table td{padding:14px 16px;border-bottom:1px solid var(--rule);font-size:0.88rem;color:var(--ink-mid)}
-.compare-table td:nth-child(2){background:var(--blue-pale);text-align:center;font-weight:700;color:var(--blue)}
-.compare-table td:nth-child(3),.compare-table td:nth-child(4){text-align:center;color:var(--ink-lt)}
-.compare-table tr:last-child td{border-bottom:none}
-
-/* Testimonials */
-.t-section{max-width:1200px;margin:90px auto;padding:0 32px}
-.t-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
-.t-card{border:1px solid var(--rule);border-radius:16px;padding:30px;background:var(--bg);transition:box-shadow 0.2s}
-.t-card:hover{box-shadow:var(--sh-sm)}
-.t-card-stars{color:var(--amber);font-size:0.85rem;margin-bottom:14px;letter-spacing:2px}
-.t-card-quote{font-size:0.92rem;line-height:1.82;color:var(--ink-mid);margin-bottom:20px}
-.t-card-author{font-size:0.72rem;font-weight:700;color:var(--ink-lt);letter-spacing:0.5px;text-transform:uppercase}
-.t-card-author span{color:var(--blue)}
-.t-banner{background:var(--ink);border-radius:16px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;margin-top:20px}
-.t-banner-text h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#fff;margin-bottom:8px}
-.t-banner-text p{font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.65}
-.t-banner-nums{display:flex;gap:32px}
-.t-banner-num-item{text-align:center}
-.t-banner-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:#fff;display:block}
-.t-banner-lbl{font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.8px}
-
-/* ABOUT PAGE */
-.page-hero{background:var(--ink);padding:100px 32px 80px;text-align:center}
-.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:700;color:#fff;letter-spacing:-1px;margin-bottom:16px}
-.page-hero h1 em{font-style:italic;color:#7EB3FF}
-.page-hero p{font-size:1rem;color:rgba(255,255,255,0.5);max-width:540px;margin:0 auto;line-height:1.75}
-.about-section{max-width:1000px;margin:0 auto;padding:80px 32px}
-.about-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:80px}
-.about-intro h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;line-height:1.2;color:var(--ink);letter-spacing:-0.5px}
-.about-intro p{color:var(--ink-lt);line-height:1.85;font-size:0.95rem}
-.about-intro p+p{margin-top:12px}
-.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden;margin-bottom:80px}
-.value-cell{background:var(--bg);padding:36px 28px;transition:background 0.2s}
-.value-cell:hover{background:var(--bg-soft)}
-.value-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--rule-mid);display:block;margin-bottom:12px}
-.value-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:8px}
-.value-body{font-size:0.87rem;color:var(--ink-lt);line-height:1.72}
-.founder-strip{border-top:1px solid var(--rule);padding-top:60px;display:grid;grid-template-columns:180px 1fr;gap:48px;align-items:start}
-.founder-img{width:180px;height:180px;border-radius:16px;background:var(--bg-soft);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:4rem}
-.founder-tag{font-size:0.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
-.founder-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);margin-bottom:3px}
-.founder-title{font-size:0.83rem;color:var(--ink-lt);margin-bottom:16px}
-.founder-bio{font-size:0.92rem;color:var(--ink-mid);line-height:1.82}
-.founder-bio p+p{margin-top:12px}
-
-/* TESTIMONIALS PAGE */
-.t-page-hero{background:var(--bg-soft);border-bottom:1px solid var(--rule);padding:80px 32px 70px;text-align:center}
-.t-page-hero h1{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;color:var(--ink);letter-spacing:-0.8px;margin-bottom:12px}
-.t-page-hero p{font-size:0.97rem;color:var(--ink-lt);max-width:480px;margin:0 auto;line-height:1.7}
-.t-grid-wrap{max-width:1000px;margin:0 auto;padding:72px 32px}
-.t-pull{font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;font-weight:600;color:var(--ink);border-left:3px solid var(--blue);padding-left:24px;margin-bottom:52px;line-height:1.4;max-width:700px}
-.t-cards-4{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:44px}
-.t-scores{background:var(--ink);border-radius:20px;padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center}
-.t-score-item{padding:0 24px;border-right:1px solid rgba(255,255,255,0.1)}
-.t-score-item:last-child{border-right:none}
-.t-score-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:#fff;display:block;letter-spacing:-1px}
-.t-score-lbl{font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:6px;font-weight:500}
-
-/* PRICING PAGE */
-.pricing-hero{padding:90px 32px 70px;text-align:center}
-.pricing-hero h1{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:700;color:var(--ink);letter-spacing:-1px;margin-bottom:12px}
-.pricing-hero p{font-size:0.97rem;color:var(--ink-lt);max-width:460px;margin:0 auto;line-height:1.7}
-.pricing-wrap{max-width:640px;margin:0 auto;padding:0 32px 80px}
-.pricing-card{border:1.5px solid var(--ink);border-radius:20px;padding:50px 44px;position:relative;margin-bottom:32px;text-align:center}
-.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:0.67rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 18px;border-radius:100px}
-.price-amount{font-family:'Cormorant Garamond',serif;font-size:5.5rem;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-3px}
-.price-amount sup{font-size:1.8rem;vertical-align:top;margin-top:14px;display:inline-block;letter-spacing:0}
-.price-period{font-size:0.9rem;color:var(--ink-lt);margin-top:6px;margin-bottom:34px}
-.price-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:34px;text-align:left}
-.price-features li{display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--ink-mid)}
-.price-features li::before{content:'✓';font-weight:700;color:var(--green);flex-shrink:0}
-.pricing-faq{border-top:1px solid var(--rule);padding-top:40px}
-.faq-item{padding:18px 0;border-bottom:1px solid var(--rule)}
-.faq-q{font-size:0.93rem;font-weight:700;color:var(--ink);margin-bottom:7px}
-.faq-a{font-size:0.86rem;color:var(--ink-lt);line-height:1.7}
-
-/* footer */
-.site-footer{border-top:1px solid var(--rule);padding:32px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--ink)}
-.footer-logo em{font-style:normal;color:var(--blue)}
-.footer-txt{font-size:0.78rem;color:var(--ink-lt)}
-
-/* ══════ APP PORTAL ══════ */
+/* PORTAL CLOUD PANELS */
 #portal{display:none}
-.screen{display:none;position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--bg)}
+.screen{display:none;position:fixed;inset:0;overflow-y:auto;background:var(--bg)}
 .screen.active{display:block}
 
-/* bottom nav */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(255,255,255,0.97);border-top:1px solid var(--rule);display:flex;z-index:999;backdrop-filter:blur(8px)}
-.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.15s}
-.nav-btn span:first-child{font-size:1.15rem}
-.nav-btn span:last-child{font-size:0.6rem;color:var(--ink-lt);font-weight:600;letter-spacing:0.3px}
-.nav-btn.active span:last-child{color:var(--blue)}
-
-/* ── AUTH ── */
-#auth{display:none;position:fixed;inset:0;background:var(--bg-soft);overflow-y:auto;align-items:center;justify-content:center;padding:40px 22px}
-#auth.active{display:flex}
-.auth-wrap{width:100%;max-width:420px}
-.auth-brand{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:2px;letter-spacing:-0.5px}
-.auth-brand em{font-style:normal;color:var(--blue)}
-.auth-tagline{text-align:center;font-size:0.8rem;color:var(--ink-lt);margin-bottom:26px;font-weight:500}
-.auth-panel{background:var(--bg);border:1px solid var(--rule);border-radius:18px;padding:30px 26px;box-shadow:var(--sh-md)}
-.auth-tabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:24px}
-.auth-tab{flex:1;padding:11px;border:none;background:transparent;font-size:0.88rem;font-weight:600;color:var(--ink-lt);cursor:pointer;font-family:'Outfit',sans-serif;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.18s}
-.auth-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
-.role-row{display:flex;gap:10px;margin-bottom:18px}
-.role-btn{flex:1;padding:10px;border-radius:9px;border:1.5px solid var(--rule);background:var(--bg-soft);color:var(--ink-lt);font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;text-align:center;transition:all 0.18s}
-.role-btn.active{border-color:var(--blue);color:var(--blue);background:var(--blue-pale)}
-.field-label{font-size:0.7rem;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:6px;display:block}
-.auth-input{width:100%;padding:12px 14px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:9px;color:var(--ink);font-size:0.92rem;font-family:'Outfit',sans-serif;outline:none;transition:all 0.18s;margin-bottom:14px}
-.auth-input:focus{border-color:var(--blue);background:var(--bg);box-shadow:0 0 0 3px rgba(26,86,219,0.08)}
-.auth-input::placeholder{color:var(--ink-lt);opacity:0.6}
-.auth-submit{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:9px;font-size:0.95rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;margin-top:2px}
-.auth-submit:hover{background:var(--blue)}
-.auth-submit:disabled{opacity:0.5;cursor:not-allowed}
-.auth-msg{font-size:0.82rem;padding:10px 14px;border-radius:8px;margin-bottom:14px;font-weight:500;display:none}
-.auth-msg.err{background:var(--red-bg);color:var(--red);border:1px solid rgba(192,57,43,0.2)}
-.auth-msg.ok{background:var(--green-bg);color:var(--green);border:1px solid rgba(15,123,78,0.2)}
-.auth-msg.show{display:block}
-.linkcode-reveal{margin-top:18px;padding:20px;background:var(--blue-pale);border:1px solid rgba(26,86,219,0.2);border-radius:12px;text-align:center;display:none}
-.linkcode-lbl{font-size:0.67rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
-.linkcode-val{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:700;color:var(--ink);letter-spacing:10px}
-.linkcode-hint{font-size:0.7rem;color:var(--ink-lt);margin-top:8px}
-.auth-back{text-align:center;margin-top:14px}
-.auth-back button{background:none;border:none;font-family:'Outfit',sans-serif;font-size:0.82rem;color:var(--ink-lt);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-
-/* ── STUDENT HOME ── */
-#home{padding:0 0 80px}
-.home-hdr{background:var(--ink);padding:50px 22px 28px;position:relative;overflow:hidden}
-.home-hdr::after{content:'';position:absolute;right:-50px;top:-50px;width:240px;height:240px;background:radial-gradient(circle,rgba(26,86,219,0.2) 0%,transparent 70%);border-radius:50%;pointer-events:none}
-.home-brand{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:700;color:#fff;position:relative;z-index:1;letter-spacing:-0.5px}
+.home-hdr{background:var(--ink);padding:50px 22px 28px}
+.home-brand{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:700;color:#fff;letter-spacing:-0.5px}
 .home-brand em{font-style:normal;color:#7EB3FF}
-.home-sub{color:rgba(255,255,255,0.4);font-size:0.75rem;margin-bottom:6px;position:relative;z-index:1}
-.home-welcome{color:rgba(255,255,255,0.85);font-size:0.88rem;font-weight:600;position:relative;z-index:1}
-.home-body{padding:20px 18px 0}
+.home-sub{color:rgba(255,255,255,0.4);font-size:0.75rem;margin-bottom:6px}
+.home-welcome{color:rgba(255,255,255,0.85);font-size:0.88rem;font-weight:600}
+.home-body{padding:20px 18px 80px}
 
-/* student stats — live tiles */
 .stu-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
 .stu-stat{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:16px 14px;box-shadow:var(--sh-xs)}
 .stu-stat-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);display:block;line-height:1;margin-bottom:4px}
 .stu-stat-lbl{font-size:0.65rem;color:var(--ink-lt);font-weight:600;text-transform:uppercase;letter-spacing:0.8px}
-.stu-stat-sub{font-size:0.72rem;color:var(--ink-lt);margin-top:3px}
 
-/* accuracy bar */
 .acc-bar-wrap{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:16px;margin-bottom:22px;box-shadow:var(--sh-xs)}
 .acc-bar-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
 .acc-bar-title{font-size:0.68rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--ink-lt)}
 .acc-bar-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--ink)}
 .acc-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden}
-.acc-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--green));transition:width 0.8s ease}
-.acc-bar-labels{display:flex;justify-content:space-between;margin-top:5px}
-.acc-bar-labels span{font-size:0.62rem;color:var(--ink-lt)}
+.acc-bar-fill{height:100%;border-radius:4px;background:var(--blue);transition:width 0.8s ease}
 
 .mode-label{font-size:0.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:12px}
-.mode-card{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:18px 16px;margin-bottom:10px;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;gap:14px;position:relative;box-shadow:var(--sh-xs)}
-.mode-card:hover{border-color:var(--blue);box-shadow:var(--sh-sm);transform:translateX(2px)}
-.mode-icon{width:44px;height:44px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
-.mode-title{font-size:0.93rem;font-weight:700;color:var(--ink);margin-bottom:2px}
-.mode-desc{font-size:0.76rem;color:var(--ink-lt);line-height:1.45}
+.mode-card{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:18px 16px;margin-bottom:10px;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;gap:14px;box-shadow:var(--sh-xs)}
+.mode-card:hover{border-color:var(--blue);transform:translateX(2px)}
+.mode-icon{width:44px;height:44px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.mode-title{font-size:0.93rem;font-weight:700;color:var(--ink)}
 .mode-arrow{margin-left:auto;color:var(--ink-lt)}
-.mode-chip{position:absolute;top:14px;right:38px;background:var(--blue-pale);color:var(--blue);font-size:0.57rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:100px}
-.signout-btn{width:100%;margin-top:18px;padding:13px;background:transparent;border:1px solid var(--rule);border-radius:9px;color:var(--ink-lt);font-family:'Outfit',sans-serif;font-size:0.87rem;font-weight:500;cursor:pointer;transition:all 0.18s}
-.signout-btn:hover{border-color:var(--ink-lt);color:var(--ink)}
+.signout-btn{width:100%;margin-top:18px;padding:13px;background:transparent;border:1px solid var(--rule);border-radius:9px;color:var(--ink-lt);font-family:'Outfit',sans-serif;font-size:0.87rem;cursor:pointer}
 
-/* leaderboard teaser */
-.leaderboard-teaser{background:var(--bg-tint);border:1px solid var(--blue-pale);border-radius:var(--r);padding:14px 16px;margin-bottom:22px;display:flex;align-items:center;gap:12px}
-.lb-icon{font-size:1.4rem;flex-shrink:0}
-.lb-text{flex:1}
-.lb-title{font-size:0.85rem;font-weight:700;color:var(--blue);margin-bottom:2px}
-.lb-sub{font-size:0.74rem;color:var(--ink-lt)}
-.lb-badge{background:var(--blue);color:#fff;font-size:0.62rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:3px 10px;border-radius:100px;flex-shrink:0}
+/* AUTH PANELS */
+#auth{display:none;position:fixed;inset:0;background:var(--bg-soft);align-items:center;justify-content:center;padding:22px;z-index:9999}
+#auth.active{display:flex}
+.auth-wrap{width:100%;max-width:400px}
+.auth-brand{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:16px}
+.auth-panel{background:var(--bg);border:1px solid var(--rule);border-radius:18px;padding:30px 26px;box-shadow:var(--sh-md)}
+.auth-tabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:24px}
+.auth-tab{flex:1;padding:11px;border:none;background:transparent;font-size:0.88rem;font-weight:600;color:var(--ink-lt);cursor:pointer;border-bottom:2px solid transparent}
+.auth-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.auth-input{width:100%;padding:12px 14px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:9px;color:var(--ink);font-size:0.92rem;outline:none;margin-bottom:14px}
+.auth-input:focus{border-color:var(--blue);background:var(--bg)}
+.auth-submit{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:9px;font-size:0.95rem;font-weight:700;cursor:pointer}
+.auth-msg{font-size:0.82rem;padding:10px 14px;border-radius:8px;margin-bottom:14px;display:none}
+.auth-msg.err{background:var(--red-bg);color:var(--red);border:1px solid rgba(192,57,43,0.2)}
+.auth-msg.ok{background:var(--green-bg);color:var(--green);border:1px solid rgba(15,123,78,0.2)}
+.auth-msg.show{display:block}
 
-/* ── QUIZ ── */
-#quiz{padding:0 0 80px}
-.quiz-topbar{display:flex;align-items:center;gap:12px;padding:12px 16px 10px;background:var(--bg);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--rule);box-shadow:var(--sh-xs)}
-.back-btn{background:var(--bg-soft);border:1px solid var(--rule);color:var(--ink-mid);cursor:pointer;padding:7px 12px;border-radius:7px;font-size:0.82rem;font-family:'Outfit',sans-serif;font-weight:600;transition:all 0.18s;flex-shrink:0}
-.back-btn:hover{background:var(--rule)}
+/* TESTING SYSTEM */
+.quiz-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--rule);position:sticky;top:0}
+.back-btn{background:var(--bg-soft);border:1px solid var(--rule);cursor:pointer;padding:7px 12px;border-radius:7px;font-size:0.82rem;font-weight:600}
+.quiz-body{padding:18px 16px 80px}
+.question-box{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;font-size:0.93rem;line-height:1.75;margin-bottom:16px;white-space:pre-line}
+.opt-btn{width:100%;background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:14px;margin-bottom:8px;text-align:left;cursor:pointer;font-family:'Outfit',sans-serif}
+.opt-btn.correct{border-color:var(--green);background:var(--green-bg)}
+.opt-btn.wrong{border-color:var(--red);background:var(--red-bg)}
+.opt-btn.dimmed{opacity:0.4}
+.exp-panel{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;margin-bottom:16px;display:none}
+.exp-panel.show{display:block}
+.exp-title{font-size:0.75rem;font-weight:700;color:var(--blue);margin-bottom:6px}
+.next-btn{width:100%;background:var(--ink);color:#fff;border:none;border-radius:10px;padding:15px;font-size:0.93rem;font-weight:700;cursor:pointer;display:none}
+.next-btn.show{display:block}
 
-/* TIMER */
-.timer-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
-.timer-display{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--ink);line-height:1;min-width:52px;text-align:center}
-.timer-display.warn{color:var(--amber)}
-.timer-display.danger{color:var(--red);animation:pulse-timer 0.6s infinite}
-@keyframes pulse-timer{0%,100%{opacity:1}50%{opacity:0.5}}
-.timer-lbl{font-size:0.55rem;color:var(--ink-lt);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-top:1px}
-
-.prog-wrap{flex:1}
-.prog-track{height:5px;background:var(--rule);border-radius:3px;overflow:hidden}
-.prog-fill{height:100%;background:var(--blue);border-radius:3px;transition:width 0.4s cubic-bezier(0.4,0,0.2,1)}
-.prog-label{font-size:0.66rem;color:var(--ink-lt);text-align:right;margin-top:4px;font-weight:600}
-
-.quiz-body{padding:18px 16px 0}
-.q-tag{display:inline-block;background:var(--bg-soft);border:1px solid var(--rule);color:var(--ink-mid);font-size:0.68rem;font-weight:700;padding:4px 12px;border-radius:100px;margin-bottom:15px}
-.passage-box{background:var(--bg-soft);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:16px 18px;font-size:0.87rem;line-height:1.9;color:var(--ink-mid);margin-bottom:14px}
-.passage-prompt{font-size:0.93rem;font-weight:600;color:var(--ink);margin-bottom:14px}
-.question-box{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;font-size:0.93rem;line-height:1.75;color:var(--ink);margin-bottom:16px;white-space:pre-line}
-.opts-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-.opt-btn{width:100%;background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:12px 13px;display:flex;align-items:flex-start;gap:11px;cursor:pointer;color:var(--ink);font-size:0.87rem;line-height:1.55;font-family:'Outfit',sans-serif;text-align:left;transition:all 0.15s;box-shadow:var(--sh-xs)}
-.opt-btn:hover:not([disabled]){border-color:var(--blue);background:var(--blue-pale);transform:translateX(2px)}
-.opt-btn[disabled]{cursor:default}
-.opt-btn.correct{border-color:var(--green)!important;background:var(--green-bg)!important}
-.opt-btn.wrong{border-color:var(--red)!important;background:var(--red-bg)!important}
-.opt-btn.dimmed{opacity:0.35}
-.opt-letter{width:24px;height:24px;flex-shrink:0;margin-top:1px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.67rem;font-weight:700;color:var(--ink-lt);transition:all 0.15s}
-.opt-btn.correct .opt-letter{background:var(--green);color:#fff;border-color:var(--green)}
-.opt-btn.wrong .opt-letter{background:var(--red);color:#fff;border-color:var(--red)}
-.exp-panel{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;margin-bottom:12px;display:none}
-.exp-panel.show{display:block;animation:up 0.25s ease}
-@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.exp-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
-.exp-tutor{font-size:0.72rem;font-weight:700;color:var(--blue)}
-.exp-verdict{margin-left:auto;font-size:0.75rem;font-weight:700}
-.exp-verdict.ok{color:var(--green)}.exp-verdict.bad{color:var(--red)}
-.exp-time{font-size:0.7rem;color:var(--ink-lt);font-weight:500}
-.exp-text{font-size:0.86rem;line-height:1.8;color:var(--ink-mid)}
-.exp-text strong{color:var(--ink)}
-.followup-wrap{margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)}
-.followup-lbl{font-size:0.67rem;color:var(--ink-lt);margin-bottom:7px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
-.followup-row{display:flex;gap:8px}
-.followup-input{flex:1;background:var(--bg);border:1.5px solid var(--rule);border-radius:8px;padding:9px 12px;color:var(--ink);font-size:0.84rem;font-family:'Outfit',sans-serif;outline:none;min-width:0;transition:border-color 0.18s}
-.followup-input::placeholder{color:var(--ink-lt);opacity:0.6}
-.followup-input:focus{border-color:var(--blue)}
-.followup-btn{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:9px 13px;font-size:0.8rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background 0.18s}
-.followup-btn:hover{background:var(--blue)}
-.ai-reply{margin-top:9px;background:var(--blue-pale);border:1px solid rgba(26,86,219,0.15);border-radius:8px;padding:11px 13px;font-size:0.83rem;line-height:1.7;color:var(--ink-mid);display:none}
-.ai-reply.show{display:block;animation:up 0.2s ease}
-.next-btn{width:100%;background:var(--ink);color:#fff;border:none;border-radius:10px;padding:15px;font-size:0.93rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;display:none;transition:all 0.18s;margin-bottom:8px}
-.next-btn.show{display:block;animation:up 0.2s ease}
-.next-btn:hover{background:var(--blue);transform:translateY(-1px)}
-
-/* ── RESULTS ── */
-#results{padding:50px 20px 90px;text-align:center}
-.res-emoji{font-size:2.5rem;margin-bottom:9px}
-.res-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);margin-bottom:5px}
-.res-sub{color:var(--ink-lt);font-size:0.87rem;margin-bottom:28px}
-.donut-wrap{width:130px;height:130px;margin:0 auto 24px;position:relative}
-.donut-svg{transform:rotate(-90deg)}
-.donut-track{fill:none;stroke:var(--rule);stroke-width:9}
-.donut-fill{fill:none;stroke:var(--blue);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset 0.8s ease}
-.donut-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.donut-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);line-height:1}
-.donut-den{font-size:0.67rem;color:var(--ink-lt);margin-top:2px;font-weight:600}
-.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.res-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:15px 12px;text-align:center}
-.res-card-val{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;display:block}
-.c-green{color:var(--green)}.c-red{color:var(--red)}.c-amber{color:var(--amber)}.c-blue{color:var(--blue)}
-.res-card-lbl{font-size:0.63rem;color:var(--ink-lt);margin-top:3px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
-.breakdown-hd{font-size:0.66rem;font-weight:700;color:var(--ink-lt);letter-spacing:1.2px;text-transform:uppercase;text-align:left;margin-bottom:10px}
-.gap-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.gap-name{font-size:0.8rem;flex:1;text-align:left;font-weight:500}
-.gap-track{width:90px;height:4px;background:var(--rule);border-radius:2px;overflow:hidden}
-.gap-fill{height:100%;border-radius:2px}
-.fill-g{background:var(--green)}.fill-m{background:var(--amber)}.fill-b{background:var(--red)}
-.gap-pct{font-size:0.71rem;width:32px;text-align:right;font-weight:600;color:var(--ink-lt)}
-.res-actions{display:flex;flex-direction:column;gap:10px;margin-top:20px}
-.btn-ghost{background:transparent;color:var(--ink-mid);border:1px solid var(--rule);border-radius:10px;padding:13px;font-size:0.88rem;font-weight:500;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.18s}
-.btn-ghost:hover{border-color:var(--ink-lt);color:var(--ink)}
-
-/* ── PARENT DASHBOARD ── */
-#parent{padding:0 0 90px}
-.parent-hdr{background:var(--ink);padding:50px 22px 26px;position:relative;overflow:hidden}
-.parent-hdr::after{content:'';position:absolute;right:-50px;top:-50px;width:220px;height:220px;background:radial-gradient(circle,rgba(26,86,219,0.15) 0%,transparent 70%);border-radius:50%;pointer-events:none}
-.parent-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:#fff;margin-bottom:3px}
-.parent-title em{font-style:normal;color:#7EB3FF}
-.parent-sub{font-size:0.76rem;color:rgba(255,255,255,0.4);margin-bottom:12px}
-.linked-student-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px}
-.ls-avatar{width:36px;height:36px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700}
-.ls-info{flex:1}
-.ls-lbl{font-size:0.58rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
-.ls-name{font-size:0.86rem;color:#fff;font-weight:600}
-.parent-body{padding:20px 18px 0}
-.p-no-link{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:24px 20px;text-align:center;box-shadow:var(--sh-xs)}
-.p-no-link-icon{font-size:2rem;margin-bottom:8px}
-.p-no-link-h3{font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:4px}
-.p-no-link-p{font-size:0.78rem;color:var(--ink-lt);line-height:1.5;margin-bottom:16px}
-.p-link-input{width:100%;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:8px;padding:11px 12px;font-size:0.88rem;font-family:'Outfit',sans-serif;outline:none;text-align:center;margin-bottom:10px;text-transform:uppercase;font-weight:700;letter-spacing:2px}
-.p-link-input:focus{border-color:var(--blue);background:var(--bg)}
-.p-link-btn{width:100%;background:var(--ink);color:#fff;border:none;border-radius:8px;padding:12px;font-size:0.86rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;transition:background 0.18s}
-.p-link-btn:hover{background:var(--blue)}
+/* EVALUATION SPLIT */
+#results{padding:50px 20px;text-align:center}
+.res-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;margin-bottom:20px}
 </style>
 </head>
 <body>
 
-<div class="announce">
-  ✨ Limited Launch Offer: Full data center adaptive access for just <strong>$5/month</strong>. Save 90% vs typical tutors.
-</div>
-
 <div id="marketing" class="mpage active">
   <nav class="site-nav">
-    <a class="site-logo" onclick="showMPage('home')">Zenith<em>Future</em></a>
-    <ul class="site-links">
-      <li><a id="mlink-home" class="active" onclick="showMPage('home')">Home</a></li>
-      <li><a id="mlink-about" onclick="showMPage('about')">About Us</a></li>
-      <li><a id="mlink-testimonials" onclick="showMPage('testimonials')">Results</a></li>
-      <li><a id="mlink-pricing" onclick="showMPage('pricing')">Pricing</a></li>
-    </ul>
+    <div class="site-logo">Zenith</div>
     <div class="nav-cta-wrap">
       <button class="nav-signin" onclick="openAuth(false)">Sign In</button>
       <button class="nav-start" onclick="openAuth(true)">Start Prep</button>
     </div>
   </nav>
 
-  <div id="m-home" class="m-subpage" style="display:block">
-    <div class="hero-wrap">
-      <div class="hero-left">
-        <div class="hero-eyebrow">The Digital SAT, Decoded</div>
-        <h1 class="hero-h1">The elite way to prep. For the price of a <em>coffee</em>.</h1>
-        <p class="hero-p">Stop paying $150/hr for SAT question drills. Access our adaptive learning node linked directly to a high-fidelity test database for just $5 a month.</p>
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="openAuth(true)">Get Started Instantly</button>
-          <button class="btn-ghost-ink" onclick="showMPage('pricing')">See Pricing Plan</button>
-        </div>
-        <div class="hero-proof">
-          <div class="hero-proof-item">
-            <span class="hero-proof-num">+190</span>
-            <span class="hero-proof-lbl">Avg Score Boost</span>
-          </div>
-          <div class="hero-proof-div"></div>
-          <div class="hero-proof-item">
-            <span class="hero-proof-num">1,440+</span>
-            <span class="hero-proof-lbl">Average Score</span>
-          </div>
-          <div class="hero-proof-div"></div>
-          <div class="hero-proof-item">
-            <span class="hero-proof-num">100%</span>
-            <span class="hero-proof-lbl">Digital Format</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-card">
-          <div class="hc-label">Real-time Skill Diagnostics</div>
-          <div class="hc-score">
-            <span class="hc-score-num">1540</span>
-            <div class="hc-score-trend">↗ Peak Simulation Performance</div>
-          </div>
-          <div class="hc-topic-list">
-            <div class="hc-topic">
-              <span class="hc-topic-name">Algebra Concepts</span>
-              <div class="hc-bar-track"><div class="hc-bar-fill fill-green" style="width:94%"></div></div>
-              <span class="hc-pct">94%</span>
-            </div>
-            <div class="hc-topic">
-              <span class="hc-topic-name">Advanced Math</span>
-              <div class="hc-bar-track"><div class="hc-bar-fill fill-blue" style="width:88%"></div></div>
-              <span class="hc-pct">88%</span>
-            </div>
-            <div class="hc-topic">
-              <span class="hc-topic-name">Craft & Structure</span>
-              <div class="hc-bar-track"><div class="hc-bar-fill fill-amber" style="width:76%"></div></div>
-              <span class="hc-pct">76%</span>
-            </div>
-            <div class="hc-topic">
-              <span class="hc-topic-name">Expression of Ideas</span>
-              <div class="hc-bar-track"><div class="hc-bar-fill fill-green" style="width:91%"></div></div>
-              <span class="hc-pct">91%</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="hero-wrap">
+    <div>
+      <div class="hero-eyebrow">Digital SAT Interface Node</div>
+      <h1 class="hero-h1">The minimalist way to <em>prep</em>.</h1>
+      <p class="hero-p">Direct connectivity to high-fidelity problem matrices. Streamlined data modules built directly for execution focus.</p>
+      <button class="btn-primary" style="width:auto; padding:14px 40px" onclick="openAuth(true)">Launch Workspace</button>
     </div>
-
-    <div class="stats-strip">
-      <div class="stats-inner">
-        <div class="stat-item">
-          <span class="stat-num">$5</span>
-          <span class="stat-desc">Flat monthly rate. Clear and simple.</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">100%</span>
-          <span class="stat-desc">Built for the Bluebook layout standards.</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">24/7</span>
-          <span class="stat-desc">Instant explanations for every single concept.</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">0%</span>
-          <span class="stat-desc">No hidden contracts or cancellation barriers.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="how-section">
-      <span class="section-tag">System Execution</span>
-      <h2 class="section-h2">A three-stage framework optimized for performance.</h2>
-      <div class="how-grid">
-        <div class="how-cell">
-          <span class="how-num">01</span>
-          <h3 class="how-title">Continuous Diagnostics</h3>
-          <p class="how-body">Every problem sets up your specific cognitive accuracy profile, identifying weakness vectors with high precision.</p>
-        </div>
-        <div class="how-cell">
-          <span class="how-num">02</span>
-          <h3 class="how-title">High-Fidelity Sets</h3>
-          <p class="how-body">Practice with clean, targeted problem configurations compiled strictly to isolate problem types.</p>
-        </div>
-        <div class="how-cell">
-          <span class="how-num">03</span>
-          <h3 class="how-title">Parental Oversight</h3>
-          <p class="how-body">Direct, zero-friction account grouping locks in transparent verification of score improvement vectors.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="compare-section">
-      <div class="compare-inner">
-        <span class="section-tag" style="text-align:center">Market Position</span>
-        <h2 class="section-h2" style="text-align:center;margin-left:auto;margin-right:auto">Uncompromised quality. Radical accessibility.</h2>
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Feature Spec</th>
-              <th>Zenith Future</th>
-              <th>Elite Tutors</th>
-              <th>Mass Platforms</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Monthly Cost Base</td><td>$5 / mo</td><td>$400 - $1200</td><td>$40 - $90 / mo</td></tr>
-            <tr><td>Targeted Micro-Quizzes</td><td>Included</td><td>Rarely Built</td><td>Static Test Sets</td></tr>
-            <tr><td>Parental Portal Node</td><td>Included</td><td>Manual Email</td><td>Not Available</td></tr>
-            <tr><td>Clean Interface Engine</td><td>Included</td><td>Paper Documents</td><td>Complex Overlays</td></tr>
-          </tbody>
-        </table>
+    <div>
+      <div class="hero-card">
+        <span class="hc-score-num">1540</span>
+        <div class="hc-label">Target Metric Performance</div>
       </div>
     </div>
   </div>
-
-  <div id="m-about" class="m-subpage" style="display:none">
-    <div class="page-hero">
-      <h1>Our <em>Mission</em></h1>
-      <p>Democratizing elite-tier SAT testing structures. We swap administrative overhead and expensive tutoring markups for clean code frameworks.</p>
-    </div>
-    <div class="about-section">
-      <div class="about-intro">
-        <h2>We believe high-scoring frameworks shouldn't lock behind massive wealth walls.</h2>
-        <div>
-          <p>Zenith Future Academy was structured to bypass the industrial tutoring pipeline. Traditional prep companies rely on heavy logistical models, local lease footprints, and significant coordinator costs, forcing families into extreme hourly fees.</p>
-          <p>Our focus remains fixed on minimalist design matrices and direct access to data center architectures to deliver elite student test metrics cleanly.</p>
-        </div>
-      </div>
-      <div class="values-grid">
-        <div class="value-cell">
-          <span class="value-num">01</span>
-          <h3 class="value-title">Monotone Simplicity</h3>
-          <p class="value-body">No bright game-like banners. Our dashboard limits color entirely to precise performance alerts to encourage cognitive focus.</p>
-        </div>
-        <div class="value-cell">
-          <span class="value-num">02</span>
-          <h3 class="value-title">True Affordability</h3>
-          <p class="value-body">A fixed five-dollar point ensures no high school student is locked out of top-tier score growth tracks.</p>
-        </div>
-        <div class="value-cell">
-          <span class="value-num">03</span>
-          <h3 class="value-title">Algorithmic Focus</h3>
-          <p class="value-body">We prioritize granular diagnostic accuracy records over long, unparsed workbook sheets.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="m-testimonials" class="m-subpage" style="display:none">
-    <div class="t-page-hero">
-      <h1>Verified System Outputs</h1>
-      <p>Read real student and parent progress logs generated directly through our active database testing nodes.</p>
-    </div>
-    <div class="t-grid-wrap">
-      <h2 class="t-pull">“The dashboard isolated my child's coordinate geometry weaknesses within three micro-sets. Her score went from a 610 baseline to a 770 on test day.”</h2>
-      <div class="t-cards-4">
-        <div class="t-card">
-          <div class="t-card-stars">★★★★★</div>
-          <p class="t-card-quote">“The interface is incredibly clear. No distracting fluff or videos—just high-fidelity problem strings and instant step-by-step breakdowns.”</p>
-          <div class="t-card-author">Sarah M. <span>· Parent (Cypress, TX)</span></div>
-        </div>
-        <div class="t-card">
-          <div class="t-card-stars">★★★★★</div>
-          <p class="t-card-quote">“I used the app for 15 minutes every morning before class. The transition question breakdowns helped me lock down a perfect 800 on Writing.”</p>
-          <div class="t-card-author">Daniel K. <span>· Student (1560 Composite)</span></div>
-        </div>
-      </div>
-      <div class="t-scores">
-        <div class="t-score-item">
-          <span class="t-score-num">1490</span>
-          <span class="t-score-lbl">Median User Performance</span>
-        </div>
-        <div class="t-score-item">
-          <span class="t-score-num">+180</span>
-          <span class="t-score-lbl">Average Points Gained</span>
-        </div>
-        <div class="t-score-item">
-          <span class="t-score-num">10k+</span>
-          <span class="t-score-lbl">Problems Answered Daily</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="m-pricing" class="m-subpage" style="display:none">
-    <div class="pricing-hero">
-      <h1>Transparent Pricing Model</h1>
-      <p>No tier systems. No annual contract traps. Complete node access for a single simple rate.</p>
-    </div>
-    <div class="pricing-wrap">
-      <div class="pricing-card">
-        <span class="pricing-badge">All-Access Plan</span>
-        <div class="price-amount"><sup>$</sup>5</div>
-        <div class="price-period">per month, cancel anytime</div>
-        <ul class="price-features">
-          <li>Full access to our 1,000+ problem cloud data center</li>
-          <li>Adaptive math and reading/writing evaluation nodes</li>
-          <li>Real-time subtopic analysis updates</li>
-          <li>Linked Parent Dashboard validation interface</li>
-          <li>Zero-delay modern UI pipeline</li>
-        </ul>
-        <button class="btn-primary" style="width:100%" onclick="openAuth(true)">Deploy Your Workspace Now</button>
-      </div>
-      <div class="pricing-faq">
-        <div class="faq-item">
-          <h4 class="faq-q">Why is the cost base so low?</h4>
-          <p class="faq-a">We don't spend capital on heavy sales structures, corporate offices, or large management chains. We write hyper-efficient web software linked directly to cloud servers, passing 100% of the financial efficiency back to our users.</p>
-        </div>
-        <div class="faq-item">
-          <h4 class="faq-q">Can I cancel my membership instantly?</h4>
-          <p class="faq-a">Yes. You can deactivate your payment parameters cleanly inside your account settings at any moment with a single click. No phone calls required.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <span class="footer-logo">Zenith<em>Future</em></span>
-    <span class="footer-txt">© 2026 Zenith Future Academy. Built for elite execution.</span>
-  </footer>
 </div>
 
 <div id="auth">
   <div class="auth-wrap">
-    <h2 class="auth-brand">Zenith<em>Future</em></h2>
-    <p class="auth-tagline">Access the Testing Data Center</p>
+    <h2 class="auth-brand">Zenith</h2>
     <div class="auth-panel">
       <div class="auth-tabs">
         <button id="tab-login" class="auth-tab active" onclick="setAuthTab('login')">Sign In</button>
         <button id="tab-register" class="auth-tab" onclick="setAuthTab('register')">Create Account</button>
       </div>
       <div id="auth-msg" class="auth-msg"></div>
-      <div id="role-select-row" class="role-row" style="display:none">
-        <button id="role-student" class="role-btn active" onclick="setRole('student')">Student Profile</button>
-        <button id="role-parent" class="role-btn" onclick="setRole('parent')">Parent Console</button>
-      </div>
-      <label class="field-label">Email Access Coordinate</label>
-      <input type="email" id="auth-email" class="auth-input" placeholder="name@domain.com"/>
-      <label class="field-label">Security Key</label>
-      <input type="password" id="auth-password" class="auth-input" placeholder="••••••••"/>
+      <input type="email" id="auth-email" class="auth-input" placeholder="Email Coordinate"/>
+      <input type="password" id="auth-password" class="auth-input" placeholder="Security Password"/>
       <button id="auth-btn" class="auth-submit" onclick="handleAuthSubmit()">Execute Sign In</button>
-      <div id="linkcode-area" class="linkcode-reveal">
-        <div class="linkcode-lbl">Your Parent Link Key</div>
-        <div id="linkcode-box" class="linkcode-val">------</div>
-        <p class="linkcode-hint">Provide this token to your parent to bridge metrics safely.</p>
-      </div>
-      <div class="auth-back"><button onclick="closeAuth()">Return to Public Site</button></div>
+      <div style="text-align:center; margin-top:14px"><button style="background:none; border:none; text-decoration:underline; cursor:pointer; color:var(--ink-lt)" onclick="closeAuth()">Cancel</button></div>
     </div>
   </div>
 </div>
@@ -671,65 +164,36 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overf
   
   <div id="home" class="screen">
     <div class="home-hdr">
-      <div class="home-brand">Zenith<em>Dashboard</em></div>
+      <div class="home-brand">Zenith<em>Workspace</em></div>
       <div class="home-sub" id="user-email-lbl">Connecting...</div>
-      <div class="home-welcome" id="user-welcome-lbl">Initializing student workspace...</div>
+      <div class="home-welcome">Active Learning Environment</div>
     </div>
     <div class="home-body">
-      <div class="leaderboard-teaser">
-        <span class="lb-icon">🏆</span>
-        <div class="lb-text">
-          <div class="lb-title">Global Percentile Standing</div>
-          <div class="lb-sub">Complete sets daily to lock in top ranks.</div>
-        </div>
-        <span class="lb-badge">Top 4%</span>
-      </div>
       <div class="stu-stats">
         <div class="stu-stat">
           <span class="stu-stat-val" id="stat-total-q">0</span>
           <span class="stu-stat-lbl">Questions Solved</span>
-          <div class="stu-stat-sub">Lifetime metric</div>
         </div>
         <div class="stu-stat">
-          <span class="stu-stat-val" id="stat-avg-time">0s</span>
-          <span class="stu-stat-lbl">Avg Response</span>
-          <div class="stu-stat-sub">Per problem node</div>
+          <span class="stu-stat-val" id="stat-accuracy">0%</span>
+          <span class="stu-stat-lbl">Global Accuracy</span>
         </div>
       </div>
-      <div class="acc-bar-wrap">
-        <div class="acc-bar-header">
-          <span class="acc-bar-title">Diagnostic Accuracy</span>
-          <span class="acc-bar-val" id="stat-accuracy">0%</span>
-        </div>
-        <div class="acc-bar-track"><div class="acc-bar-fill" id="stat-accuracy-fill" style="width:0%"></div></div>
-        <div class="acc-bar-labels"><span>0% Baseline</span><span>Target Mastery (85%+)</span><span>100%</span></div>
-      </div>
-      
-      <div id="topic-breakdown" style="margin-bottom: 22px;"></div>
 
-      <div class="mode-label">Execute Active Practice Node</div>
+      <div class="mode-label">Execute Problem Stream</div>
       <div class="mode-card" onclick="startQuiz('mixed')">
-        <div class="mode-icon" style="color:var(--blue)">⚡</div>
-        <div>
-          <div class="mode-title">Mixed Simulation Set</div>
-          <div class="mode-desc">5 randomized, cross-topic SAT math and writing problems.</div>
-        </div>
+        <div class="mode-icon">⚡</div>
+        <div class="mode-title">Mixed Assessment Module</div>
         <span class="mode-arrow">→</span>
       </div>
       <div class="mode-card" onclick="startQuiz('math')">
-        <div class="mode-icon" style="color:var(--amber)">📐</div>
-        <div>
-          <div class="mode-title">Targeted Math Module</div>
-          <div class="mode-desc">Isolates algebra, functions, and geometry systems.</div>
-        </div>
+        <div class="mode-icon">📐</div>
+        <div class="mode-title">Targeted Math Module</div>
         <span class="mode-arrow">→</span>
       </div>
       <div class="mode-card" onclick="startQuiz('reading')">
-        <div class="mode-icon" style="color:var(--green)">📄</div>
-        <div>
-          <div class="mode-title">Reading & Writing Module</div>
-          <div class="mode-desc">Isolates craft, structure, and text syntax chains.</div>
-        </div>
+        <div class="mode-icon">📄</div>
+        <div class="mode-title">Reading Syntax Module</div>
         <span class="mode-arrow">→</span>
       </div>
       <button class="signout-btn" onclick="signOut()">Disconnect Session</button>
@@ -739,221 +203,96 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overf
   <div id="quiz" class="screen">
     <div class="quiz-topbar">
       <button class="back-btn" onclick="confirmExit()">✕ Abort</button>
-      <div class="prog-wrap">
-        <div class="prog-track"><div id="pfill" class="prog-fill" style="width:0%"></div></div>
-        <div id="plbl" class="prog-label">Node 1 of 5</div>
-      </div>
-      <div class="timer-wrap">
-        <div id="timer" class="timer-display">00:00</div>
-        <span class="timer-lbl">Elapsed</span>
-      </div>
+      <div id="plbl" style="font-weight:600; font-size:0.88rem">Node 1 of 5</div>
     </div>
     <div class="quiz-body">
-      <span id="qtag" class="q-tag">MATH · ALGEBRA</span>
-      <div id="passage-wrap" class="passage-box" style="display:none">
-        <div id="qpassage"></div>
-        <div id="qprompt" class="passage-prompt"></div>
-      </div>
       <div id="qplain" class="question-box"></div>
-      <div id="opts" class="opts-list"></div>
+      <div id="opts"></div>
       <div id="exppanel" class="exp-panel">
-        <div class="exp-top">
-          <span class="exp-tutor">✦ Automated Logic Breakdown</span>
-          <span id="expverdict" class="exp-verdict">CORRECT</span>
-        </div>
-        <div id="exptext" class="exp-text"></div>
-        <div class="followup-wrap">
-          <div class="followup-lbl">Inquire with AI Tutor Node</div>
-          <div class="followup-row">
-            <input type="text" id="ftext" class="followup-input" placeholder="Why isn't option B the correct response?" onkeydown="if(event.key==='Enter')askTutor()"/>
-            <button class="followup-btn" onclick="askTutor()">Ask Tutor</button>
-          </div>
-          <div id="freply" class="ai-reply"></div>
-        </div>
+        <div class="exp-title">✦ Logic Resolution</div>
+        <div id="exptext" style="font-size:0.88rem; line-height:1.6; color:var(--ink-mid)"></div>
       </div>
       <button id="nextbtn" class="next-btn" onclick="nextQ()">Advance Node →</button>
     </div>
   </div>
 
   <div id="results" class="screen">
-    <div class="res-emoji">📊</div>
-    <div class="res-title">Set Evaluation Complete</div>
-    <div class="res-sub">Metrics compiled and committed cleanly to database timeline.</div>
-    <div class="donut-wrap">
-      <svg class="donut-svg" width="130" height="130">
-        <circle class="donut-track" cx="65" cy="65" r="56"></circle>
-        <circle id="rfill" class="donut-fill" cx="65" cy="65" r="56" stroke-dasharray="351.8" stroke-dashoffset="351.8"></circle>
-      </svg>
-      <div class="donut-label">
-        <span id="rnum" class="donut-num">0</span>
-        <span class="donut-den">OF 5 CORRECT</span>
+    <h2 class="res-title">Module Evaluation Complete</h2>
+    <div class="stu-stats" style="max-width:400px; margin:0 auto 24px">
+      <div class="stu-stat">
+        <span class="stu-stat-val" id="rnum">0</span>
+        <span class="stu-stat-lbl">Correct Nodes</span>
+      </div>
+      <div class="stu-stat">
+        <span class="stu-stat-val" id="rpct">0%</span>
+        <span class="stu-stat-lbl">Set Score</span>
       </div>
     </div>
-    <div class="res-grid">
-      <div class="res-card">
-        <span id="rpct" class="res-card-val c-blue">0%</span>
-        <span class="res-card-lbl">Accuracy Rate</span>
-      </div>
-      <div class="res-card">
-        <span id="ravgtime" class="res-card-val c-amber">0s</span>
-        <span class="res-card-lbl">Avg Pace / Node</span>
-      </div>
-    </div>
-    <div id="res-topics" style="margin-bottom:24px"></div>
-    <div class="res-actions">
-      <button class="btn-primary" style="width:100%" onclick="goHome()">Return to Dashboard</button>
-    </div>
+    <button class="btn-primary" style="max-width:300px" onclick="goHome()">Return to Workspace</button>
   </div>
-
-  <div id="parent" class="screen">
-    <div class="parent-hdr">
-      <div class="parent-title">Zenith<em>Parent Console</em></div>
-      <div class="parent-sub" id="parent-email-lbl">parent@domain.com</div>
-      <div id="linked-card" style="display:none" class="linked-student-card">
-        <div class="ls-avatar">S</div>
-        <div class="ls-info">
-          <div class="ls-lbl">Monitoring Student Active Stream</div>
-          <div id="linked-name" class="ls-name">No student linked</div>
-        </div>
-      </div>
-    </div>
-    <div class="parent-body">
-      <div id="parent-unlinked-view" class="p-no-link" style="display:block">
-        <div class="p-no-link-icon">🔗</div>
-        <h3 class="p-no-link-h3">Bridge Student Workspace</h3>
-        <p class="p-no-link-p">Enter the unique system token from your child's profile screen to audit their diagnostic accuracy timeline instantly.</p>
-        <input type="text" id="blinkcode" class="p-link-input" placeholder="PA-XXXXXX"/>
-        <button class="p-link-btn" onclick="bridgeStudent()">Link Workspace Node</button>
-      </div>
-      <div id="parent-linked-view" style="display:none">
-        <div class="stu-stats">
-          <div class="stu-stat">
-            <span class="stu-stat-val" id="pstat-total-q">0</span>
-            <span class="stu-stat-lbl">Solved Queries</span>
-          </div>
-          <div class="stu-stat">
-            <span class="stu-stat-val" id="pstat-accuracy">0%</span>
-            <span class="stu-stat-lbl">Global Accuracy</span>
-          </div>
-        </div>
-        <div id="parent-topic-breakdown" style="margin-bottom:20px"></div>
-      </div>
-      <button class="signout-btn" onclick="signOut()">Disconnect Session</button>
-    </div>
-  </div>
-
-  <nav class="bottom-nav">
-    <button id="nav-dash" class="nav-btn active" onclick="goHome()"><span>🏠</span><span>WORKSPACE</span></button>
-    <button id="nav-parent" class="nav-btn" onclick="showScreen('parent')"><span>🛡️</span><span>PARENT CONSOLE</span></button>
-  </nav>
 </div>
 
 <script>
-// ══════ SYSTEM ARCHITECTURE MATRIX ══════
+// SUPABASE CREDENTIAL INITIALIZATION MATRIX
 const SB_URL = "YOUR_SUPABASE_URL";
 const SB_KEY = "YOUR_SUPABASE_ANON_KEY";
 const db = supabase.createClient(SB_URL, SB_KEY);
 
-// GLOBAL APPLICATION DATA CACHE STATE
 let questions = []; 
 let currentUser = null;
-let currentProfile = null;
-let userSessionsCache = [];
-
-// QUIZ CONTEXT STATE NODES
 let queue = [];
 let qIdx = 0;
 let score = 0;
-let log = [];
-let questionTimes = [];
-let qStart = 0;
-let timerId = null;
-let secondsElapsed = 0;
 
-// AUTHENTICATION PARAMS
 let authTab = 'login';
-let selectedRole = 'student';
 
-// --- GOOGLE DRIVE SYNCHRONIZATION via SECURE API ROUTE ---
+// GET QUESTIONS FROM API BACKEND Secure Route
 async function loadDriveQuestions() {
-  const url = "/api/questions"; // Bypasses browser CORS blocking securely
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Data center rejected telemetry query.");
-    questions = await res.json();
-    console.log("Drive Sync successful. Total records mounted:", questions.length);
+    const res = await fetch("/api/questions");
+    if (res.ok) questions = await res.json();
   } catch (e) {
-    console.error("Database connection lost. Deploying local memory backup:", e);
-    questions = []; 
+    console.error("Database cache read failure:", e);
   }
-}
-
-// --- CORE UTILITY ROUTERS ---
-function showMPage(id){
-  document.querySelectorAll('.m-subpage').forEach(p=>p.style.display='none');
-  document.querySelectorAll('.site-links a').forEach(a=>a.classList.remove('active'));
-  const targetPage = document.getElementById('m-'+id);
-  if(targetPage) targetPage.style.display='block';
-  const targetLink = document.getElementById('mlink-'+id);
-  if(targetLink) targetLink.classList.add('active');
-  window.scrollTo(0,0);
 }
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   const scr = document.getElementById(id);
   if(scr) scr.classList.add('active');
-  if(id==='home') document.getElementById('nav-dash').classList.add('active');
-  if(id==='parent') document.getElementById('nav-parent').classList.add('active');
 }
 
-// --- AUTHENTICATION INTERFACE MANAGER ---
 function openAuth(registerMode=false){
   document.getElementById('auth').classList.add('active');
   setAuthTab(registerMode?'register':'login');
 }
 function closeAuth(){
+  document.getElementById('auth').classList.remove('remove');
   document.getElementById('auth').classList.remove('active');
-  hideAuthMsg();
 }
 function setAuthTab(tab){
   authTab = tab;
-  hideAuthMsg();
   document.getElementById('tab-login').classList.remove('active');
   document.getElementById('tab-register').classList.remove('active');
-  document.getElementById('role-select-row').style.display = tab==='register'?'flex':'none';
   if(tab==='login'){
     document.getElementById('tab-login').classList.add('active');
     document.getElementById('auth-btn').innerText = "Execute Sign In";
   }else{
     document.getElementById('tab-register').classList.add('active');
-    document.getElementById('auth-btn').innerText = "Provision New Workspace";
+    document.getElementById('auth-btn').innerText = "Provision Workspace";
   }
 }
-function setRole(r){
-  selectedRole = r;
-  document.getElementById('role-student').classList.remove('active');
-  document.getElementById('role-parent').classList.remove('active');
-  document.getElementById('role-'+r).classList.add('active');
-}
-function showAuthMsg(m, isErr=true){
-  const el = document.getElementById('auth-msg');
-  el.className = 'auth-msg ' + (isErr?'err':'ok') + ' show';
-  el.innerText = m;
-}
-function hideAuthMsg(){
-  document.getElementById('auth-msg').classList.remove('show');
-}
 
-// --- SUBAPASE DATA FLOW HANDLERS ---
+// HANDLE SIGN UP AND SIGN IN SECURELY WITHOUT SEPARATE PROFILES TABLE
 async function handleAuthSubmit(){
   const email = document.getElementById('auth-email').value.trim();
   const password = document.getElementById('auth-password').value;
   const btn = document.getElementById('auth-btn');
-  if(!email || !password){ showAuthMsg("Credentials missing."); return; }
+  const msg = document.getElementById('auth-msg');
+  if(!email || !password){ msg.className="auth-msg err show"; msg.innerText="Credentials missing."; return; }
+  
   btn.disabled = true;
-  hideAuthMsg();
+  msg.classList.remove('show');
 
   try {
     if(authTab==='login'){
@@ -963,23 +302,18 @@ async function handleAuthSubmit(){
     } else {
       const {data, error} = await db.auth.signUp({email, password});
       if(error) throw error;
-      if(!data.user) { showAuthMsg("Confirmation token dispatched. Check email pipeline.", false); btn.disabled = false; return; }
-      
-      let linkCode = null;
-      if(selectedRole==='student'){
-        linkCode = 'PA-' + Math.random().toString(36).substring(2,8).toUpperCase();
+      if(!data.user || (data.session === null && data.user.identities?.length === 0)) {
+        msg.className="auth-msg err show";
+        msg.innerText="User account already exists under this parameter.";
+        btn.disabled = false;
+        return;
       }
-      const {error:pErr} = await db.from('profiles').insert({
-        id: data.user.id,
-        role: selectedRole,
-        email: email,
-        parent_link_code: linkCode
-      });
-      if(pErr) throw pErr;
+      // Log them inside immediately on successful account creation
       await onSignedIn(data.user);
     }
   } catch(e) {
-    showAuthMsg(e.message || "Security pipeline fault.");
+    msg.className="auth-msg err show";
+    msg.innerText = e.message || "Security fault.";
     btn.disabled = false;
   }
 }
@@ -989,428 +323,127 @@ async function onSignedIn(user){
   closeAuth();
   document.getElementById('marketing').classList.remove('active');
   document.getElementById('portal').style.display = 'block';
-  
-  // 1. Instantly pull user metadata profile record
-  const {data:prof, error} = await db.from('profiles').select('*').eq('id', user.id).single();
-  if(error || !prof) {
-    alert("Profile mapping failure. Reset session.");
-    signOut();
-    return;
-  }
-  currentProfile = prof;
-  
-  // 2. Direct screen views based on user account rules
-  if(prof.role === 'parent'){
-    document.getElementById('parent-email-lbl').innerText = prof.email;
-    document.getElementById('nav-dash').style.display = 'none';
-    showScreen('parent');
-    await loadParentDashboardData();
-  } else {
-    document.getElementById('user-email-lbl').innerText = prof.email;
-    document.getElementById('user-welcome-lbl').innerText = "Welcome back, Operator.";
-    document.getElementById('nav-dash').style.display = 'flex';
-    if(prof.parent_link_code){
-      document.getElementById('linkcode-box').innerText = prof.parent_link_code;
-      document.getElementById('linkcode-area').style.display = 'block';
-    }
-    showScreen('home');
-    await loadStudentDataTimeline(); // Pulls live historical stats to show on cards
-  }
+  document.getElementById('user-email-lbl').innerText = user.email;
+  showScreen('home');
+  await loadWorkspaceMetrics();
 }
 
-// --- DYNAMIC DASHBOARD RECALCULATION ENGINE ---
-async function loadStudentDataTimeline(){
+// CALCULATION LOGIC: READ SESSIONS DIRECTLY FROM THE CORE INSTANCE CONTROLLER
+async function loadWorkspaceMetrics(){
   if(!currentUser) return;
-  
-  // Pull every recorded test session from Supabase for this student
-  const {data:sessions, error} = await db.from('sessions')
-    .select('*')
-    .eq('student_id', currentUser.id)
-    .order('created_at', {ascending: false});
-    
-  if(error) {
-    console.error("Could not compile stats timeline:", error);
-    return;
-  }
-  
-  userSessionsCache = sessions || [];
-  calculateAndRenderStudentMetrics(userSessionsCache, 'stat-total-q', 'stat-avg-time', 'stat-accuracy', 'stat-accuracy-fill', 'topic-breakdown');
-}
+  try {
+    const {data:sessions, error} = await db.from('sessions').select('*').eq('student_id', currentUser.id);
+    if(error) throw error;
 
-function calculateAndRenderStudentMetrics(sessions, totalQId, avgTimeId, accTextId, accFillId, breakdownId) {
-  if(!sessions || sessions.length === 0){
-    document.getElementById(totalQId).innerText = "0";
-    document.getElementById(avgTimeId).innerText = "0s";
-    document.getElementById(accTextId).innerText = "0%";
-    document.getElementById(accFillId).style.width = "0%";
-    document.getElementById(breakdownId).innerHTML = "";
-    return;
-  }
-
-  let totalQuestionsSolved = 0;
-  let totalCorrect = 0;
-  let runningTimeSum = 0;
-  let combinedTopics = {};
-
-  // Compute live aggregates across all history matrices
-  sessions.forEach(s => {
-    totalQuestionsSolved += (s.total || 5);
-    totalCorrect += (s.score || 0);
-    // Extract times if logged, else fallback defaults
-    runningTimeSum += (s.avg_time_per_question || 12) * (s.total || 5);
-
-    if(s.topic_breakdown) {
-      Object.entries(s.topic_breakdown).forEach(([topic, accuracyPct]) => {
-        if(!combinedTopics[topic]) {
-          combinedTopics[topic] = { sum: 0, count: 0 };
-        }
-        combinedTopics[topic].sum += accuracyPct;
-        combinedTopics[topic].count += 1;
-      });
+    if(!sessions || sessions.length === 0){
+      document.getElementById('stat-total-q').innerText = "0";
+      document.getElementById('stat-accuracy').innerText = "0%";
+      return;
     }
-  });
 
-  const aggregateAccuracy = Math.round((totalCorrect / totalQuestionsSolved) * 100);
-  const aggregatePace = Math.round(runningTimeSum / totalQuestionsSolved);
+    let totalSolved = 0;
+    let totalCorrect = 0;
+    sessions.forEach(s => {
+      totalSolved += (s.total || 5);
+      totalCorrect += (s.score || 0);
+    });
 
-  // Push computed analytics directly into DOM nodes live
-  document.getElementById(totalQId).innerText = totalQuestionsSolved;
-  document.getElementById(avgTimeId).innerText = aggregatePace + "s";
-  document.getElementById(accTextId).innerText = aggregateAccuracy + "%";
-  document.getElementById(accFillId).style.width = aggregateAccuracy + "%";
-
-  // Build the granular subtopic progress rows dynamically
-  const rows = Object.entries(combinedTopics).map(([topic, data]) => {
-    const avgPct = Math.round(data.sum / data.count);
-    const fillClass = avgPct >= 75 ? 'fill-g' : avgPct >= 50 ? 'fill-m' : 'fill-b';
-    const textClass = avgPct >= 75 ? 'c-green' : avgPct >= 50 ? 'c-amber' : 'c-red';
-
-    return `
-      <div class="gap-row">
-        <span class="gap-name">${topic}</span>
-        <div class="gap-track">
-          <div class="gap-fill ${fillClass}" style="width:${avgPct}%"></div>
-        </div>
-        <span class="gap-pct ${textClass}">${avgPct}%</span>
-      </div>`;
-  }).join('');
-
-  document.getElementById(breakdownId).innerHTML = rows ? 
-    `<div class="breakdown-hd" style="margin-top:18px">Topic Breakdown Analytics</div>${rows}` : '';
+    document.getElementById('stat-total-q').innerText = totalSolved;
+    document.getElementById('stat-accuracy').innerText = Math.round((totalCorrect / totalSolved) * 100) + "%";
+  } catch(e) {
+    console.error("Failed to build workspace profile metrics:", e);
+  }
 }
 
-// --- QUIZ GAMEPLAY CORE ENGINE ---
-async function startQuiz(mode){
+// TESTING UTILITIES RUNTIME LOOP
+function startQuiz(mode){
   if(!questions || questions.length === 0){
-    alert("Synchronizing file cache matrix. Re-executing connection...");
-    await loadDriveQuestions();
-    if(questions.length === 0) { alert("Data center empty. Add questions to Drive JSON."); return; }
+    alert("Synthesizing query database cache...");
+    return;
   }
-
-  // Filter based on selected node criteria
   let subset = questions;
   if(mode === 'math') subset = questions.filter(q => q.subject === 'math');
   if(mode === 'reading') subset = questions.filter(q => q.subject === 'reading');
 
-  if(subset.length === 0){
-    alert(`No structural questions in data center match category: ${mode.toUpperCase()}`);
-    return;
-  }
-
-  // Shuffle array using standard random sorting
   queue = subset.sort(() => 0.5 - Math.random()).slice(0, 5);
-  
-  // Clear states
-  qIdx = 0; 
-  score = 0; 
-  log = []; 
-  questionTimes = [];
-  secondsElapsed = 0;
-  
+  qIdx = 0; score = 0;
   showScreen('quiz');
-  startTimer();
   renderQ();
 }
 
-function startTimer(){
-  if(timerId) clearInterval(timerId);
-  secondsElapsed = 0;
-  document.getElementById('timer').innerText = "00:00";
-  document.getElementById('timer').className = "timer-display";
-  timerId = setInterval(() => {
-    secondsElapsed++;
-    const mins = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
-    const secs = (secondsElapsed % 60).toString().padStart(2, '0');
-    const display = document.getElementById('timer');
-    display.innerText = `${mins}:${secs}`;
-    if(secondsElapsed >= 90) display.className = "timer-display warn";
-    if(secondsElapsed >= 180) display.className = "timer-display danger";
-  }, 1000);
-}
-
-function stopTimer(){
-  if(timerId) clearInterval(timerId);
-}
-
 function renderQ(){
-  // Reset elements
   document.getElementById('exppanel').classList.remove('show');
   document.getElementById('nextbtn').classList.remove('show');
-  document.getElementById('freply').classList.remove('show');
-  document.getElementById('freply').innerText = "";
-  document.getElementById('ftext').value = "";
   
   const q = queue[qIdx];
-  
-  // Progress calculations
-  const progressPercent = (qIdx / queue.length) * 100;
-  document.getElementById('pfill').style.width = `${progressPercent}%`;
   document.getElementById('plbl').innerText = `Node ${qIdx + 1} of ${queue.length}`;
-  
-  // Set meta metadata labels
-  document.getElementById('qtag').innerText = `${q.subject.toUpperCase()} · ${q.topic.toUpperCase()}`;
+  document.getElementById('qplain').innerText = q.type === 'passage' ? `${q.passage}\n\n${q.prompt}` : q.text;
 
-  // Check display mapping structure rules
-  if(q.type === 'passage' || q.passage){
-    document.getElementById('passage-wrap').style.display = 'block';
-    document.getElementById('qpassage').innerText = q.passage;
-    document.getElementById('qprompt').innerText = q.prompt || "Which choice coordinates accurately?";
-    document.getElementById('qplain').style.display = 'none';
-  } else {
-    document.getElementById('passage-wrap').style.display = 'none';
-    document.getElementById('qplain').style.display = 'block';
-    document.getElementById('qplain').innerText = q.text;
-  }
-
-  // Inject multiple choice nodes
-  const optsContainer = document.getElementById('opts');
-  optsContainer.innerHTML = '';
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
   q.opts.forEach((opt, idx) => {
-    const letter = String.fromCharCode(65 + idx); // A, B, C, D
     const btn = document.createElement('button');
     btn.className = 'opt-btn';
-    btn.innerHTML = `<span class="opt-letter">${letter}</span><span class="opt-text">${opt}</span>`;
-    btn.onclick = () => evaluationAnswerSelection(idx);
-    optsContainer.appendChild(btn);
+    btn.innerText = `${String.fromCharCode(65 + idx)}. ${opt}`;
+    btn.onclick = () => selectOpt(idx);
+    opts.appendChild(btn);
   });
-
-  qStart = Date.now();
 }
 
-function evaluationAnswerSelection(selectedIdx){
+function selectOpt(idx){
   const q = queue[qIdx];
-  const timeSpentOnQuestion = Math.round((Date.now() - qStart) / 1000);
-  questionTimes.push(timeSpentOnQuestion);
+  const correct = idx === q.correct;
+  if(correct) score++;
 
-  const isCorrect = selectedIdx === q.correct;
-  if(isCorrect) score++;
-
-  log.push({ questionId: q.id, selected: selectedIdx, wasCorrect: isCorrect, topic: q.topic });
-
-  // Freeze choice elements instantly
-  const buttons = document.querySelectorAll('.opts-list .opt-btn');
-  buttons.forEach((btn, idx) => {
+  document.querySelectorAll('#opts .opt-btn').forEach((btn, i) => {
     btn.disabled = true;
-    if(idx === q.correct){
-      btn.classList.add('correct');
-    } else if(idx === selectedIdx){
-      btn.classList.add('wrong');
-    } else {
-      btn.classList.add('dimmed');
-    }
+    if(i === q.correct) btn.classList.add('correct');
+    else if(i === idx) btn.classList.add('wrong');
+    else btn.classList.add('dimmed');
   });
 
-  // Display explanation panels
-  document.getElementById('exptext').innerHTML = q.exp || "Explanation breakdown pending processing.";
-  const verdictNode = document.getElementById('expverdict');
-  if(isCorrect){
-    verdictNode.className = "exp-verdict ok";
-    verdictNode.innerText = "CORRECT NODE MATCH";
-  } else {
-    verdictNode.className = "exp-verdict bad";
-    verdictNode.innerText = "ACCURACY GAP DETECTED";
-  }
-  
+  document.getElementById('exptext').innerHTML = q.exp || "Explanation processing.";
   document.getElementById('exppanel').classList.add('show');
   document.getElementById('nextbtn').classList.add('show');
 }
 
 function nextQ(){
   qIdx++;
-  if(qIdx < queue.length){
-    renderQ();
-  } else {
-    compileAndCommitFinalResults();
-  }
+  if(qIdx < queue.length) renderQ();
+  else commitSetMetrics();
 }
 
-// --- COMPILE RESULTS AND SAVE TO SUPABASE LIVE ---
-async function compileAndCommitFinalResults(){
-  stopTimer();
+async function commitSetMetrics(){
   showScreen('results');
-
-  const total = queue.length;
-  const pct = Math.round((score / total) * 100);
-  const avgPace = Math.round(questionTimes.reduce((a,b)=>a+b, 0) / total);
-
-  // Graphic animations for SVG donut meters
   document.getElementById('rnum').innerText = score;
-  document.getElementById('rpct').innerText = `${pct}%`;
-  document.getElementById('ravgtime').innerText = `${avgPace}s`;
+  document.getElementById('rpct').innerText = Math.round((score / queue.length) * 100) + "%";
 
-  const strokeDashOffsetValue = 351.8 - (351.8 * pct) / 100;
-  document.getElementById('rfill').style.strokeDashoffset = strokeDashOffsetValue;
-
-  // Process session subtopic maps
-  let sessionTopicBreakdown = {};
-  log.forEach(item => {
-    if(!sessionTopicBreakdown[item.topic]) {
-      sessionTopicBreakdown[item.topic] = { correct: 0, total: 0 };
-    }
-    sessionTopicBreakdown[item.topic].total++;
-    if(item.wasCorrect) sessionTopicBreakdown[item.topic].correct++;
-  });
-
-  let breakdownFormattedJson = {};
-  let breakdownRowsHtml = [];
-
-  Object.entries(sessionTopicBreakdown).forEach(([topicName, data]) => {
-    const accuracyPercentage = Math.round((data.correct / data.total) * 100);
-    breakdownFormattedJson[topicName] = accuracyPercentage;
-
-    const fillClass = accuracyPercentage >= 75 ? 'fill-g' : accuracyPercentage >= 50 ? 'fill-m' : 'fill-b';
-    const textClass = accuracyPercentage >= 75 ? 'c-green' : accuracyPercentage >= 50 ? 'c-amber' : 'c-red';
-
-    breakdownRowsHtml.push(`
-      <div class="gap-row">
-        <span class="gap-name">${topicName}</span>
-        <div class="gap-track">
-          <div class="gap-fill ${fillClass}" style="width:${accuracyPercentage}%"></div>
-        </div>
-        <span class="gap-pct ${textClass}">${accuracyPercentage}%</span>
-      </div>`);
-  });
-
-  document.getElementById('res-topics').innerHTML = breakdownRowsHtml.length > 0 ?
-    `<div class="breakdown-hd">Session Topic Delta</div>${breakdownRowsHtml.join('')}` : '';
-
-  // !!! CRITICAL PART: INSERT AND SAVE WORKSPACE METRICS TO SUPABASE LIVE !!!
-  if(currentUser) {
+  if(currentUser){
     try {
-      const { error: dbInsertError } = await db.from('sessions').insert({
+      await db.from('sessions').insert({
         student_id: currentUser.id,
         mode: 'mixed',
         score: score,
-        total: total,
-        accuracy: pct,
-        avg_time_per_question: avgPace,
-        topic_breakdown: breakdownFormattedJson
+        total: queue.length,
+        accuracy: Math.round((score / queue.length) * 100)
       });
-      if (dbInsertError) throw dbInsertError;
-      
-      console.log("Session metrics pushed to database timeline cleanly.");
-      
-      // Instantly recalculate student history cache so changes display immediately!
-      await loadStudentDataTimeline();
-    } catch(dbSaveFault) {
-      console.error("Telemetry failed to reach server cluster:", dbSaveFault);
+      await loadWorkspaceMetrics();
+    } catch(e) {
+      console.error("Telemetry failed to commit:", e);
     }
   }
 }
 
-// --- LOCAL ADAPTIVE CHAT AGENT NODE ---
-async function askTutor(){
-  const promptText = document.getElementById('ftext').value.trim();
-  if(!promptText) return;
-  const replyBox = document.getElementById('freply');
-  replyBox.className = "ai-reply show";
-  replyBox.innerText = "Analyzing question parameters against cognitive matrix...";
+function confirmExit(){ if(confirm("Abort module assessment stream?")) goHome(); }
+function goHome(){ showScreen('home'); }
+async function signOut(){ await db.auth.signOut(); currentUser = null; document.getElementById('portal').style.display = 'none'; document.getElementById('marketing').classList.add('active'); }
 
-  setTimeout(() => {
-    replyBox.innerHTML = `<strong>Tutor Response Matrix:</strong><br>You asked: "${promptText}". To isolate the core problem system here, verify the absolute rules of the topic guidelines. Eliminate answer paths containing operational errors to ensure stable resolution parameters.`;
-  }, 1000);
-}
-
-function confirmExit(){
-  if(confirm("Abort session? This loop cancels uncommitted data timelines.")) goHome();
-}
-function goHome(){
-  stopTimer();
-  if(currentProfile && currentProfile.role==='parent'){
-    showScreen('parent');
-  } else {
-    showScreen('home');
-  }
-}
-
-// --- PARENT CONSOLE MONITOR DATA ROUTINES ---
-async function loadParentDashboardData(){
-  if(!currentUser || !currentProfile) return;
-  if(currentProfile.linked_student_id){
-    // Resolve identity profiles of children account nodes
-    const {data:stuProf} = await db.from('profiles').select('email').eq('id', currentProfile.linked_student_id).single();
-    document.getElementById('linked-name').innerText = stuProf ? stuProf.email : "Active Workspace Connected";
-    document.getElementById('linked-card').style.display = 'flex';
-    document.getElementById('parent-unlinked-view').style.display = 'none';
-    document.getElementById('parent-linked-view').style.display = 'block';
-
-    // Query telemetry vectors of children history loops
-    const {data:stuSessions} = await db.from('sessions')
-      .select('*')
-      .eq('student_id', currentProfile.linked_student_id)
-      .order('created_at', {ascending:false});
-
-    calculateAndRenderStudentMetrics(stuSessions, 'pstat-total-q', 'pstat-accuracy', 'pstat-accuracy', 'pstat-accuracy', 'parent-topic-breakdown');
-  } else {
-    document.getElementById('linked-card').style.display = 'none';
-    document.getElementById('parent-unlinked-view').style.display = 'block';
-    document.getElementById('parent-linked-view').style.display = 'none';
-  }
-}
-
-async function bridgeStudent(){
-  const token = document.getElementById('blinkcode').value.trim().toUpperCase();
-  if(!token) { alert("Token parameter missing."); return; }
-  
-  // Query matching link targets inside cloud engines
-  const {data:targetProfile, error} = await db.from('profiles').select('id').eq('parent_link_code', token).single();
-  if(error || !targetProfile){
-    alert("Token resolution failure. Ensure child code matches exactly.");
-    return;
-  }
-
-  // Map the link fields cleanly inside parent database tables
-  const {error:updateFault} = await db.from('profiles').update({linked_student_id: targetProfile.id}).eq('id', currentUser.id);
-  if(updateFault){
-    alert("Database update interrupted.");
-    return;
-  }
-
-  currentProfile.linked_student_id = targetProfile.id;
-  await loadParentDashboardData();
-}
-
-async function signOut(){
-  await db.auth.signOut();
-  currentUser = null; currentProfile = null; questions = []; userSessionsCache = [];
-  document.getElementById('portal').style.display = 'none';
-  document.getElementById('marketing').classList.add('active');
-  showMPage('home');
-}
-
-// ══════ BOOT SEQUENCE RUNTIME ══════
+// AUTOMATIC INSTANT LOGIN EVALUATION MATRIX
 (async()=>{
-  // 1. Immediately verify security credentials without freezing rendering tracks
   try {
     const {data:{session}} = await db.auth.getSession();
-    if(session?.user) {
-      await onSignedIn(session.user);
-    }
-  } catch(e) {
-    console.error("Auth session sync timeout:", e);
-  }
-
-  // 2. Load problem sets silently in the background
+    if(session?.user) await onSignedIn(session.user);
+  } catch(e){}
   loadDriveQuestions();
 })();
 </script>
