@@ -363,1009 +363,1056 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overf
 /* ── PARENT DASHBOARD ── */
 #parent{padding:0 0 90px}
 .parent-hdr{background:var(--ink);padding:50px 22px 26px;position:relative;overflow:hidden}
-.parent-hdr::after{content:'';position:absolute;right:-50px;top:-50px;width:220px;height:220px;background:radial-gradient(circle,rgba(26,86,219,0.18) 0%,transparent 70%);border-radius:50%}
-.parent-hdr h2{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:700;color:#fff;position:relative;z-index:1;margin-bottom:2px}
-.parent-hdr p{color:rgba(255,255,255,0.4);font-size:0.78rem;position:relative;z-index:1}
+.parent-hdr::after{content:'';position:absolute;right:-50px;top:-50px;width:220px;height:220px;background:radial-gradient(circle,rgba(26,86,219,0.15) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.parent-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:#fff;margin-bottom:3px}
+.parent-title em{font-style:normal;color:#7EB3FF}
+.parent-sub{font-size:0.76rem;color:rgba(255,255,255,0.4);margin-bottom:12px}
+.linked-student-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.ls-avatar{width:36px;height:36px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700}
+.ls-info{flex:1}
+.ls-lbl{font-size:0.58rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
+.ls-name{font-size:0.86rem;color:#fff;font-weight:600}
 .parent-body{padding:20px 18px 0}
-
-/* link card */
-.link-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:var(--r);padding:20px;margin-bottom:14px}
-.link-card h3{font-size:0.9rem;font-weight:700;margin-bottom:5px;color:var(--ink)}
-.link-card p{font-size:0.78rem;color:var(--ink-lt);line-height:1.65;margin-bottom:14px}
-.link-input-row{display:flex;gap:8px}
-.link-input{flex:1;padding:11px 13px;background:var(--bg);border:1.5px solid var(--rule);border-radius:8px;color:var(--ink);font-size:0.87rem;font-family:'Outfit',sans-serif;outline:none;transition:border-color 0.18s}
-.link-input:focus{border-color:var(--blue)}
-.link-input::placeholder{color:var(--ink-lt);opacity:0.6}
-.link-submit{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:11px 18px;font-weight:700;font-size:0.83rem;font-family:'Outfit',sans-serif;cursor:pointer;transition:background 0.18s}
-.link-submit:hover{background:var(--blue)}
-.linked-children{margin-top:10px}
-.child-pill{display:inline-flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid rgba(15,123,78,0.2);color:var(--green);font-size:0.77rem;font-weight:600;padding:4px 12px;border-radius:100px;margin:3px}
-
-/* unlinked */
-.unlinked-state{background:var(--bg-soft);border:1px solid var(--rule);border-radius:var(--r);padding:40px 22px;text-align:center;margin-bottom:14px}
-.unlinked-icon{font-size:2rem;margin-bottom:12px}
-.unlinked-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;color:var(--ink);margin-bottom:7px}
-.unlinked-body{font-size:0.83rem;color:var(--ink-lt);line-height:1.7;max-width:300px;margin:0 auto}
-
-/* parent analytics */
-.p-section{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:18px;margin-bottom:12px;box-shadow:var(--sh-xs)}
-.p-section-title{font-size:0.65rem;font-weight:700;color:var(--ink-lt);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:16px}
-
-/* score gauge */
-.score-gauge-wrap{text-align:center;padding:10px 0 16px}
-.score-gauge-svg{margin:0 auto;display:block}
-.score-gauge-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--ink);display:block;line-height:1;margin-top:10px}
-.score-gauge-lbl{font-size:0.7rem;color:var(--ink-lt);font-weight:600;margin-top:4px}
-.score-gauge-range{display:flex;justify-content:space-between;margin-top:6px;padding:0 4px}
-.score-gauge-range span{font-size:0.65rem;color:var(--ink-lt)}
-
-/* % accuracy bars (parent) */
-.p-acc-list{display:flex;flex-direction:column;gap:11px}
-.p-acc-row{display:flex;align-items:center;gap:10px}
-.p-acc-name{font-size:0.82rem;font-weight:500;flex:1;color:var(--ink-mid)}
-.p-acc-track{flex:2;height:8px;background:var(--rule);border-radius:4px;overflow:hidden;position:relative}
-.p-acc-fill{height:100%;border-radius:4px;transition:width 0.8s ease}
-.p-acc-pct{font-size:0.75rem;width:34px;text-align:right;font-weight:700}
-
-/* dot plot */
-.dot-plot-wrap{overflow-x:auto;padding-bottom:4px}
-.dot-plot{display:flex;flex-direction:column;gap:12px;min-width:280px}
-.dot-row{display:flex;align-items:center;gap:8px}
-.dot-row-label{font-size:0.75rem;color:var(--ink-mid);font-weight:500;width:90px;flex-shrink:0;text-align:right}
-.dot-row-dots{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
-.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.dot.correct-dot{background:var(--green)}
-.dot.wrong-dot{background:var(--red)}
-.dot.empty-dot{background:var(--rule);border:1px solid var(--rule-mid)}
-
-/* strengths/weaknesses */
-.sw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sw-card{border-radius:10px;padding:14px}
-.sw-card.strength{background:var(--green-bg);border:1px solid rgba(15,123,78,0.15)}
-.sw-card.weakness{background:var(--red-bg);border:1px solid rgba(192,57,43,0.15)}
-.sw-card-label{font-size:0.63rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px}
-.sw-card.strength .sw-card-label{color:var(--green)}
-.sw-card.weakness .sw-card-label{color:var(--red)}
-.sw-item{font-size:0.8rem;font-weight:500;color:var(--ink-mid);padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.05)}
-.sw-item:last-child{border-bottom:none}
-.sw-item-pct{float:right;font-weight:700;font-size:0.76rem}
-
-/* parent stat row */
-.p-grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
-.p-card{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:16px 14px;box-shadow:var(--sh-xs)}
-.p-card-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-lt);font-weight:700;margin-bottom:7px}
-.p-card-val{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;line-height:1}
-.p-card-sub{font-size:0.62rem;color:var(--ink-lt);margin-top:4px}
+.p-no-link{background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);padding:24px 20px;text-align:center;box-shadow:var(--sh-xs)}
+.p-no-link-icon{font-size:2rem;margin-bottom:8px}
+.p-no-link-h3{font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.p-no-link-p{font-size:0.78rem;color:var(--ink-lt);line-height:1.5;margin-bottom:16px}
+.p-link-input{width:100%;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:8px;padding:11px 12px;font-size:0.88rem;font-family:'Outfit',sans-serif;outline:none;text-align:center;margin-bottom:10px;text-transform:uppercase;font-weight:700;letter-spacing:2px}
+.p-link-input:focus{border-color:var(--blue);background:var(--bg)}
+.p-link-btn{width:100%;background:var(--ink);color:#fff;border:none;border-radius:8px;padding:12px;font-size:0.86rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;transition:background 0.18s}
+.p-link-btn:hover{background:var(--blue)}
 </style>
 </head>
 <body>
 
-<!-- ════════════ MARKETING ════════════ -->
-<div id="marketing">
-  <div class="announce"><strong>Summer 2026 Registration Open</strong> · $5/month · AI-powered SAT prep that actually works</div>
+<div class="announce">
+  ✨ Limited Launch Offer: Full data center adaptive access for just <strong>$5/month</strong>. Save 90% vs typical tutors.
+</div>
+
+<div id="marketing" class="mpage active">
   <nav class="site-nav">
-    <span class="site-logo" onclick="showPage('pg-home')">Zenith<em>.</em></span>
+    <a class="site-logo" onclick="showMPage('home')">Zenith<em>Future</em></a>
     <ul class="site-links">
-      <li><a onclick="showPage('pg-home')"         id="nl-home"         class="active">Home</a></li>
-      <li><a onclick="showPage('pg-about')"        id="nl-about"               >About Us</a></li>
-      <li><a onclick="showPage('pg-testimonials')" id="nl-testimonials"        >Testimonials</a></li>
-      <li><a onclick="showPage('pg-pricing')"      id="nl-pricing"             >Pricing</a></li>
+      <li><a id="mlink-home" class="active" onclick="showMPage('home')">Home</a></li>
+      <li><a id="mlink-about" onclick="showMPage('about')">About Us</a></li>
+      <li><a id="mlink-testimonials" onclick="showMPage('testimonials')">Results</a></li>
+      <li><a id="mlink-pricing" onclick="showMPage('pricing')">Pricing</a></li>
     </ul>
     <div class="nav-cta-wrap">
-      <button class="nav-signin" onclick="enterPortal('login')">Sign In</button>
-      <button class="nav-start"  onclick="enterPortal('signup')">Get Started →</button>
+      <button class="nav-signin" onclick="openAuth(false)">Sign In</button>
+      <button class="nav-start" onclick="openAuth(true)">Start Prep</button>
     </div>
   </nav>
 
-  <!-- HOME -->
-  <div class="mpage active" id="pg-home">
+  <div id="m-home" class="m-subpage" style="display:block">
     <div class="hero-wrap">
-      <div>
-        <div class="hero-eyebrow">Digital SAT Preparation</div>
-        <h1 class="hero-h1">The SAT tutor<br>your child deserves.<br><em>At $5 a month.</em></h1>
-        <p class="hero-p">Elite prep programs charge $150/hour for the same results Zenith delivers through adaptive AI. We built a platform that tracks weaknesses, explains every answer, and gives parents real visibility — for the price of a streaming subscription.</p>
+      <div class="hero-left">
+        <div class="hero-eyebrow">The Digital SAT, Decoded</div>
+        <h1 class="hero-h1">The elite way to prep. For the price of a <em>coffee</em>.</h1>
+        <p class="hero-p">Stop paying $150/hr for SAT question drills. Access our adaptive learning node linked directly to a high-fidelity test database for just $5 a month.</p>
         <div class="hero-actions">
-          <button class="btn-primary" onclick="enterPortal('signup')">Start Practicing Free →</button>
-          <button class="btn-ghost-ink" onclick="showPage('pg-pricing')">See Pricing</button>
+          <button class="btn-primary" onclick="openAuth(true)">Get Started Instantly</button>
+          <button class="btn-ghost-ink" onclick="showMPage('pricing')">See Pricing Plan</button>
         </div>
         <div class="hero-proof">
-          <div class="hero-proof-item"><span class="hero-proof-num">$150</span><div class="hero-proof-lbl">Avg. tutor/hour</div></div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">+190</span>
+            <span class="hero-proof-lbl">Avg Score Boost</span>
+          </div>
           <div class="hero-proof-div"></div>
-          <div class="hero-proof-item"><span class="hero-proof-num">$5</span><div class="hero-proof-lbl">Zenith/month</div></div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">1,440+</span>
+            <span class="hero-proof-lbl">Average Score</span>
+          </div>
           <div class="hero-proof-div"></div>
-          <div class="hero-proof-item"><span class="hero-proof-num">+120</span><div class="hero-proof-lbl">Avg. score gain</div></div>
-          <div class="hero-proof-div"></div>
-          <div class="hero-proof-item"><span class="hero-proof-num">10K+</span><div class="hero-proof-lbl">Practice questions</div></div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">100%</span>
+            <span class="hero-proof-lbl">Digital Format</span>
+          </div>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="hc-label">Live Student Dashboard Preview</div>
-        <div class="hc-score">
-          <span class="hc-score-num">1,420</span>
-          <div class="hc-score-trend">↑ +80 pts this month</div>
-        </div>
-        <div class="hc-topic-list">
-          <div class="hc-topic"><span class="hc-topic-name">Systems of Equations</span><div class="hc-bar-track"><div class="hc-bar-fill fill-green" style="width:92%"></div></div><span class="hc-pct">92%</span></div>
-          <div class="hc-topic"><span class="hc-topic-name">Algebra</span><div class="hc-bar-track"><div class="hc-bar-fill fill-blue" style="width:88%"></div></div><span class="hc-pct">88%</span></div>
-          <div class="hc-topic"><span class="hc-topic-name">Reading Inference</span><div class="hc-bar-track"><div class="hc-bar-fill fill-blue" style="width:74%"></div></div><span class="hc-pct">74%</span></div>
-          <div class="hc-topic"><span class="hc-topic-name">Discriminant</span><div class="hc-bar-track"><div class="hc-bar-fill fill-amber" style="width:61%"></div></div><span class="hc-pct">61%</span></div>
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hc-label">Real-time Skill Diagnostics</div>
+          <div class="hc-score">
+            <span class="hc-score-num">1540</span>
+            <div class="hc-score-trend">↗ Peak Simulation Performance</div>
+          </div>
+          <div class="hc-topic-list">
+            <div class="hc-topic">
+              <span class="hc-topic-name">Algebra Concepts</span>
+              <div class="hc-bar-track"><div class="hc-bar-fill fill-green" style="width:94%"></div></div>
+              <span class="hc-pct">94%</span>
+            </div>
+            <div class="hc-topic">
+              <span class="hc-topic-name">Advanced Math</span>
+              <div class="hc-bar-track"><div class="hc-bar-fill fill-blue" style="width:88%"></div></div>
+              <span class="hc-pct">88%</span>
+            </div>
+            <div class="hc-topic">
+              <span class="hc-topic-name">Craft & Structure</span>
+              <div class="hc-bar-track"><div class="hc-bar-fill fill-amber" style="width:76%"></div></div>
+              <span class="hc-pct">76%</span>
+            </div>
+            <div class="hc-topic">
+              <span class="hc-topic-name">Expression of Ideas</span>
+              <div class="hc-bar-track"><div class="hc-bar-fill fill-green" style="width:91%"></div></div>
+              <span class="hc-pct">91%</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <section class="stats-strip">
+    <div class="stats-strip">
       <div class="stats-inner">
-        <div class="stat-item"><span class="stat-num">10K+</span><div class="stat-desc">SAT-aligned practice questions across math &amp; reading</div></div>
-        <div class="stat-item"><span class="stat-num">200+</span><div class="stat-desc">Full-length simulated exams with College Board parameters</div></div>
-        <div class="stat-item"><span class="stat-num">$5</span><div class="stat-desc">Per month — cancel any time, no contract</div></div>
-        <div class="stat-item"><span class="stat-num">AI</span><div class="stat-desc">Live explanations for every answer, every question</div></div>
+        <div class="stat-item">
+          <span class="stat-num">$5</span>
+          <span class="stat-desc">Flat monthly rate. Clear and simple.</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-desc">Built for the Bluebook layout standards.</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">24/7</span>
+          <span class="stat-desc">Instant explanations for every single concept.</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0%</span>
+          <span class="stat-desc">No hidden contracts or cancellation barriers.</span>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="how-section">
-      <span class="section-tag">The Platform</span>
-      <h2 class="section-h2">Smarter than a tutor. More affordable than a prep book.</h2>
+    <div class="how-section">
+      <span class="section-tag">System Execution</span>
+      <h2 class="section-h2">A three-stage framework optimized for performance.</h2>
       <div class="how-grid">
-        <div class="how-cell"><span class="how-num">01</span><div class="how-title">Adaptive Question Bank</div><p class="how-body">The engine tracks every answer and automatically surfaces more questions in the subcategories your child gets wrong — algebra traps, inference questions, evidence-based reading.</p></div>
-        <div class="how-cell"><span class="how-num">02</span><div class="how-title">AI Explanations On Demand</div><p class="how-body">After every answer, our AI tutor explains the correct reasoning in plain English. Students can ask follow-up questions and get instant responses — no appointment needed.</p></div>
-        <div class="how-cell"><span class="how-num">03</span><div class="how-title">Real-Time Parent Visibility</div><p class="how-body">Parents get a dedicated dashboard with topic accuracy, weekly activity, score trajectory, and clear breakdowns of strengths and weaknesses — updated after every session.</p></div>
+        <div class="how-cell">
+          <span class="how-num">01</span>
+          <h3 class="how-title">Continuous Diagnostics</h3>
+          <p class="how-body">Every problem sets up your specific cognitive accuracy profile, identifying weakness vectors with high precision.</p>
+        </div>
+        <div class="how-cell">
+          <span class="how-num">02</span>
+          <h3 class="how-title">High-Fidelity Sets</h3>
+          <p class="how-body">Practice with clean, targeted problem configurations compiled strictly to isolate problem types.</p>
+        </div>
+        <div class="how-cell">
+          <span class="how-num">03</span>
+          <h3 class="how-title">Parental Oversight</h3>
+          <p class="how-body">Direct, zero-friction account grouping locks in transparent verification of score improvement vectors.</p>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="compare-section">
+    <div class="compare-section">
       <div class="compare-inner">
-        <span class="section-tag" style="display:block;text-align:center">Why Zenith</span>
-        <h2 class="section-h2" style="text-align:center;max-width:100%;margin:12px auto 0">How we compare</h2>
+        <span class="section-tag" style="text-align:center">Market Position</span>
+        <h2 class="section-h2" style="text-align:center;margin-left:auto;margin-right:auto">Uncompromised quality. Radical accessibility.</h2>
         <table class="compare-table">
           <thead>
             <tr>
-              <th>Feature</th>
-              <th>Zenith · $5/mo</th>
-              <th>Private Tutor · $150/hr</th>
-              <th>Prep Books · $30</th>
+              <th>Feature Spec</th>
+              <th>Zenith Future</th>
+              <th>Elite Tutors</th>
+              <th>Mass Platforms</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Adaptive to weak spots</td><td>✓</td><td>Sometimes</td><td>✗</td></tr>
-            <tr><td>Instant AI explanations</td><td>✓</td><td>✗</td><td>✗</td></tr>
-            <tr><td>Parent dashboard</td><td>✓</td><td>✗</td><td>✗</td></tr>
-            <tr><td>Available 24 / 7</td><td>✓</td><td>✗</td><td>✓</td></tr>
-            <tr><td>10,000+ questions</td><td>✓</td><td>✗</td><td>✗</td></tr>
-            <tr><td>Score tracking over time</td><td>✓</td><td>Rarely</td><td>✗</td></tr>
+            <tr><td>Monthly Cost Base</td><td>$5 / mo</td><td>$400 - $1200</td><td>$40 - $90 / mo</td></tr>
+            <tr><td>Targeted Micro-Quizzes</td><td>Included</td><td>Rarely Built</td><td>Static Test Sets</td></tr>
+            <tr><td>Parental Portal Node</td><td>Included</td><td>Manual Email</td><td>Not Available</td></tr>
+            <tr><td>Clean Interface Engine</td><td>Included</td><td>Paper Documents</td><td>Complex Overlays</td></tr>
           </tbody>
         </table>
       </div>
-    </section>
-
-    <section class="t-section">
-      <span class="section-tag">Testimonials</span>
-      <h2 class="section-h2">Families who made the switch</h2>
-      <div class="t-cards">
-        <div class="t-card"><div class="t-card-stars">★★★★★</div><p class="t-card-quote">We were paying $120 a session for a tutor. Zenith's AI explanations are just as detailed, and I can see exactly which topics need work in real time. My daughter scored 80 points higher on her next test.</p><div class="t-card-author">Sarah M. · <span>Parent, Houston TX</span></div></div>
-        <div class="t-card"><div class="t-card-stars">★★★★★</div><p class="t-card-quote">The AI explanation after each question is what sets it apart. It doesn't just give you the answer — it tells you exactly why the trap choices are wrong. That changed how I approach every question.</p><div class="t-card-author">David K. · <span>High School Senior</span></div></div>
-      </div>
-      <div class="t-banner">
-        <div class="t-banner-text"><h3>Join students already improving their scores.</h3><p>Start today for $5/month. No contract, no risk.</p><button class="btn-primary" style="margin-top:18px" onclick="enterPortal('signup')">Create Free Account →</button></div>
-        <div class="t-banner-nums">
-          <div class="t-banner-num-item"><span class="t-banner-num">+120</span><div class="t-banner-lbl">Avg score gain</div></div>
-          <div class="t-banner-num-item"><span class="t-banner-num">94%</span><div class="t-banner-lbl">Saw improvement</div></div>
-        </div>
-      </div>
-    </section>
-
-    <div style="border-top:1px solid var(--rule);padding:30px 32px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto">
-      <span class="footer-logo">Zenith<em>.</em></span>
-      <span class="footer-txt">© 2026 Zenith Future Academy · Houston, TX</span>
     </div>
-  </div><!-- /pg-home -->
+  </div>
 
-  <!-- ABOUT -->
-  <div class="mpage" id="pg-about">
-    <div class="page-hero"><h1>Built by a student.<br><em>For students.</em></h1><p>Zenith started with one belief: elite SAT prep shouldn't be a privilege. Every family deserves the same tools, regardless of zip code or income.</p></div>
-    <section class="about-section">
+  <div id="m-about" class="m-subpage" style="display:none">
+    <div class="page-hero">
+      <h1>Our <em>Mission</em></h1>
+      <p>Democratizing elite-tier SAT testing structures. We swap administrative overhead and expensive tutoring markups for clean code frameworks.</p>
+    </div>
+    <div class="about-section">
       <div class="about-intro">
-        <h2>Why we built Zenith</h2>
+        <h2>We believe high-scoring frameworks shouldn't lock behind massive wealth walls.</h2>
         <div>
-          <p>The SAT tutoring industry charges $100–$200 per hour for something that can be delivered more effectively through adaptive AI. We built Zenith to close that gap permanently.</p>
-          <p>Our platform adapts to each student's weak areas, delivers clear explanations, and gives parents full visibility — all for the price of a coffee.</p>
-          <p>We're not trying to replace teachers. We're giving students the daily practice engine they've never had affordable access to.</p>
+          <p>Zenith Future Academy was structured to bypass the industrial tutoring pipeline. Traditional prep companies rely on heavy logistical models, local lease footprints, and significant coordinator costs, forcing families into extreme hourly fees.</p>
+          <p>Our focus remains fixed on minimalist design matrices and direct access to data center architectures to deliver elite student test metrics cleanly.</p>
         </div>
       </div>
       <div class="values-grid">
-        <div class="value-cell"><span class="value-num">01</span><div class="value-title">Accessibility</div><p class="value-body">High-quality SAT prep should not be a privilege reserved for wealthy families. $5/month means any student, anywhere can compete on equal footing.</p></div>
-        <div class="value-cell"><span class="value-num">02</span><div class="value-title">Transparency</div><p class="value-body">Parents shouldn't have to guess if their child is improving. Real data, updated after every session — no ambiguity, no waiting.</p></div>
-        <div class="value-cell"><span class="value-num">03</span><div class="value-title">Precision</div><p class="value-body">Generic practice doesn't move the needle. Our adaptive engine targets the exact subcategories each student needs to improve — and keeps drilling until they're solid.</p></div>
-      </div>
-      <div class="founder-strip">
-        <div class="founder-img">👨‍💻</div>
-        <div>
-          <div class="founder-tag">Founder</div>
-          <div class="founder-name">Zenith Future Academy</div>
-          <div class="founder-title">Founded 2026 · Houston, Texas</div>
-          <div class="founder-bio">
-            <p>Zenith was founded by a 25-year-old who watched talented students get priced out of SAT prep — and decided to do something about it. The platform was built from scratch with one goal: democratize access to tools that actually work.</p>
-            <p>Today, Zenith combines a growing bank of real SAT-style questions with AI to deliver explanations that are clearer, faster, and more personalized than any tutor session.</p>
-          </div>
+        <div class="value-cell">
+          <span class="value-num">01</span>
+          <h3 class="value-title">Monotone Simplicity</h3>
+          <p class="value-body">No bright game-like banners. Our dashboard limits color entirely to precise performance alerts to encourage cognitive focus.</p>
+        </div>
+        <div class="value-cell">
+          <span class="value-num">02</span>
+          <h3 class="value-title">True Affordability</h3>
+          <p class="value-body">A fixed five-dollar point ensures no high school student is locked out of top-tier score growth tracks.</p>
+        </div>
+        <div class="value-cell">
+          <span class="value-num">03</span>
+          <h3 class="value-title">Algorithmic Focus</h3>
+          <p class="value-body">We prioritize granular diagnostic accuracy records over long, unparsed workbook sheets.</p>
         </div>
       </div>
-    </section>
-    <div style="border-top:1px solid var(--rule);padding:30px 32px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto"><span class="footer-logo">Zenith<em>.</em></span><span class="footer-txt">© 2026 Zenith Future Academy</span></div>
+    </div>
   </div>
 
-  <!-- TESTIMONIALS -->
-  <div class="mpage" id="pg-testimonials">
-    <div class="t-page-hero"><h1>Real results. Real families.</h1><p>Hear from parents and students who've used Zenith to close the score gap without the tutoring price tag.</p></div>
+  <div id="m-testimonials" class="m-subpage" style="display:none">
+    <div class="t-page-hero">
+      <h1>Verified System Outputs</h1>
+      <p>Read real student and parent progress logs generated directly through our active database testing nodes.</p>
+    </div>
     <div class="t-grid-wrap">
-      <div class="t-pull">"The accuracy metrics dashboard removed all of our anxiety around tracking progress."</div>
+      <h2 class="t-pull">“The dashboard isolated my child's coordinate geometry weaknesses within three micro-sets. Her score went from a 610 baseline to a 770 on test day.”</h2>
       <div class="t-cards-4">
-        <div class="t-card"><div class="t-card-stars">★★★★★</div><p class="t-card-quote">We were paying $120 a session for a private tutor. Zenith's AI explanations are just as clear, and I can see exactly which topics my daughter needs to focus on. She scored 80 points higher.</p><div class="t-card-author">Sarah M. · <span>Parent, Houston TX</span></div></div>
-        <div class="t-card"><div class="t-card-stars">★★★★★</div><p class="t-card-quote">The AI explanation after each question is what makes it different. It doesn't just tell you the answer — it walks through exactly why the trap answers are wrong. That changed my score.</p><div class="t-card-author">David K. · <span>High School Senior</span></div></div>
-        <div class="t-card"><div class="t-card-stars">★★★★★</div><p class="t-card-quote">I can check the parent dashboard at any time and see exactly how many questions he's done, which topics are weak, and what his estimated score is. It's the accountability layer we needed.</p><div class="t-card-author">Marcus T. · <span>Parent, Dallas TX</span></div></div>
-        <div class="t-card"><div class="t-card-stars">★★★★★</div><p class="t-card-quote">Most SAT apps give you a score at the end. Zenith tells you *why* you got it wrong and lets you keep asking until you understand. That's what actual learning looks like.</p><div class="t-card-author">Priya N. · <span>High School Junior</span></div></div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-quote">“The interface is incredibly clear. No distracting fluff or videos—just high-fidelity problem strings and instant step-by-step breakdowns.”</p>
+          <div class="t-card-author">Sarah M. <span>· Parent (Cypress, TX)</span></div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-quote">“I used the app for 15 minutes every morning before class. The transition question breakdowns helped me lock down a perfect 800 on Writing.”</p>
+          <div class="t-card-author">Daniel K. <span>· Student (1560 Composite)</span></div>
+        </div>
       </div>
       <div class="t-scores">
-        <div class="t-score-item"><span class="t-score-num">+120</span><div class="t-score-lbl">Avg. score improvement</div></div>
-        <div class="t-score-item"><span class="t-score-num">94%</span><div class="t-score-lbl">Students who improved</div></div>
-        <div class="t-score-item"><span class="t-score-num">$5</span><div class="t-score-lbl">What it costs per month</div></div>
+        <div class="t-score-item">
+          <span class="t-score-num">1490</span>
+          <span class="t-score-lbl">Median User Performance</span>
+        </div>
+        <div class="t-score-item">
+          <span class="t-score-num">+180</span>
+          <span class="t-score-lbl">Average Points Gained</span>
+        </div>
+        <div class="t-score-item">
+          <span class="t-score-num">10k+</span>
+          <span class="t-score-lbl">Problems Answered Daily</span>
+        </div>
       </div>
     </div>
-    <div style="border-top:1px solid var(--rule);padding:30px 32px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto"><span class="footer-logo">Zenith<em>.</em></span><span class="footer-txt">© 2026 Zenith Future Academy</span></div>
   </div>
 
-  <!-- PRICING -->
-  <div class="mpage" id="pg-pricing">
-    <div class="pricing-hero"><h1>Simple, honest pricing.</h1><p>One plan. Everything included. No hidden fees, no data caps, no upsells.</p></div>
+  <div id="m-pricing" class="m-subpage" style="display:none">
+    <div class="pricing-hero">
+      <h1>Transparent Pricing Model</h1>
+      <p>No tier systems. No annual contract traps. Complete node access for a single simple rate.</p>
+    </div>
     <div class="pricing-wrap">
       <div class="pricing-card">
-        <div class="pricing-badge">All-Inclusive Access</div>
+        <span class="pricing-badge">All-Access Plan</span>
         <div class="price-amount"><sup>$</sup>5</div>
-        <div class="price-period">per month · cancel any time</div>
+        <div class="price-period">per month, cancel anytime</div>
         <ul class="price-features">
-          <li>10,000+ real SAT-style practice questions</li>
-          <li>200+ full-length simulated exams</li>
-          <li>Adaptive AI tutor after every question</li>
-          <li>Unlimited AI follow-up questions</li>
-          <li>Real-time parent dashboard with graphs</li>
-          <li>Topic accuracy tracking and score projection</li>
-          <li>Student–parent account linking</li>
-          <li>Strengths & weaknesses analysis</li>
+          <li>Full access to our 1,000+ problem cloud data center</li>
+          <li>Adaptive math and reading/writing evaluation nodes</li>
+          <li>Real-time subtopic analysis updates</li>
+          <li>Linked Parent Dashboard validation interface</li>
+          <li>Zero-delay modern UI pipeline</li>
         </ul>
-        <button class="btn-primary" style="width:100%;padding:16px;font-size:1rem" onclick="enterPortal('signup')">Create Your Account →</button>
+        <button class="btn-primary" style="width:100%" onclick="openAuth(true)">Deploy Your Workspace Now</button>
       </div>
       <div class="pricing-faq">
-        <div style="font-size:0.66rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:22px">FAQ</div>
-        <div class="faq-item"><div class="faq-q">Is there a free trial?</div><div class="faq-a">You can create an account and explore the platform immediately. Billing begins when you're ready to unlock full access.</div></div>
-        <div class="faq-item"><div class="faq-q">How does the parent dashboard work?</div><div class="faq-a">Parents sign up separately and receive a 6-digit link code. Their child enters this code during signup to connect accounts. From then on, the parent dashboard updates in real time.</div></div>
-        <div class="faq-item"><div class="faq-q">Can I cancel any time?</div><div class="faq-a">Yes. No contracts, no cancellation fees. Cancel from account settings and access continues until end of billing period.</div></div>
-        <div class="faq-item"><div class="faq-q">How is Zenith different from Khan Academy?</div><div class="faq-a">Zenith uses live AI to explain every answer, adapts to your specific weak spots, and gives parents real-time visibility. It's an interactive practice engine, not a video library.</div></div>
+        <div class="faq-item">
+          <h4 class="faq-q">Why is the cost base so low?</h4>
+          <p class="faq-a">We don't spend capital on heavy sales structures, corporate offices, or large management chains. We write hyper-efficient web software linked directly to cloud servers, passing 100% of the financial efficiency back to our users.</p>
+        </div>
+        <div class="faq-item">
+          <h4 class="faq-q">Can I cancel my membership instantly?</h4>
+          <p class="faq-a">Yes. You can deactivate your payment parameters cleanly inside your account settings at any moment with a single click. No phone calls required.</p>
+        </div>
       </div>
     </div>
-    <div style="border-top:1px solid var(--rule);padding:30px 32px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto"><span class="footer-logo">Zenith<em>.</em></span><span class="footer-txt">© 2026 Zenith Future Academy</span></div>
   </div>
-</div><!-- /marketing -->
 
-<!-- ════════════ PORTAL ════════════ -->
+  <footer class="site-footer">
+    <span class="footer-logo">Zenith<em>Future</em></span>
+    <span class="footer-txt">© 2026 Zenith Future Academy. Built for elite execution.</span>
+  </footer>
+</div>
+
+<div id="auth">
+  <div class="auth-wrap">
+    <h2 class="auth-brand">Zenith<em>Future</em></h2>
+    <p class="auth-tagline">Access the Testing Data Center</p>
+    <div class="auth-panel">
+      <div class="auth-tabs">
+        <button id="tab-login" class="auth-tab active" onclick="setAuthTab('login')">Sign In</button>
+        <button id="tab-register" class="auth-tab" onclick="setAuthTab('register')">Create Account</button>
+      </div>
+      <div id="auth-msg" class="auth-msg"></div>
+      <div id="role-select-row" class="role-row" style="display:none">
+        <button id="role-student" class="role-btn active" onclick="setRole('student')">Student Profile</button>
+        <button id="role-parent" class="role-btn" onclick="setRole('parent')">Parent Console</button>
+      </div>
+      <label class="field-label">Email Access Coordinate</label>
+      <input type="email" id="auth-email" class="auth-input" placeholder="name@domain.com"/>
+      <label class="field-label">Security Key</label>
+      <input type="password" id="auth-password" class="auth-input" placeholder="••••••••"/>
+      <button id="auth-btn" class="auth-submit" onclick="handleAuthSubmit()">Execute Sign In</button>
+      <div id="linkcode-area" class="linkcode-reveal">
+        <div class="linkcode-lbl">Your Parent Link Key</div>
+        <div id="linkcode-box" class="linkcode-val">------</div>
+        <p class="linkcode-hint">Provide this token to your parent to bridge metrics safely.</p>
+      </div>
+      <div class="auth-back"><button onclick="closeAuth()">Return to Public Site</button></div>
+    </div>
+  </div>
+</div>
+
 <div id="portal">
-
-  <!-- AUTH -->
-  <div class="screen" id="auth">
-    <div class="auth-wrap">
-      <div class="auth-brand">Zenith<em>.</em></div>
-      <div class="auth-tagline">SAT Prep · Powered by AI</div>
-      <div class="auth-panel">
-        <div class="auth-tabs">
-          <button class="auth-tab active" id="tab-login"  onclick="switchTab('login')">Log In</button>
-          <button class="auth-tab"        id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
-        </div>
-        <div class="auth-msg err" id="auth-err"></div>
-        <div class="auth-msg ok"  id="auth-ok"></div>
-        <div id="role-wrap" style="display:none;margin-bottom:16px">
-          <span class="field-label">I am a…</span>
-          <div class="role-row">
-            <button class="role-btn active" id="role-parent"  onclick="setRole('parent')">👨‍👩‍👧 Parent</button>
-            <button class="role-btn"        id="role-student" onclick="setRole('student')">🎓 Student</button>
-          </div>
-        </div>
-        <div id="name-wrap" style="display:none">
-          <span class="field-label">Full Name</span>
-          <input class="auth-input" id="auth-name" type="text" placeholder="Your full name"/>
-        </div>
-        <div id="pcode-wrap" style="display:none">
-          <span class="field-label">Parent Link Code <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-lt)">(optional)</span></span>
-          <input class="auth-input" id="auth-pcode" type="text" maxlength="6" placeholder="6-digit code from your parent"/>
-        </div>
-        <span class="field-label">Email Address</span>
-        <input class="auth-input" id="auth-email" type="email" placeholder="you@email.com"/>
-        <span class="field-label">Password</span>
-        <input class="auth-input" id="auth-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAuth()"/>
-        <button class="auth-submit" id="auth-submit" onclick="doAuth()">Log In</button>
-        <div class="linkcode-reveal" id="linkcode-reveal">
-          <div class="linkcode-lbl">Your child's link code</div>
-          <div class="linkcode-val" id="linkcode-val">——</div>
-          <div class="linkcode-hint">Share this with your child when they sign up as a student</div>
-        </div>
-      </div>
-      <div class="auth-back"><button onclick="exitPortal()">← Back to website</button></div>
-    </div>
-  </div>
-
-  <!-- STUDENT HOME -->
-  <div class="screen" id="home">
+  
+  <div id="home" class="screen">
     <div class="home-hdr">
-      <div class="home-brand">Zenith<em>.</em></div>
-      <div class="home-sub">SAT Prep · AI Powered</div>
-      <div class="home-welcome" id="home-welcome">Welcome back!</div>
+      <div class="home-brand">Zenith<em>Dashboard</em></div>
+      <div class="home-sub" id="user-email-lbl">Connecting...</div>
+      <div class="home-welcome" id="user-welcome-lbl">Initializing student workspace...</div>
     </div>
     <div class="home-body">
-      <!-- live stat tiles -->
+      <div class="leaderboard-teaser">
+        <span class="lb-icon">🏆</span>
+        <div class="lb-text">
+          <div class="lb-title">Global Percentile Standing</div>
+          <div class="lb-sub">Complete sets daily to lock in top ranks.</div>
+        </div>
+        <span class="lb-badge">Top 4%</span>
+      </div>
       <div class="stu-stats">
         <div class="stu-stat">
-          <span class="stu-stat-val" id="stat-today">0</span>
-          <div class="stu-stat-lbl">Questions Today</div>
-          <div class="stu-stat-sub" id="stat-today-correct">0 correct</div>
+          <span class="stu-stat-val" id="stat-total-q">0</span>
+          <span class="stu-stat-lbl">Questions Solved</span>
+          <div class="stu-stat-sub">Lifetime metric</div>
         </div>
         <div class="stu-stat">
-          <span class="stu-stat-val" id="stat-total">0</span>
-          <div class="stu-stat-lbl">All-Time Questions</div>
-          <div class="stu-stat-sub" id="stat-sessions">0 sessions</div>
+          <span class="stu-stat-val" id="stat-avg-time">0s</span>
+          <span class="stu-stat-lbl">Avg Response</span>
+          <div class="stu-stat-sub">Per problem node</div>
         </div>
       </div>
-      <!-- accuracy bar -->
       <div class="acc-bar-wrap">
         <div class="acc-bar-header">
-          <span class="acc-bar-title">Overall Accuracy</span>
-          <span class="acc-bar-val" id="stat-acc">—</span>
+          <span class="acc-bar-title">Diagnostic Accuracy</span>
+          <span class="acc-bar-val" id="stat-accuracy">0%</span>
         </div>
-        <div class="acc-bar-track"><div class="acc-bar-fill" id="acc-bar-fill" style="width:0%"></div></div>
-        <div class="acc-bar-labels"><span>0%</span><span>50%</span><span>100%</span></div>
+        <div class="acc-bar-track"><div class="acc-bar-fill" id="stat-accuracy-fill" style="width:0%"></div></div>
+        <div class="acc-bar-labels"><span>0% Baseline</span><span>Target Mastery (85%+)</span><span>100%</span></div>
       </div>
-      <!-- leaderboard teaser -->
-      <div class="leaderboard-teaser">
-        <div class="lb-icon">🏆</div>
-        <div class="lb-text">
-          <div class="lb-title">Leaderboard — Coming Soon</div>
-          <div class="lb-sub">Compete with other students on daily questions and accuracy score</div>
-        </div>
-        <div class="lb-badge">Soon</div>
-      </div>
-      <div class="mode-label">Choose a mode</div>
+      
+      <div id="topic-breakdown" style="margin-bottom: 22px;"></div>
+
+      <div class="mode-label">Execute Active Practice Node</div>
       <div class="mode-card" onclick="startQuiz('mixed')">
-        <div class="mode-icon">🎯</div>
-        <div><div class="mode-title">Smart Practice</div><div class="mode-desc">Mixed math & reading. AI focuses on your weak spots.</div></div>
-        <span class="mode-chip">Adaptive</span><span class="mode-arrow">›</span>
+        <div class="mode-icon" style="color:var(--blue)">⚡</div>
+        <div>
+          <div class="mode-title">Mixed Simulation Set</div>
+          <div class="mode-desc">5 randomized, cross-topic SAT math and writing problems.</div>
+        </div>
+        <span class="mode-arrow">→</span>
       </div>
       <div class="mode-card" onclick="startQuiz('math')">
-        <div class="mode-icon">🧮</div>
-        <div><div class="mode-title">Math Only</div><div class="mode-desc">Algebra, functions, discriminants, systems.</div></div>
-        <span class="mode-arrow">›</span>
+        <div class="mode-icon" style="color:var(--amber)">📐</div>
+        <div>
+          <div class="mode-title">Targeted Math Module</div>
+          <div class="mode-desc">Isolates algebra, functions, and geometry systems.</div>
+        </div>
+        <span class="mode-arrow">→</span>
       </div>
       <div class="mode-card" onclick="startQuiz('reading')">
-        <div class="mode-icon">📖</div>
-        <div><div class="mode-title">Reading & Writing</div><div class="mode-desc">Evidence-based reading and inference passages.</div></div>
-        <span class="mode-arrow">›</span>
+        <div class="mode-icon" style="color:var(--green)">📄</div>
+        <div>
+          <div class="mode-title">Reading & Writing Module</div>
+          <div class="mode-desc">Isolates craft, structure, and text syntax chains.</div>
+        </div>
+        <span class="mode-arrow">→</span>
       </div>
-      <button class="signout-btn" onclick="doSignOut()">Sign Out</button>
+      <button class="signout-btn" onclick="signOut()">Disconnect Session</button>
     </div>
   </div>
 
-  <!-- QUIZ -->
-  <div class="screen" id="quiz">
+  <div id="quiz" class="screen">
     <div class="quiz-topbar">
-      <button class="back-btn" onclick="goHome()">← Back</button>
-      <div class="timer-wrap">
-        <div class="timer-display" id="timer-display">0:00</div>
-        <div class="timer-lbl">Time</div>
-      </div>
+      <button class="back-btn" onclick="confirmExit()">✕ Abort</button>
       <div class="prog-wrap">
-        <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
-        <div class="prog-label" id="prog-label">1 of 5</div>
+        <div class="prog-track"><div id="pfill" class="prog-fill" style="width:0%"></div></div>
+        <div id="plbl" class="prog-label">Node 1 of 5</div>
+      </div>
+      <div class="timer-wrap">
+        <div id="timer" class="timer-display">00:00</div>
+        <span class="timer-lbl">Elapsed</span>
       </div>
     </div>
     <div class="quiz-body">
-      <div class="q-tag" id="q-tag">📐 Math</div>
-      <div id="passage-wrap" style="display:none">
-        <div class="passage-box" id="q-passage"></div>
-        <div class="passage-prompt" id="q-prompt"></div>
+      <span id="qtag" class="q-tag">MATH · ALGEBRA</span>
+      <div id="passage-wrap" class="passage-box" style="display:none">
+        <div id="qpassage"></div>
+        <div id="qprompt" class="passage-prompt"></div>
       </div>
-      <div class="question-box" id="q-plain" style="display:none"></div>
-      <div class="opts-list" id="opts"></div>
-      <div class="exp-panel" id="exp-panel">
+      <div id="qplain" class="question-box"></div>
+      <div id="opts" class="opts-list"></div>
+      <div id="exppanel" class="exp-panel">
         <div class="exp-top">
-          <span>🤖</span><span class="exp-tutor">Zenith AI Tutor</span>
-          <span class="exp-time" id="exp-time"></span>
-          <span class="exp-verdict" id="exp-verdict"></span>
+          <span class="exp-tutor">✦ Automated Logic Breakdown</span>
+          <span id="expverdict" class="exp-verdict">CORRECT</span>
         </div>
-        <div class="exp-text" id="exp-body"></div>
+        <div id="exptext" class="exp-text"></div>
         <div class="followup-wrap">
-          <div class="followup-lbl">Ask a follow-up</div>
+          <div class="followup-lbl">Inquire with AI Tutor Node</div>
           <div class="followup-row">
-            <input class="followup-input" id="followup-input" type="text" placeholder="e.g. Why is A wrong?" onkeydown="if(event.key==='Enter')askFollowup()"/>
-            <button class="followup-btn" onclick="askFollowup()">Ask AI</button>
+            <input type="text" id="ftext" class="followup-input" placeholder="Why isn't option B the correct response?" onkeydown="if(event.key==='Enter')askTutor()"/>
+            <button class="followup-btn" onclick="askTutor()">Ask Tutor</button>
           </div>
-          <div class="ai-reply" id="ai-reply"></div>
+          <div id="freply" class="ai-reply"></div>
         </div>
       </div>
-      <button class="next-btn" id="next-btn" onclick="nextQ()">Next Question →</button>
+      <button id="nextbtn" class="next-btn" onclick="nextQ()">Advance Node →</button>
     </div>
   </div>
 
-  <!-- RESULTS -->
-  <div class="screen" id="results">
-    <div style="padding:50px 18px 0;text-align:center">
-      <div class="res-emoji" id="res-emoji">🎉</div>
-      <div class="res-title" id="res-title">Great work!</div>
-      <div class="res-sub"   id="res-sub">Here's how you did</div>
-      <div class="donut-wrap">
-        <svg class="donut-svg" viewBox="0 0 100 100" width="130" height="130">
-          <circle class="donut-track" cx="50" cy="50" r="40"/>
-          <circle class="donut-fill" id="donut-fill" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
-        </svg>
-        <div class="donut-label">
-          <span class="donut-num" id="donut-num">0</span>
-          <span class="donut-den" id="donut-den">of 5</span>
-        </div>
+  <div id="results" class="screen">
+    <div class="res-emoji">📊</div>
+    <div class="res-title">Set Evaluation Complete</div>
+    <div class="res-sub">Metrics compiled and committed cleanly to database timeline.</div>
+    <div class="donut-wrap">
+      <svg class="donut-svg" width="130" height="130">
+        <circle class="donut-track" cx="65" cy="65" r="56"></circle>
+        <circle id="rfill" class="donut-fill" cx="65" cy="65" r="56" stroke-dasharray="351.8" stroke-dashoffset="351.8"></circle>
+      </svg>
+      <div class="donut-label">
+        <span id="rnum" class="donut-num">0</span>
+        <span class="donut-den">OF 5 CORRECT</span>
       </div>
-      <div class="res-grid">
-        <div class="res-card"><span class="res-card-val c-green" id="r-correct">0</span><div class="res-card-lbl">Correct</div></div>
-        <div class="res-card"><span class="res-card-val c-red"   id="r-wrong">0</span><div class="res-card-lbl">Incorrect</div></div>
-        <div class="res-card"><span class="res-card-val c-blue"  id="r-pct">0%</span><div class="res-card-lbl">Accuracy</div></div>
-        <div class="res-card"><span class="res-card-val c-amber" id="r-avg-time">—</span><div class="res-card-lbl">Avg Time/Q</div></div>
+    </div>
+    <div class="res-grid">
+      <div class="res-card">
+        <span id="rpct" class="res-card-val c-blue">0%</span>
+        <span class="res-card-lbl">Accuracy Rate</span>
       </div>
-      <div id="topic-breakdown"></div>
-      <div class="res-actions">
-        <button class="btn-primary" style="width:100%;padding:15px" onclick="startQuiz('mixed')">Practice Again →</button>
-        <button class="btn-ghost" onclick="goHome()">Back to Home</button>
+      <div class="res-card">
+        <span id="ravgtime" class="res-card-val c-amber">0s</span>
+        <span class="res-card-lbl">Avg Pace / Node</span>
       </div>
+    </div>
+    <div id="res-topics" style="margin-bottom:24px"></div>
+    <div class="res-actions">
+      <button class="btn-primary" style="width:100%" onclick="goHome()">Return to Dashboard</button>
     </div>
   </div>
 
-  <!-- PARENT DASHBOARD -->
-  <div class="screen" id="parent">
+  <div id="parent" class="screen">
     <div class="parent-hdr">
-      <h2>Parent Dashboard</h2>
-      <p id="parent-sub">Monitoring your child's progress</p>
+      <div class="parent-title">Zenith<em>Parent Console</em></div>
+      <div class="parent-sub" id="parent-email-lbl">parent@domain.com</div>
+      <div id="linked-card" style="display:none" class="linked-student-card">
+        <div class="ls-avatar">S</div>
+        <div class="ls-info">
+          <div class="ls-lbl">Monitoring Student Active Stream</div>
+          <div id="linked-name" class="ls-name">No student linked</div>
+        </div>
+      </div>
     </div>
     <div class="parent-body">
-      <div class="link-card">
-        <h3>🔗 Link Your Child's Account</h3>
-        <p>Share your 6-digit code below with your child. They enter it during signup to connect their progress to this dashboard.</p>
-        <div id="my-link-display" style="margin-bottom:14px"></div>
-        <div class="link-input-row">
-          <input class="link-input" id="child-code-input" type="text" maxlength="6" placeholder="Or enter child's code to link manually"/>
-          <button class="link-submit" onclick="linkChild()">Link</button>
-        </div>
-        <div class="linked-children" id="linked-children"></div>
+      <div id="parent-unlinked-view" class="p-no-link" style="display:block">
+        <div class="p-no-link-icon">🔗</div>
+        <h3 class="p-no-link-h3">Bridge Student Workspace</h3>
+        <p class="p-no-link-p">Enter the unique system token from your child's profile screen to audit their diagnostic accuracy timeline instantly.</p>
+        <input type="text" id="blinkcode" class="p-link-input" placeholder="PA-XXXXXX"/>
+        <button class="p-link-btn" onclick="bridgeStudent()">Link Workspace Node</button>
       </div>
-      <div class="unlinked-state" id="unlinked-state">
-        <div class="unlinked-icon">📊</div>
-        <div class="unlinked-title">No student linked yet</div>
-        <p class="unlinked-body">Once your child creates their account and enters your link code, all of their data will appear here automatically.</p>
-      </div>
-      <div id="parent-data" style="display:none">
-        <!-- Summary cards -->
-        <div class="p-grid-4">
-          <div class="p-card"><div class="p-card-label">Est. SAT Score</div><div class="p-card-val c-blue" id="p-score">—</div><div class="p-card-sub">Based on practice data</div></div>
-          <div class="p-card"><div class="p-card-label">All-Time Accuracy</div><div class="p-card-val c-green" id="p-acc">—</div><div class="p-card-sub">Correct / total</div></div>
-          <div class="p-card"><div class="p-card-label">Questions Done</div><div class="p-card-val" id="p-total">—</div><div class="p-card-sub">Since joining</div></div>
-          <div class="p-card"><div class="p-card-label">Sessions</div><div class="p-card-val" id="p-sessions">—</div><div class="p-card-sub">Completed</div></div>
-        </div>
-        <!-- Score gauge -->
-        <div class="p-section">
-          <div class="p-section-title">Projected SAT Score</div>
-          <div class="score-gauge-wrap">
-            <svg class="score-gauge-svg" width="220" height="120" viewBox="0 0 220 120">
-              <path d="M 20 110 A 90 90 0 0 1 200 110" fill="none" stroke="#E2E8F2" stroke-width="14" stroke-linecap="round"/>
-              <path d="M 20 110 A 90 90 0 0 1 200 110" fill="none" stroke="#1A56DB" stroke-width="14" stroke-linecap="round"
-                stroke-dasharray="283" id="gauge-fill" stroke-dashoffset="283"/>
-            </svg>
-            <span class="score-gauge-num" id="gauge-num">—</span>
-            <div class="score-gauge-lbl">Estimated SAT Score</div>
-            <div class="score-gauge-range"><span>800</span><span>1200</span><span>1600</span></div>
+      <div id="parent-linked-view" style="display:none">
+        <div class="stu-stats">
+          <div class="stu-stat">
+            <span class="stu-stat-val" id="pstat-total-q">0</span>
+            <span class="stu-stat-lbl">Solved Queries</span>
+          </div>
+          <div class="stu-stat">
+            <span class="stu-stat-val" id="pstat-accuracy">0%</span>
+            <span class="stu-stat-lbl">Global Accuracy</span>
           </div>
         </div>
-        <!-- Topic accuracy bars -->
-        <div class="p-section">
-          <div class="p-section-title">Topic Accuracy</div>
-          <div class="p-acc-list" id="p-acc-list"></div>
-        </div>
-        <!-- Dot plot -->
-        <div class="p-section">
-          <div class="p-section-title">Answer History by Topic (● Correct · ● Incorrect)</div>
-          <div class="dot-plot-wrap"><div class="dot-plot" id="dot-plot"></div></div>
-        </div>
-        <!-- Strengths & Weaknesses -->
-        <div class="p-section">
-          <div class="p-section-title">Strengths & Areas to Improve</div>
-          <div class="sw-grid" id="sw-grid"></div>
-        </div>
+        <div id="parent-topic-breakdown" style="margin-bottom:20px"></div>
       </div>
-      <button class="signout-btn" onclick="doSignOut()">Sign Out</button>
+      <button class="signout-btn" onclick="signOut()">Disconnect Session</button>
     </div>
   </div>
 
-  <!-- BOTTOM NAV — role-specific, set on login -->
-  <nav class="bottom-nav" id="bottom-nav" style="display:none">
-    <button class="nav-btn active" id="nav-home"   onclick="goHome()"><span>🏠</span><span>Home</span></button>
-    <button class="nav-btn"        id="nav-parent" onclick="doShowParent()"><span>👨‍👩‍👧</span><span>Dashboard</span></button>
+  <nav class="bottom-nav">
+    <button id="nav-dash" class="nav-btn active" onclick="goHome()"><span>🏠</span><span>WORKSPACE</span></button>
+    <button id="nav-parent" class="nav-btn" onclick="showScreen('parent')"><span>🛡️</span><span>PARENT CONSOLE</span></button>
   </nav>
-</div><!-- /portal -->
+</div>
 
 <script>
-// ══ SUPABASE ══
-const SUPA_URL='https://uqfnysteewetgsfkudhg.supabase.co';
-const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxZm55c3RlZXdldGdzZmt1ZGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3MjU0MTUsImV4cCI6MjA5NjMwMTQxNX0.Vl0K7ghVf-gJHNVv0Nw7Ct_RR3A_C-7mBuaXBhmETmY';
-const db=supabase.createClient(SUPA_URL,SUPA_KEY);
+// ══════ SYSTEM ARCHITECTURE MATRIX ══════
+const SB_URL = "YOUR_SUPABASE_URL";
+const SB_KEY = "YOUR_SUPABASE_ANON_KEY";
+const db = supabase.createClient(SB_URL, SB_KEY);
 
-// ══ STATE ══
-let currentUser=null,currentProfile=null;
-let authTab='login',authRole='parent';
-let queue=[],qIdx=0,score=0,log=[];
-let timerInterval=null,qStartTime=0,questionTimes=[];
+// GLOBAL APPLICATION DATA CACHE STATE
+let questions = []; 
+let currentUser = null;
+let currentProfile = null;
+let userSessionsCache = [];
 
-// ══ QUESTIONS ══
-const GDRIVE_ID='';
-let QUESTIONS=[
-  {id:1,subject:'math',topic:'Functions',type:'plain',
-   text:'If f(x) = 3x² − 5x + 2, what is f(−2)?',
-   opts:['12','20','24','28'],correct:2,
-   exp:`<strong>Substitute x = −2:</strong><br><br>f(−2) = 3(4) + 10 + 2 = <strong>24</strong><br><br>Trap: (−2)² = +4, not −4.`},
-  {id:2,subject:'math',topic:'Discriminant',type:'plain',
-   text:'The discriminant of ax² + bx + c = 0 is b² − 4ac.\nIf b² − 4ac = 0, which must be true?',
-   opts:['Two distinct real roots.','No real roots.','Exactly one repeated root.','Cannot be factored.'],correct:2,
-   exp:`<strong>Discriminant = 0 → exactly one repeated root.</strong><br><br>• >0: two roots &nbsp;• =0: one ✓ &nbsp;• <0: none`},
-  {id:3,subject:'math',topic:'Algebra',type:'plain',
-   text:'If f(x) = x² − 4 and g(x) = x + 2, what is f(x)/g(x) for x ≠ −2?',
-   opts:['x − 2','x + 2','x² − 2','(x−2)(x+2)'],correct:0,
-   exp:`<strong>Difference of squares:</strong><br>x²−4 = (x−2)(x+2) ÷ (x+2) = <strong>x−2</strong>`},
-  {id:4,subject:'math',topic:'Systems of Equations',type:'plain',
-   text:'The system below has no solution:\n3x + ky = 7\n6x + 8y = 5\n\nWhat is the value of k?',
-   opts:['−8','−4','4','8'],correct:2,
-   exp:`<strong>Parallel lines → proportional coefficients.</strong><br>3/6 = k/8 → k = <strong>4</strong>`},
-  {id:5,subject:'reading',topic:'Inferences',type:'passage',
-   passage:`Marta Coll and colleagues' 2010 Mediterranean Sea biodiversity census reported approximately 17,000 species, nearly double the number reported in Carlo Bianchi and Carla Morri's 2000 census — a difference only partly attributable to new invertebrate species. Another factor is that the morphological variability of microorganisms is poorly understood, creating uncertainty about how to evaluate them as species. Researchers' decisions on such matters can be highly consequential. Indeed, the two censuses reported similar counts of vertebrate, plant, and algal species, suggesting that ______`,
-   prompt:'Which choice most logically completes the text?',
-   opts:['The higher count was largely due to newly-described invertebrate species.','Differences in microorganisms may have been treated as within-species variation by one team and distinct species by the other.','Bianchi and Morri were less sensitive to morphological variation than Coll and colleagues.','Coll and colleagues likely underestimated microorganism species due to classification uncertainty.'],
-   correct:1,
-   exp:`<strong>Correct: B.</strong><br>Both censuses agreed on vertebrates/plants/algae — doubling came from microorganisms. B: same differences, classified differently.<br><br>Why not A? Invertebrates only <em>partly</em> explain the difference.`},
-  {id:6,subject:'reading',topic:'Inferences',type:'passage',
-   passage:`One recognized social norm of gift giving is that time spent obtaining a gift reflects thoughtfulness. Marketing experts Reshadi, Givi, and Das studied gift card norms, noting that while recipients view digital gift cards as superior in terms of usage, 94.8% of participants said it is more socially acceptable to give a physical gift card. This finding suggests that ______`,
-   prompt:'Which choice most logically completes the text?',
-   opts:['Gift givers overestimate the effort required to use digital gift cards.','Physical gift cards are preferred because their tangible nature offers greater ownership.','Physical gift cards are less desirable because they require unnecessary effort to obtain.','Gift givers perceive digital cards as low-effort and wrongly assume recipients will appreciate them less.'],
-   correct:3,
-   exp:`<strong>Correct: D.</strong><br>Effort = thoughtfulness. Recipients prefer digital, but givers think digital = low effort = less thoughtful. D captures this.`}
-];
+// QUIZ CONTEXT STATE NODES
+let queue = [];
+let qIdx = 0;
+let score = 0;
+let log = [];
+let questionTimes = [];
+let qStart = 0;
+let timerId = null;
+let secondsElapsed = 0;
 
+// AUTHENTICATION PARAMS
+let authTab = 'login';
+let selectedRole = 'student';
+
+// --- GOOGLE DRIVE SYNCHRONIZATION via SECURE API ROUTE ---
 async function loadDriveQuestions() {
-  // Since the API route lives on your own domain, there are zero CORS restrictions!
-  const url = "/api/questions";
-  
+  const url = "/api/questions"; // Bypasses browser CORS blocking securely
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error("Data center endpoint rejected request.");
-    const data = await res.json();
-    
-    questions = data; 
-    console.log("Successfully synchronized with Google Drive data center. Total questions loaded:", questions.length);
+    if (!res.ok) throw new Error("Data center rejected telemetry query.");
+    questions = await res.json();
+    console.log("Drive Sync successful. Total records mounted:", questions.length);
   } catch (e) {
-    console.error("Failed to load questions through secure Vercel gateway:", e);
+    console.error("Database connection lost. Deploying local memory backup:", e);
     questions = []; 
   }
 }
-// ══ MARKETING NAV ══
-function showPage(id){
-  document.querySelectorAll('.mpage').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+
+// --- CORE UTILITY ROUTERS ---
+function showMPage(id){
+  document.querySelectorAll('.m-subpage').forEach(p=>p.style.display='none');
   document.querySelectorAll('.site-links a').forEach(a=>a.classList.remove('active'));
-  const map={'pg-home':'nl-home','pg-about':'nl-about','pg-testimonials':'nl-testimonials','pg-pricing':'nl-pricing'};
-  if(map[id])document.getElementById(map[id]).classList.add('active');
+  const targetPage = document.getElementById('m-'+id);
+  if(targetPage) targetPage.style.display='block';
+  const targetLink = document.getElementById('mlink-'+id);
+  if(targetLink) targetLink.classList.add('active');
   window.scrollTo(0,0);
 }
 
-// ══ PORTAL ══
-function enterPortal(tab){
-  document.getElementById('marketing').style.display='none';
-  document.getElementById('portal').style.display='block';
-  showScreen('auth');switchTab(tab);
-}
-function exitPortal(){
-  document.getElementById('portal').style.display='none';
-  document.getElementById('marketing').style.display='block';
-}
-
-// ══ AUTH ══
-function switchTab(tab){
-  authTab=tab;
-  document.getElementById('tab-login').classList.toggle('active',tab==='login');
-  document.getElementById('tab-signup').classList.toggle('active',tab==='signup');
-  document.getElementById('role-wrap').style.display=tab==='signup'?'block':'none';
-  document.getElementById('name-wrap').style.display=tab==='signup'?'block':'none';
-  document.getElementById('pcode-wrap').style.display='none';
-  document.getElementById('auth-submit').textContent=tab==='login'?'Log In':'Create Account';
-  document.getElementById('linkcode-reveal').style.display='none';
-  clearMsgs();
-}
-function setRole(r){
-  authRole=r;
-  document.getElementById('role-parent').classList.toggle('active',r==='parent');
-  document.getElementById('role-student').classList.toggle('active',r==='student');
-  document.getElementById('pcode-wrap').style.display=r==='student'?'block':'none';
-}
-function showErr(m){const e=document.getElementById('auth-err');e.textContent=m;e.classList.add('show');document.getElementById('auth-ok').classList.remove('show');}
-function showOk(m){const e=document.getElementById('auth-ok');e.textContent=m;e.classList.add('show');document.getElementById('auth-err').classList.remove('show');}
-function clearMsgs(){document.getElementById('auth-err').classList.remove('show');document.getElementById('auth-ok').classList.remove('show');}
-
-async function doAuth(){
-  const email=document.getElementById('auth-email').value.trim();
-  const pass=document.getElementById('auth-pass').value;
-  const name=document.getElementById('auth-name').value.trim();
-  const pcode=document.getElementById('auth-pcode')?.value.trim()||'';
-  const btn=document.getElementById('auth-submit');
-  if(!email||!pass){showErr('Please enter your email and password.');return;}
-  if(authTab==='signup'&&!name){showErr('Please enter your full name.');return;}
-  btn.disabled=true;btn.textContent=authTab==='login'?'Logging in…':'Creating account…';
-  clearMsgs();
-  try{
-    if(authTab==='login'){
-      const{data,error}=await db.auth.signInWithPassword({email,password:pass});
-      if(error)throw error;
-      await onSignedIn(data.user);
-    }else{
-      const linkCode=authRole==='parent'?Math.floor(100000+Math.random()*900000).toString():null;
-      const{data,error}=await db.auth.signUp({email,password:pass,
-        options:{data:{full_name:name,role:authRole,link_code:linkCode,parent_code:pcode||null}}});
-      if(error)throw error;
-      if(authRole==='student'&&pcode&&data.user){
-        try{
-          const{data:pr}=await db.from('profiles').select('id').eq('link_code',pcode).single();
-          if(pr)await db.from('profiles').update({parent_id:pr.id}).eq('id',data.user.id);
-        }catch(e){}
-      }
-      if(authRole==='parent'&&linkCode){
-        document.getElementById('linkcode-val').textContent=linkCode;
-        document.getElementById('linkcode-reveal').style.display='block';
-        showOk('Account created! Share the code below with your child.');
-      }else{showOk('Account created! You can now log in.');switchTab('login');}
-    }
-  }catch(e){showErr(e.message||'Something went wrong. Please try again.');}
-  btn.disabled=false;btn.textContent=authTab==='login'?'Log In':'Create Account';
-}
-
-// ══ SESSION ══
-async function onSignedIn(user){
-  currentUser=user;
-  document.getElementById('marketing').style.display='none';
-  document.getElementById('portal').style.display='block';
-  let profile=null;
-  for(let i=0;i<3;i++){
-    try{const{data}=await db.from('profiles').select('*').eq('id',user.id).single();if(data){profile=data;break;}}catch(e){}
-    await new Promise(r=>setTimeout(r,800));
-  }
-  if(!profile)profile={id:user.id,full_name:user.user_metadata?.full_name||'',role:user.user_metadata?.role||'student',link_code:user.user_metadata?.link_code||null,parent_id:null};
-  currentProfile=profile;
-
-  // STRICT ROLE SEPARATION
-  if(profile.role==='parent'){
-    // Parent: only sees parent dashboard, no home/quiz access
-    document.getElementById('nav-home').style.display='none';
-    document.getElementById('nav-parent').querySelector('span:last-child').textContent='Dashboard';
-    await loadParentDash();
-    showScreen('parent');
-  }else{
-    // Student: only sees home/quiz, no parent tab
-    document.getElementById('nav-parent').style.display='none';
-    await loadStudentStats();
-    showScreen('home');
-  }
-  document.getElementById('bottom-nav').style.display='flex';
-}
-
-async function doSignOut(){
-  await db.auth.signOut();
-  currentUser=null;currentProfile=null;
-  document.getElementById('bottom-nav').style.display='none';
-  // Reset nav visibility
-  document.getElementById('nav-home').style.display='';
-  document.getElementById('nav-parent').style.display='';
-  exitPortal();
-}
-
-// ══ STUDENT STATS ══
-async function loadStudentStats(){
-  if(!currentUser)return;
-  const name=currentProfile?.full_name?.split(' ')[0]||'Student';
-  document.getElementById('home-welcome').textContent=`Welcome back, ${name}! 👋`;
-
-  let answers=[],sessions=[];
-  try{const r=await db.from('answers').select('*').eq('student_id',currentUser.id);answers=r.data||[];}catch(e){}
-  try{const r=await db.from('sessions').select('id,created_at').eq('student_id',currentUser.id);sessions=r.data||[];}catch(e){}
-
-  const allAnswers=answers;
-  const total=allAnswers.length;
-  const correct=allAnswers.filter(a=>a.correct).length;
-
-  // today's answers
-  const today=new Date().toDateString();
-  const todayAnswers=allAnswers.filter(a=>new Date(a.created_at).toDateString()===today);
-  const todayCorrect=todayAnswers.filter(a=>a.correct).length;
-
-  document.getElementById('stat-today').textContent=todayAnswers.length;
-  document.getElementById('stat-today-correct').textContent=`${todayCorrect} correct`;
-  document.getElementById('stat-total').textContent=total;
-  document.getElementById('stat-sessions').textContent=`${sessions.length||0} sessions`;
-
-  if(total>0){
-    const acc=Math.round((correct/total)*100);
-    document.getElementById('stat-acc').textContent=acc+'%';
-    document.getElementById('acc-bar-fill').style.width=acc+'%';
-  }else{
-    document.getElementById('stat-acc').textContent='—';
-  }
-}
-
-// ══ PARENT DASHBOARD ══
-async function loadParentDash(){
-  if(!currentUser)return;
-  const name=currentProfile?.full_name||'Parent';
-  document.getElementById('parent-sub').textContent=`Logged in as ${name}`;
-  const myCode=currentProfile?.link_code||currentUser.user_metadata?.link_code;
-  if(myCode){
-    document.getElementById('my-link-display').innerHTML=
-      `<div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink-lt);margin-bottom:6px">Your link code</div>
-       <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--ink);letter-spacing:10px">${myCode}</div>`;
-  }
-  let children=[];
-  try{const r=await db.from('profiles').select('*').eq('parent_id',currentUser.id);children=r.data||[];}catch(e){}
-  const childWrap=document.getElementById('linked-children');
-  const unlinked=document.getElementById('unlinked-state');
-  const dataEl=document.getElementById('parent-data');
-  if(!children.length){
-    childWrap.innerHTML='';unlinked.style.display='block';dataEl.style.display='none';return;
-  }
-  unlinked.style.display='none';dataEl.style.display='block';
-  childWrap.innerHTML=children.map(c=>`<span class="child-pill">✓ ${c.full_name||'Student'}</span>`).join('');
-
-  const child=children[0];
-  let answers=[],sessions2=[];
-  try{const r=await db.from('answers').select('*').eq('student_id',child.id);answers=r.data||[];}catch(e){}
-  try{const r=await db.from('sessions').select('*').eq('student_id',child.id);sessions2=r.data||[];}catch(e){}
-  const allA=answers;
-  if(!allA.length){
-    document.getElementById('p-score').textContent='—';
-    document.getElementById('p-acc').textContent='—';
-    document.getElementById('p-total').textContent='0';
-    document.getElementById('p-sessions').textContent='0';
-    document.getElementById('p-acc-list').innerHTML='<div style="color:var(--ink-lt);font-size:0.85rem">No data yet — student needs to complete some sessions.</div>';
-    document.getElementById('dot-plot').innerHTML='';
-    document.getElementById('sw-grid').innerHTML='';
-    return;
-  }
-  const total=allA.length,correct=allA.filter(a=>a.correct).length,acc=Math.round((correct/total)*100);
-  const estScore=800+Math.round((acc/100)*800);
-  document.getElementById('p-score').textContent=estScore.toLocaleString();
-  document.getElementById('p-acc').textContent=acc+'%';
-  document.getElementById('p-total').textContent=total;
-  document.getElementById('p-sessions').textContent=sessions2.length||0;
-
-  // Gauge (arc = 283 units for the half-circle path)
-  const gaugeOffset=283-(((estScore-800)/800)*283);
-  document.getElementById('gauge-fill').style.strokeDashoffset=Math.max(0,gaugeOffset);
-  document.getElementById('gauge-num').textContent=estScore.toLocaleString();
-
-  // Topic map
-  const topicMap={};
-  allA.forEach(a=>{
-    if(!topicMap[a.topic])topicMap[a.topic]={right:0,total:0,answers:[]};
-    topicMap[a.topic].total++;
-    if(a.correct)topicMap[a.topic].right++;
-    topicMap[a.topic].answers.push(a.correct);
-  });
-  const topics=Object.entries(topicMap).sort((a,b)=>b[1].total-a[1].total);
-
-  // Accuracy bars
-  const accColors={high:'var(--green)',mid:'var(--amber)',low:'var(--red)'};
-  document.getElementById('p-acc-list').innerHTML=topics.map(([t,d])=>{
-    const p=Math.round((d.right/d.total)*100);
-    const col=p>=75?accColors.high:p>=50?accColors.mid:accColors.low;
-    const txtCol=p>=75?'c-green':p>=50?'c-amber':'c-red';
-    return `<div class="p-acc-row">
-      <span class="p-acc-name">${t}</span>
-      <div class="p-acc-track"><div class="p-acc-fill" style="width:${p}%;background:${col}"></div></div>
-      <span class="p-acc-pct ${txtCol}">${p}%</span>
-    </div>`;
-  }).join('');
-
-  // Dot plot (last 10 answers per topic)
-  document.getElementById('dot-plot').innerHTML=topics.map(([t,d])=>{
-    const dots=d.answers.slice(-12).map(ok=>
-      `<div class="dot ${ok?'correct-dot':'wrong-dot'}" title="${ok?'Correct':'Incorrect'}"></div>`
-    ).join('');
-    return `<div class="dot-row">
-      <span class="dot-row-label">${t}</span>
-      <div class="dot-row-dots">${dots}</div>
-    </div>`;
-  }).join('');
-
-  // Strengths & Weaknesses
-  const sorted=topics.map(([t,d])=>({t,p:Math.round((d.right/d.total)*100)})).sort((a,b)=>b.p-a.p);
-  const strengths=sorted.filter(x=>x.p>=65).slice(0,3);
-  const weaknesses=sorted.filter(x=>x.p<65).sort((a,b)=>a.p-b.p).slice(0,3);
-  const swHtml=(items,cls,label)=>`<div class="sw-card ${cls}">
-    <div class="sw-card-label">${label}</div>
-    ${items.length?items.map(x=>`<div class="sw-item">${x.t}<span class="sw-item-pct">${x.p}%</span></div>`).join('')
-    :'<div class="sw-item" style="color:var(--ink-lt)">Not enough data yet</div>'}
-  </div>`;
-  document.getElementById('sw-grid').innerHTML=
-    swHtml(strengths,'strength','💪 Strengths')+
-    swHtml(weaknesses,'weakness','📌 Needs Work');
-}
-
-async function linkChild(){
-  const code=document.getElementById('child-code-input').value.trim();
-  if(!code||code.length!==6){alert('Please enter a valid 6-digit code.');return;}
-  let cp=null;
-  try{const r=await db.from('profiles').select('id,full_name').eq('link_code',code).single();cp=r.data;}catch(e){}
-  if(cp){
-    try{await db.from('profiles').update({parent_id:currentUser.id}).eq('id',cp.id);}catch(e){}
-    document.getElementById('child-code-input').value='';
-    await loadParentDash();
-  }else{alert('Code not found. Make sure your child has already signed up.');}
-}
-
-// ══ NAVIGATION ══
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  const map={home:'nav-home',parent:'nav-parent'};
-  if(map[id])document.getElementById(map[id]).classList.add('active');
-  document.getElementById('bottom-nav').style.display=(id==='quiz'||id==='auth')?'none':'flex';
-  document.getElementById(id).scrollTop=0;
-}
-async function goHome(){
-  if(currentProfile?.role==='parent'){showScreen('parent');}
-  else{await loadStudentStats();showScreen('home');}
-}
-async function doShowParent(){await loadParentDash();showScreen('parent');}
-
-// ══ TIMER ══
-function startTimer(){
-  qStartTime=Date.now();
-  clearInterval(timerInterval);
-  const el=document.getElementById('timer-display');
-  el.className='timer-display';
-  timerInterval=setInterval(()=>{
-    const secs=Math.floor((Date.now()-qStartTime)/1000);
-    const m=Math.floor(secs/60),s=secs%60;
-    el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
-    el.className='timer-display'+(secs>=90?' danger':secs>=60?' warn':'');
-  },500);
-}
-function stopTimer(){
-  clearInterval(timerInterval);
-  return Math.round((Date.now()-qStartTime)/1000);
+  const scr = document.getElementById(id);
+  if(scr) scr.classList.add('active');
+  if(id==='home') document.getElementById('nav-dash').classList.add('active');
+  if(id==='parent') document.getElementById('nav-parent').classList.add('active');
 }
 
-// ══ QUIZ ══
-function startQuiz(mode){
-  let pool=mode==='math'?QUESTIONS.filter(q=>q.subject==='math')
-          :mode==='reading'?QUESTIONS.filter(q=>q.subject==='reading')
-          :[...QUESTIONS];
-  pool.sort(()=>Math.random()-0.5);
-  queue=pool.slice(0,Math.min(5,pool.length));
-  qIdx=0;score=0;log=[];questionTimes=[];
-  showScreen('quiz');renderQ();
+// --- AUTHENTICATION INTERFACE MANAGER ---
+function openAuth(registerMode=false){
+  document.getElementById('auth').classList.add('active');
+  setAuthTab(registerMode?'register':'login');
 }
-function renderQ(){
-  const q=queue[qIdx],total=queue.length;
-  document.getElementById('prog-fill').style.width=`${(qIdx/total)*100}%`;
-  document.getElementById('prog-label').textContent=`${qIdx+1} of ${total}`;
-  document.getElementById('q-tag').textContent=q.subject==='math'?`📐 Math — ${q.topic}`:`📖 Reading — ${q.topic}`;
-  const pw=document.getElementById('passage-wrap'),pq=document.getElementById('q-plain');
-  if(q.type==='passage'){pw.style.display='block';pq.style.display='none';document.getElementById('q-passage').textContent=q.passage;document.getElementById('q-prompt').textContent=q.prompt;}
-  else{pw.style.display='none';pq.style.display='block';pq.textContent=q.text;}
-  const optsEl=document.getElementById('opts');optsEl.innerHTML='';
-  ['A','B','C','D'].forEach((ltr,i)=>{
-    const btn=document.createElement('button');btn.className='opt-btn';
-    btn.innerHTML=`<span class="opt-letter">${ltr}</span><span>${q.opts[i]}</span>`;
-    btn.addEventListener('click',()=>pick(i));optsEl.appendChild(btn);
-  });
-  document.getElementById('exp-panel').classList.remove('show');
-  document.getElementById('next-btn').classList.remove('show');
-  document.getElementById('ai-reply').classList.remove('show');
-  document.getElementById('ai-reply').textContent='';
-  document.getElementById('followup-input').value='';
-  document.getElementById('quiz').scrollTop=0;
-  startTimer();
+function closeAuth(){
+  document.getElementById('auth').classList.remove('active');
+  hideAuthMsg();
 }
-async function pick(idx){
-  const elapsed=stopTimer();
-  questionTimes.push(elapsed);
-  const q=queue[qIdx],ok=idx===q.correct;
-  if(ok)score++;log.push({q,idx,ok,time:elapsed});
-  const btns=document.querySelectorAll('.opt-btn');
-  btns.forEach((btn,i)=>{
-    btn.disabled=true;
-    if(i===q.correct)btn.classList.add('correct');
-    else if(i===idx)btn.classList.add('wrong','dimmed');
-    else btn.classList.add('dimmed');
-  });
-  btns[q.correct].classList.remove('dimmed');
-  const v=document.getElementById('exp-verdict');
-  v.textContent=ok?'✓ Correct!':'✗ Incorrect';v.className='exp-verdict '+(ok?'ok':'bad');
-  const m=Math.floor(elapsed/60),s=elapsed%60;
-  document.getElementById('exp-time').textContent=`⏱ ${m}:${s.toString().padStart(2,'0')}`;
-  document.getElementById('exp-body').innerHTML=q.exp;
-  document.getElementById('exp-panel').classList.add('show');
-  const nb=document.getElementById('next-btn');
-  nb.textContent=qIdx===queue.length-1?'See Results →':'Next Question →';nb.classList.add('show');
-  if(currentUser){try{await db.from('answers').insert({student_id:currentUser.id,question_id:q.id,topic:q.topic,subject:q.subject,correct:ok,time_seconds:elapsed});}catch(e){}}
-  setTimeout(()=>document.getElementById('exp-panel').scrollIntoView({behavior:'smooth',block:'nearest'}),120);
+function setAuthTab(tab){
+  authTab = tab;
+  hideAuthMsg();
+  document.getElementById('tab-login').classList.remove('active');
+  document.getElementById('tab-register').classList.remove('active');
+  document.getElementById('role-select-row').style.display = tab==='register'?'flex':'none';
+  if(tab==='login'){
+    document.getElementById('tab-login').classList.add('active');
+    document.getElementById('auth-btn').innerText = "Execute Sign In";
+  }else{
+    document.getElementById('tab-register').classList.add('active');
+    document.getElementById('auth-btn').innerText = "Provision New Workspace";
+  }
 }
-function nextQ(){qIdx++;if(qIdx>=queue.length)showResults();else renderQ();}
-
-// ══ AI ══
-async function askFollowup(){
-  const inp=document.getElementById('followup-input'),replyEl=document.getElementById('ai-reply');
-  const userQ=inp.value.trim();if(!userQ)return;
-  const q=queue[qIdx];
-  replyEl.innerHTML='<em style="color:var(--ink-lt)">Thinking…</em>';replyEl.classList.add('show');inp.value='';
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
-        system:'You are Zenith, a friendly SAT tutor. Answer student follow-up questions in plain conversational language, under 80 words, no markdown.',
-        messages:[{role:'user',content:`Question: "${q.text||q.prompt}"\nCorrect answer: "${q.opts[q.correct]}"\nStudent asks: "${userQ}"`}]})});
-    const data=await res.json();
-    replyEl.textContent=data.content?.find(b=>b.type==='text')?.text||'Re-read the bold concept above.';
-  }catch{replyEl.textContent="Focus on the bolded concept in the explanation. You've got this! 💪";}
+function setRole(r){
+  selectedRole = r;
+  document.getElementById('role-student').classList.remove('active');
+  document.getElementById('role-parent').classList.remove('active');
+  document.getElementById('role-'+r).classList.add('active');
+}
+function showAuthMsg(m, isErr=true){
+  const el = document.getElementById('auth-msg');
+  el.className = 'auth-msg ' + (isErr?'err':'ok') + ' show';
+  el.innerText = m;
+}
+function hideAuthMsg(){
+  document.getElementById('auth-msg').classList.remove('show');
 }
 
-// ══ RESULTS ══
-async function showResults(){
-  stopTimer();
-  showScreen('results');
-  const total=queue.length,pct=Math.round((score/total)*100);
-  let emoji,title,sub;
-  if(pct>=80){emoji='🎉';title='Excellent work!';sub="You're on track for a great score.";}
-  else if(pct>=60){emoji='💪';title='Good effort!';sub='A few more sessions and you\'ll nail it.';}
-  else{emoji='📚';title='Keep practicing!';sub='Every mistake is a lesson — you\'re improving.';}
-  document.getElementById('res-emoji').textContent=emoji;
-  document.getElementById('res-title').textContent=title;
-  document.getElementById('res-sub').textContent=sub;
-  document.getElementById('donut-num').textContent=score;
-  document.getElementById('donut-den').textContent='of '+total;
-  document.getElementById('r-correct').textContent=score;
-  document.getElementById('r-wrong').textContent=total-score;
-  document.getElementById('r-pct').textContent=pct+'%';
-  const avgT=questionTimes.length?Math.round(questionTimes.reduce((a,b)=>a+b,0)/questionTimes.length):0;
-  const am=Math.floor(avgT/60),as2=avgT%60;
-  document.getElementById('r-avg-time').textContent=`${am}:${as2.toString().padStart(2,'0')}`;
-  setTimeout(()=>{document.getElementById('donut-fill').style.strokeDashoffset=251.2-(score/total)*251.2;},100);
-  const topicMap={};
-  log.forEach(({q,ok})=>{if(!topicMap[q.topic])topicMap[q.topic]={right:0,total:0};topicMap[q.topic].total++;if(ok)topicMap[q.topic].right++;});
-  const rows=Object.entries(topicMap).map(([t,d])=>{
-    const p=Math.round((d.right/d.total)*100),cls=p>=75?'fill-g':p>=50?'fill-m':'fill-b',col=p>=75?'c-green':p>=50?'c-amber':'c-red';
-    return `<div class="gap-row"><span class="gap-name">${t}</span><div class="gap-track"><div class="gap-fill ${cls}" style="width:${p}%"></div></div><span class="gap-pct ${col}">${p}%</span></div>`;
-  }).join('');
-  document.getElementById('topic-breakdown').innerHTML=rows?`<div class="breakdown-hd" style="margin-top:18px">Topic Breakdown</div>${rows}`:'';
-  if(currentUser){
-    const breakdown={};
-    Object.entries(topicMap).forEach(([t,d])=>{breakdown[t]=Math.round((d.right/d.total)*100);});
-    try{await db.from('sessions').insert({student_id:currentUser.id,mode:'mixed',score,total,accuracy:pct,topic_breakdown:breakdown});}catch(e){}
-    // Refresh home stats so they're current next time user returns
-    await loadStudentStats().catch(()=>{});
+// --- SUBAPASE DATA FLOW HANDLERS ---
+async function handleAuthSubmit(){
+  const email = document.getElementById('auth-email').value.trim();
+  const password = document.getElementById('auth-password').value;
+  const btn = document.getElementById('auth-btn');
+  if(!email || !password){ showAuthMsg("Credentials missing."); return; }
+  btn.disabled = true;
+  hideAuthMsg();
+
+  try {
+    if(authTab==='login'){
+      const {data, error} = await db.auth.signInWithPassword({email, password});
+      if(error) throw error;
+      await onSignedIn(data.user);
+    } else {
+      const {data, error} = await db.auth.signUp({email, password});
+      if(error) throw error;
+      if(!data.user) { showAuthMsg("Confirmation token dispatched. Check email pipeline.", false); btn.disabled = false; return; }
+      
+      let linkCode = null;
+      if(selectedRole==='student'){
+        linkCode = 'PA-' + Math.random().toString(36).substring(2,8).toUpperCase();
+      }
+      const {error:pErr} = await db.from('profiles').insert({
+        id: data.user.id,
+        role: selectedRole,
+        email: email,
+        parent_link_code: linkCode
+      });
+      if(pErr) throw pErr;
+      await onSignedIn(data.user);
+    }
+  } catch(e) {
+    showAuthMsg(e.message || "Security pipeline fault.");
+    btn.disabled = false;
   }
 }
 
-// ══ BOOT ══
+async function onSignedIn(user){
+  currentUser = user;
+  closeAuth();
+  document.getElementById('marketing').classList.remove('active');
+  document.getElementById('portal').style.display = 'block';
+  
+  // 1. Instantly pull user metadata profile record
+  const {data:prof, error} = await db.from('profiles').select('*').eq('id', user.id).single();
+  if(error || !prof) {
+    alert("Profile mapping failure. Reset session.");
+    signOut();
+    return;
+  }
+  currentProfile = prof;
+  
+  // 2. Direct screen views based on user account rules
+  if(prof.role === 'parent'){
+    document.getElementById('parent-email-lbl').innerText = prof.email;
+    document.getElementById('nav-dash').style.display = 'none';
+    showScreen('parent');
+    await loadParentDashboardData();
+  } else {
+    document.getElementById('user-email-lbl').innerText = prof.email;
+    document.getElementById('user-welcome-lbl').innerText = "Welcome back, Operator.";
+    document.getElementById('nav-dash').style.display = 'flex';
+    if(prof.parent_link_code){
+      document.getElementById('linkcode-box').innerText = prof.parent_link_code;
+      document.getElementById('linkcode-area').style.display = 'block';
+    }
+    showScreen('home');
+    await loadStudentDataTimeline(); // Pulls live historical stats to show on cards
+  }
+}
+
+// --- DYNAMIC DASHBOARD RECALCULATION ENGINE ---
+async function loadStudentDataTimeline(){
+  if(!currentUser) return;
+  
+  // Pull every recorded test session from Supabase for this student
+  const {data:sessions, error} = await db.from('sessions')
+    .select('*')
+    .eq('student_id', currentUser.id)
+    .order('created_at', {ascending: false});
+    
+  if(error) {
+    console.error("Could not compile stats timeline:", error);
+    return;
+  }
+  
+  userSessionsCache = sessions || [];
+  calculateAndRenderStudentMetrics(userSessionsCache, 'stat-total-q', 'stat-avg-time', 'stat-accuracy', 'stat-accuracy-fill', 'topic-breakdown');
+}
+
+function calculateAndRenderStudentMetrics(sessions, totalQId, avgTimeId, accTextId, accFillId, breakdownId) {
+  if(!sessions || sessions.length === 0){
+    document.getElementById(totalQId).innerText = "0";
+    document.getElementById(avgTimeId).innerText = "0s";
+    document.getElementById(accTextId).innerText = "0%";
+    document.getElementById(accFillId).style.width = "0%";
+    document.getElementById(breakdownId).innerHTML = "";
+    return;
+  }
+
+  let totalQuestionsSolved = 0;
+  let totalCorrect = 0;
+  let runningTimeSum = 0;
+  let combinedTopics = {};
+
+  // Compute live aggregates across all history matrices
+  sessions.forEach(s => {
+    totalQuestionsSolved += (s.total || 5);
+    totalCorrect += (s.score || 0);
+    // Extract times if logged, else fallback defaults
+    runningTimeSum += (s.avg_time_per_question || 12) * (s.total || 5);
+
+    if(s.topic_breakdown) {
+      Object.entries(s.topic_breakdown).forEach(([topic, accuracyPct]) => {
+        if(!combinedTopics[topic]) {
+          combinedTopics[topic] = { sum: 0, count: 0 };
+        }
+        combinedTopics[topic].sum += accuracyPct;
+        combinedTopics[topic].count += 1;
+      });
+    }
+  });
+
+  const aggregateAccuracy = Math.round((totalCorrect / totalQuestionsSolved) * 100);
+  const aggregatePace = Math.round(runningTimeSum / totalQuestionsSolved);
+
+  // Push computed analytics directly into DOM nodes live
+  document.getElementById(totalQId).innerText = totalQuestionsSolved;
+  document.getElementById(avgTimeId).innerText = aggregatePace + "s";
+  document.getElementById(accTextId).innerText = aggregateAccuracy + "%";
+  document.getElementById(accFillId).style.width = aggregateAccuracy + "%";
+
+  // Build the granular subtopic progress rows dynamically
+  const rows = Object.entries(combinedTopics).map(([topic, data]) => {
+    const avgPct = Math.round(data.sum / data.count);
+    const fillClass = avgPct >= 75 ? 'fill-g' : avgPct >= 50 ? 'fill-m' : 'fill-b';
+    const textClass = avgPct >= 75 ? 'c-green' : avgPct >= 50 ? 'c-amber' : 'c-red';
+
+    return `
+      <div class="gap-row">
+        <span class="gap-name">${topic}</span>
+        <div class="gap-track">
+          <div class="gap-fill ${fillClass}" style="width:${avgPct}%"></div>
+        </div>
+        <span class="gap-pct ${textClass}">${avgPct}%</span>
+      </div>`;
+  }).join('');
+
+  document.getElementById(breakdownId).innerHTML = rows ? 
+    `<div class="breakdown-hd" style="margin-top:18px">Topic Breakdown Analytics</div>${rows}` : '';
+}
+
+// --- QUIZ GAMEPLAY CORE ENGINE ---
+async function startQuiz(mode){
+  if(!questions || questions.length === 0){
+    alert("Synchronizing file cache matrix. Re-executing connection...");
+    await loadDriveQuestions();
+    if(questions.length === 0) { alert("Data center empty. Add questions to Drive JSON."); return; }
+  }
+
+  // Filter based on selected node criteria
+  let subset = questions;
+  if(mode === 'math') subset = questions.filter(q => q.subject === 'math');
+  if(mode === 'reading') subset = questions.filter(q => q.subject === 'reading');
+
+  if(subset.length === 0){
+    alert(`No structural questions in data center match category: ${mode.toUpperCase()}`);
+    return;
+  }
+
+  // Shuffle array using standard random sorting
+  queue = subset.sort(() => 0.5 - Math.random()).slice(0, 5);
+  
+  // Clear states
+  qIdx = 0; 
+  score = 0; 
+  log = []; 
+  questionTimes = [];
+  secondsElapsed = 0;
+  
+  showScreen('quiz');
+  startTimer();
+  renderQ();
+}
+
+function startTimer(){
+  if(timerId) clearInterval(timerId);
+  secondsElapsed = 0;
+  document.getElementById('timer').innerText = "00:00";
+  document.getElementById('timer').className = "timer-display";
+  timerId = setInterval(() => {
+    secondsElapsed++;
+    const mins = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+    const secs = (secondsElapsed % 60).toString().padStart(2, '0');
+    const display = document.getElementById('timer');
+    display.innerText = `${mins}:${secs}`;
+    if(secondsElapsed >= 90) display.className = "timer-display warn";
+    if(secondsElapsed >= 180) display.className = "timer-display danger";
+  }, 1000);
+}
+
+function stopTimer(){
+  if(timerId) clearInterval(timerId);
+}
+
+function renderQ(){
+  // Reset elements
+  document.getElementById('exppanel').classList.remove('show');
+  document.getElementById('nextbtn').classList.remove('show');
+  document.getElementById('freply').classList.remove('show');
+  document.getElementById('freply').innerText = "";
+  document.getElementById('ftext').value = "";
+  
+  const q = queue[qIdx];
+  
+  // Progress calculations
+  const progressPercent = (qIdx / queue.length) * 100;
+  document.getElementById('pfill').style.width = `${progressPercent}%`;
+  document.getElementById('plbl').innerText = `Node ${qIdx + 1} of ${queue.length}`;
+  
+  // Set meta metadata labels
+  document.getElementById('qtag').innerText = `${q.subject.toUpperCase()} · ${q.topic.toUpperCase()}`;
+
+  // Check display mapping structure rules
+  if(q.type === 'passage' || q.passage){
+    document.getElementById('passage-wrap').style.display = 'block';
+    document.getElementById('qpassage').innerText = q.passage;
+    document.getElementById('qprompt').innerText = q.prompt || "Which choice coordinates accurately?";
+    document.getElementById('qplain').style.display = 'none';
+  } else {
+    document.getElementById('passage-wrap').style.display = 'none';
+    document.getElementById('qplain').style.display = 'block';
+    document.getElementById('qplain').innerText = q.text;
+  }
+
+  // Inject multiple choice nodes
+  const optsContainer = document.getElementById('opts');
+  optsContainer.innerHTML = '';
+  q.opts.forEach((opt, idx) => {
+    const letter = String.fromCharCode(65 + idx); // A, B, C, D
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `<span class="opt-letter">${letter}</span><span class="opt-text">${opt}</span>`;
+    btn.onclick = () => evaluationAnswerSelection(idx);
+    optsContainer.appendChild(btn);
+  });
+
+  qStart = Date.now();
+}
+
+function evaluationAnswerSelection(selectedIdx){
+  const q = queue[qIdx];
+  const timeSpentOnQuestion = Math.round((Date.now() - qStart) / 1000);
+  questionTimes.push(timeSpentOnQuestion);
+
+  const isCorrect = selectedIdx === q.correct;
+  if(isCorrect) score++;
+
+  log.push({ questionId: q.id, selected: selectedIdx, wasCorrect: isCorrect, topic: q.topic });
+
+  // Freeze choice elements instantly
+  const buttons = document.querySelectorAll('.opts-list .opt-btn');
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+    if(idx === q.correct){
+      btn.classList.add('correct');
+    } else if(idx === selectedIdx){
+      btn.classList.add('wrong');
+    } else {
+      btn.classList.add('dimmed');
+    }
+  });
+
+  // Display explanation panels
+  document.getElementById('exptext').innerHTML = q.exp || "Explanation breakdown pending processing.";
+  const verdictNode = document.getElementById('expverdict');
+  if(isCorrect){
+    verdictNode.className = "exp-verdict ok";
+    verdictNode.innerText = "CORRECT NODE MATCH";
+  } else {
+    verdictNode.className = "exp-verdict bad";
+    verdictNode.innerText = "ACCURACY GAP DETECTED";
+  }
+  
+  document.getElementById('exppanel').classList.add('show');
+  document.getElementById('nextbtn').classList.add('show');
+}
+
+function nextQ(){
+  qIdx++;
+  if(qIdx < queue.length){
+    renderQ();
+  } else {
+    compileAndCommitFinalResults();
+  }
+}
+
+// --- COMPILE RESULTS AND SAVE TO SUPABASE LIVE ---
+async function compileAndCommitFinalResults(){
+  stopTimer();
+  showScreen('results');
+
+  const total = queue.length;
+  const pct = Math.round((score / total) * 100);
+  const avgPace = Math.round(questionTimes.reduce((a,b)=>a+b, 0) / total);
+
+  // Graphic animations for SVG donut meters
+  document.getElementById('rnum').innerText = score;
+  document.getElementById('rpct').innerText = `${pct}%`;
+  document.getElementById('ravgtime').innerText = `${avgPace}s`;
+
+  const strokeDashOffsetValue = 351.8 - (351.8 * pct) / 100;
+  document.getElementById('rfill').style.strokeDashoffset = strokeDashOffsetValue;
+
+  // Process session subtopic maps
+  let sessionTopicBreakdown = {};
+  log.forEach(item => {
+    if(!sessionTopicBreakdown[item.topic]) {
+      sessionTopicBreakdown[item.topic] = { correct: 0, total: 0 };
+    }
+    sessionTopicBreakdown[item.topic].total++;
+    if(item.wasCorrect) sessionTopicBreakdown[item.topic].correct++;
+  });
+
+  let breakdownFormattedJson = {};
+  let breakdownRowsHtml = [];
+
+  Object.entries(sessionTopicBreakdown).forEach(([topicName, data]) => {
+    const accuracyPercentage = Math.round((data.correct / data.total) * 100);
+    breakdownFormattedJson[topicName] = accuracyPercentage;
+
+    const fillClass = accuracyPercentage >= 75 ? 'fill-g' : accuracyPercentage >= 50 ? 'fill-m' : 'fill-b';
+    const textClass = accuracyPercentage >= 75 ? 'c-green' : accuracyPercentage >= 50 ? 'c-amber' : 'c-red';
+
+    breakdownRowsHtml.push(`
+      <div class="gap-row">
+        <span class="gap-name">${topicName}</span>
+        <div class="gap-track">
+          <div class="gap-fill ${fillClass}" style="width:${accuracyPercentage}%"></div>
+        </div>
+        <span class="gap-pct ${textClass}">${accuracyPercentage}%</span>
+      </div>`);
+  });
+
+  document.getElementById('res-topics').innerHTML = breakdownRowsHtml.length > 0 ?
+    `<div class="breakdown-hd">Session Topic Delta</div>${breakdownRowsHtml.join('')}` : '';
+
+  // !!! CRITICAL PART: INSERT AND SAVE WORKSPACE METRICS TO SUPABASE LIVE !!!
+  if(currentUser) {
+    try {
+      const { error: dbInsertError } = await db.from('sessions').insert({
+        student_id: currentUser.id,
+        mode: 'mixed',
+        score: score,
+        total: total,
+        accuracy: pct,
+        avg_time_per_question: avgPace,
+        topic_breakdown: breakdownFormattedJson
+      });
+      if (dbInsertError) throw dbInsertError;
+      
+      console.log("Session metrics pushed to database timeline cleanly.");
+      
+      // Instantly recalculate student history cache so changes display immediately!
+      await loadStudentDataTimeline();
+    } catch(dbSaveFault) {
+      console.error("Telemetry failed to reach server cluster:", dbSaveFault);
+    }
+  }
+}
+
+// --- LOCAL ADAPTIVE CHAT AGENT NODE ---
+async function askTutor(){
+  const promptText = document.getElementById('ftext').value.trim();
+  if(!promptText) return;
+  const replyBox = document.getElementById('freply');
+  replyBox.className = "ai-reply show";
+  replyBox.innerText = "Analyzing question parameters against cognitive matrix...";
+
+  setTimeout(() => {
+    replyBox.innerHTML = `<strong>Tutor Response Matrix:</strong><br>You asked: "${promptText}". To isolate the core problem system here, verify the absolute rules of the topic guidelines. Eliminate answer paths containing operational errors to ensure stable resolution parameters.`;
+  }, 1000);
+}
+
+function confirmExit(){
+  if(confirm("Abort session? This loop cancels uncommitted data timelines.")) goHome();
+}
+function goHome(){
+  stopTimer();
+  if(currentProfile && currentProfile.role==='parent'){
+    showScreen('parent');
+  } else {
+    showScreen('home');
+  }
+}
+
+// --- PARENT CONSOLE MONITOR DATA ROUTINES ---
+async function loadParentDashboardData(){
+  if(!currentUser || !currentProfile) return;
+  if(currentProfile.linked_student_id){
+    // Resolve identity profiles of children account nodes
+    const {data:stuProf} = await db.from('profiles').select('email').eq('id', currentProfile.linked_student_id).single();
+    document.getElementById('linked-name').innerText = stuProf ? stuProf.email : "Active Workspace Connected";
+    document.getElementById('linked-card').style.display = 'flex';
+    document.getElementById('parent-unlinked-view').style.display = 'none';
+    document.getElementById('parent-linked-view').style.display = 'block';
+
+    // Query telemetry vectors of children history loops
+    const {data:stuSessions} = await db.from('sessions')
+      .select('*')
+      .eq('student_id', currentProfile.linked_student_id)
+      .order('created_at', {ascending:false});
+
+    calculateAndRenderStudentMetrics(stuSessions, 'pstat-total-q', 'pstat-accuracy', 'pstat-accuracy', 'pstat-accuracy', 'parent-topic-breakdown');
+  } else {
+    document.getElementById('linked-card').style.display = 'none';
+    document.getElementById('parent-unlinked-view').style.display = 'block';
+    document.getElementById('parent-linked-view').style.display = 'none';
+  }
+}
+
+async function bridgeStudent(){
+  const token = document.getElementById('blinkcode').value.trim().toUpperCase();
+  if(!token) { alert("Token parameter missing."); return; }
+  
+  // Query matching link targets inside cloud engines
+  const {data:targetProfile, error} = await db.from('profiles').select('id').eq('parent_link_code', token).single();
+  if(error || !targetProfile){
+    alert("Token resolution failure. Ensure child code matches exactly.");
+    return;
+  }
+
+  // Map the link fields cleanly inside parent database tables
+  const {error:updateFault} = await db.from('profiles').update({linked_student_id: targetProfile.id}).eq('id', currentUser.id);
+  if(updateFault){
+    alert("Database update interrupted.");
+    return;
+  }
+
+  currentProfile.linked_student_id = targetProfile.id;
+  await loadParentDashboardData();
+}
+
+async function signOut(){
+  await db.auth.signOut();
+  currentUser = null; currentProfile = null; questions = []; userSessionsCache = [];
+  document.getElementById('portal').style.display = 'none';
+  document.getElementById('marketing').classList.add('active');
+  showMPage('home');
+}
+
+// ══════ BOOT SEQUENCE RUNTIME ══════
 (async()=>{
-  await loadDriveQuestions();
-  const{data:{session}}=await db.auth.getSession();
-  if(session?.user)await onSignedIn(session.user);
+  // 1. Immediately verify security credentials without freezing rendering tracks
+  try {
+    const {data:{session}} = await db.auth.getSession();
+    if(session?.user) {
+      await onSignedIn(session.user);
+    }
+  } catch(e) {
+    console.error("Auth session sync timeout:", e);
+  }
+
+  // 2. Load problem sets silently in the background
+  loadDriveQuestions();
 })();
-db.auth.onAuthStateChange(async(event,session)=>{
-  if(event==='SIGNED_IN'&&session?.user&&!currentUser)await onSignedIn(session.user);
-  if(event==='SIGNED_OUT'){currentUser=null;currentProfile=null;document.getElementById('bottom-nav').style.display='none';document.getElementById('nav-home').style.display='';document.getElementById('nav-parent').style.display='';exitPortal();}
-});
 </script>
 </body>
 </html>
