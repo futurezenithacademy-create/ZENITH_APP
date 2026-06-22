@@ -1,641 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Zenith · SAT Prep Platform</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root{--ink:#0C1A2E;--ink-mid:#2D4065;--ink-lt:#5A7299;--rule:#E2E8F2;--rule-mid:#C8D6E8;--bg:#FFFFFF;--bg-soft:#F7F9FC;--bg-tint:#EEF3FA;--blue:#1A56DB;--blue-pale:#EBF2FF;--green:#0F7B4E;--green-bg:#EDFAF4;--red:#C0392B;--red-bg:#FDF2F1;--amber:#B45309;--sh-sm:0 2px 8px rgba(12,26,46,0.08);--sh-md:0 8px 24px rgba(12,26,46,0.10);--sh-lg:0 20px 50px rgba(12,26,46,0.13)}
-*{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink)}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZENITH — Elite SAT Preparation</title>
+  <meta name="description" content="ZENITH adaptive SAT platform. 2-module adaptive testing, real-time analytics, parent monitoring." />
 
-/* MARKETING */
-.mpage{display:none}.mpage.active{display:block}
-.announce{background:var(--ink);color:rgba(255,255,255,0.78);text-align:center;font-size:0.8rem;font-weight:500;padding:10px 20px}
-.site-nav{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:20px 32px;border-bottom:1px solid var(--rule)}
-.site-logo{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.5px;cursor:pointer}
-.site-logo em{font-style:normal;color:var(--blue)}
-.site-links{display:flex;gap:32px;align-items:center;list-style:none}
-.site-links a{color:var(--ink-lt);text-decoration:none;font-size:0.88rem;font-weight:500;cursor:pointer}
-.site-links a:hover,.site-links a.active{color:var(--ink)}
-.nav-cta-wrap{display:flex;gap:10px}
-.nav-signin{border:1.5px solid var(--rule);color:var(--ink-mid);background:transparent;padding:9px 18px;border-radius:8px;font-size:0.85rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer}
-.nav-signin:hover{border-color:var(--ink-mid);color:var(--ink)}
-.nav-start{background:var(--ink);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:0.85rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer}
-.nav-start:hover{background:var(--blue)}
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-.hero-wrap{max-width:1200px;margin:0 auto;padding:80px 32px 90px;display:grid;grid-template-columns:1fr 440px;gap:80px;align-items:center}
-.hero-h1{font-family:'Cormorant Garamond',serif;font-size:4.6rem;font-weight:700;line-height:1.08;letter-spacing:-1.5px;color:var(--ink);margin-bottom:20px}
-.hero-h1 em{font-style:italic;color:var(--blue)}
-.hero-p{font-size:1.02rem;color:var(--ink-lt);line-height:1.78;margin-bottom:34px;max-width:440px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn-primary{background:var(--ink);color:#fff;border:none;border-radius:9px;padding:14px 28px;font-size:0.93rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer}
-.btn-primary:hover{background:var(--blue)}
-.hero-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:20px;padding:28px;box-shadow:var(--sh-lg)}
-.hc-label{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
-.hc-score-num{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:700;color:var(--ink);line-height:1;display:block;letter-spacing:-2px}
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-/* AUTH */
-#auth{display:none;position:fixed;inset:0;background:linear-gradient(135deg,var(--bg-soft) 0%,var(--bg) 50%,var(--blue-pale) 100%);overflow-y:auto;align-items:center;justify-content:center;padding:40px 22px;z-index:1000}
-#auth.active{display:flex}
-.auth-wrap{width:100%;max-width:420px}
-.auth-brand{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:8px;letter-spacing:-0.5px}
-.auth-brand em{font-style:normal;color:var(--blue)}
-.auth-tagline{text-align:center;font-size:0.85rem;color:var(--ink-mid);margin-bottom:32pt;font-weight:500}
-.auth-panel{background:var(--bg);border:1px solid var(--rule);border-radius:18px;padding:32px;box-shadow:var(--sh-md)}
-.auth-tabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:28px}
-.auth-tab{flex:1;padding:14px;border:none;background:transparent;font-size:0.9rem;font-weight:600;color:var(--ink-lt);cursor:pointer;font-family:'Outfit',sans-serif;border-bottom:2px solid transparent;margin-bottom:-1px;text-align:center}
-.auth-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
-.role-row{display:flex;gap:10px;margin-bottom:20px}
-.role-btn{flex:1;padding:11px;border-radius:9px;border:1.5px solid var(--rule);background:var(--bg);color:var(--ink-lt);font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;text-align:center}
-.role-btn.active{border-color:var(--blue);color:var(--blue);background:var(--blue-pale)}
-.field-label{font-size:0.72rem;font-weight:700;letter-spacing:0.7px;text-transform:uppercase;color:var(--ink-mid);margin-bottom:7px;display:block}
-.auth-input{width:100%;padding:12px 14px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:9px;color:var(--ink);font-size:0.92rem;font-family:'Outfit',sans-serif;outline:none;margin-bottom:16px}
-.auth-input:focus{border-color:var(--blue);background:var(--bg);box-shadow:0 0 0 3px rgba(26,86,219,0.08)}
-.auth-submit{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:9px;font-size:0.95rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer}
-.auth-submit:hover:not(:disabled){background:var(--blue)}
-.auth-submit:disabled{opacity:0.5;cursor:not-allowed}
-.auth-msg{font-size:0.82rem;padding:11px 14px;border-radius:8px;margin-bottom:16px;font-weight:500;display:none;border:1px solid}
-.auth-msg.err{background:var(--red-bg);color:var(--red);border-color:rgba(192,57,43,0.2)}
-.auth-msg.ok{background:var(--green-bg);color:var(--green);border-color:rgba(15,123,78,0.2)}
-.auth-msg.show{display:block}
-.linkcode-reveal{margin-top:20px;padding:18px;background:var(--blue-pale);border:1px solid rgba(26,86,219,0.25);border-radius:12px;text-align:center;display:none}
-.linkcode-lbl{font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
-.linkcode-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--ink);letter-spacing:8px}
-.auth-back{text-align:center;margin-top:16px}
-.auth-back button{background:none;border:none;font-family:'Outfit',sans-serif;font-size:0.83rem;color:var(--ink-lt);cursor:pointer;text-decoration:underline}
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-/* PORTAL */
-#portal{display:none;position:fixed;inset:0;overflow-y:auto;z-index:999}
-#portal.active{display:block}
-
-/* HOME/DASHBOARD */
-.screen{display:none;position:fixed;inset:0;overflow-y:auto;background:var(--bg)}
-.screen.active{display:block}
-
-.home-hdr{background:var(--ink);padding:50px 22px 28px;position:relative;overflow:hidden}
-.home-brand{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:700;color:#fff;position:relative;z-index:1;letter-spacing:-0.5px}
-.home-brand em{font-style:normal;color:#7EB3FF}
-.home-welcome{color:rgba(255,255,255,0.85);font-size:0.88rem;font-weight:600;position:relative;z-index:1}
-.home-body{padding:20px 18px 0}
-
-.stu-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.stu-stat{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:16px 14px;box-shadow:var(--sh-sm)}
-.stu-stat-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);display:block;line-height:1;margin-bottom:4px;transition:all 0.4s ease}
-.stu-stat-lbl{font-size:0.65rem;color:var(--ink-lt);font-weight:600;text-transform:uppercase;letter-spacing:0.8px}
-.stu-stat-sub{font-size:0.72rem;color:var(--ink-lt);margin-top:3px}
-
-.acc-bar-wrap{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:16px;margin-bottom:22px;box-shadow:var(--sh-sm)}
-.acc-bar-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--ink);transition:all 0.5s ease}
-.acc-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;margin:8px 0}
-.acc-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--green));transition:width 0.8s ease}
-
-.mode-label{font-size:0.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-lt);margin-bottom:12px}
-.mode-card{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:18px 16px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;gap:14px;box-shadow:var(--sh-sm)}
-.mode-card:hover{border-color:var(--blue);box-shadow:var(--sh-md);transform:translateX(2px)}
-.mode-icon{width:44px;height:44px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
-.mode-title{font-size:0.93rem;font-weight:700;color:var(--ink);margin-bottom:2px}
-.mode-desc{font-size:0.76rem;color:var(--ink-lt);line-height:1.45}
-.signout-btn{width:100%;margin-top:18px;padding:13px;background:transparent;border:1px solid var(--rule);border-radius:9px;color:var(--ink-lt);font-family:'Outfit',sans-serif;font-size:0.87rem;font-weight:500;cursor:pointer}
-.signout-btn:hover{border-color:var(--ink-lt);color:var(--ink)}
-
-/* QUIZ */
-#quiz{padding:0 0 80px}
-.quiz-topbar{display:flex;align-items:center;gap:12px;padding:12px 16px 10px;background:var(--bg);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--rule);box-shadow:var(--sh-sm)}
-.back-btn{background:var(--bg-soft);border:1px solid var(--rule);color:var(--ink-mid);cursor:pointer;padding:7px 12px;border-radius:7px;font-size:0.82rem;font-weight:600;font-family:'Outfit',sans-serif;flex-shrink:0}
-.timer-display{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--ink);line-height:1;min-width:52px;text-align:center}
-.timer-display.warn{color:var(--amber)}
-.timer-display.danger{color:var(--red);animation:pulse 0.6s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-.prog-wrap{flex:1}
-.prog-track{height:5px;background:var(--rule);border-radius:3px;overflow:hidden}
-.prog-fill{height:100%;background:var(--blue);border-radius:3px;transition:width 0.4s ease}
-.prog-label{font-size:0.66rem;color:var(--ink-lt);text-align:right;margin-top:4px;font-weight:600}
-
-.quiz-body{padding:18px 16px 0}
-.q-tag{display:inline-block;background:var(--bg-soft);border:1px solid var(--rule);color:var(--ink-mid);font-size:0.68rem;font-weight:700;padding:4px 12px;border-radius:100px;margin-bottom:15px}
-.passage-box{background:var(--bg-soft);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:16px 18px;font-size:0.87rem;line-height:1.9;color:var(--ink-mid);margin-bottom:14px}
-.question-box{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;font-size:0.93rem;line-height:1.75;color:var(--ink);margin-bottom:16px;white-space:pre-line}
-.opts-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-.opt-btn{width:100%;background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:12px 13px;display:flex;align-items:flex-start;gap:11px;cursor:pointer;color:var(--ink);font-size:0.87rem;line-height:1.55;font-family:'Outfit',sans-serif;text-align:left;transition:all 0.15s;box-shadow:var(--sh-sm)}
-.opt-btn:hover:not([disabled]){border-color:var(--blue);background:var(--blue-pale);transform:translateX(2px)}
-.opt-btn[disabled]{cursor:default}
-.opt-btn.correct{border-color:var(--green)!important;background:var(--green-bg)!important}
-.opt-btn.wrong{border-color:var(--red)!important;background:var(--red-bg)!important}
-.opt-btn.dimmed{opacity:0.35}
-.opt-letter{width:24px;height:24px;flex-shrink:0;margin-top:1px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.67rem;font-weight:700;color:var(--ink-lt);transition:all 0.15s}
-.opt-btn.correct .opt-letter{background:var(--green);color:#fff;border-color:var(--green)}
-.opt-btn.wrong .opt-letter{background:var(--red);color:#fff;border-color:var(--red)}
-.exp-panel{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:16px;margin-bottom:12px;display:none}
-.exp-panel.show{display:block;animation:slideup 0.25s ease}
-@keyframes slideup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.exp-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
-.exp-tutor{font-size:0.72rem;font-weight:700;color:var(--blue)}
-.exp-time{font-size:0.7rem;color:var(--ink-lt);font-weight:500}
-.exp-verdict{margin-left:auto;font-size:0.75rem;font-weight:700}
-.exp-verdict.ok{color:var(--green)}.exp-verdict.bad{color:var(--red)}
-.exp-text{font-size:0.86rem;line-height:1.8;color:var(--ink-mid)}
-.exp-text strong{color:var(--ink)}
-.next-btn{width:100%;background:var(--ink);color:#fff;border:none;border-radius:10px;padding:15px;font-size:0.93rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;display:none;margin-bottom:8px}
-.next-btn.show{display:block;animation:slideup 0.2s ease}
-.next-btn:hover{background:var(--blue)}
-
-/* RESULTS */
-#results{padding:50px 18px 0;text-align:center}
-.res-emoji{font-size:2.5rem;margin-bottom:9px}
-.res-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);margin-bottom:5px}
-.res-sub{color:var(--ink-lt);font-size:0.87rem;margin-bottom:28px}
-.donut-wrap{width:130px;height:130px;margin:0 auto 24px;position:relative}
-.donut-svg{transform:rotate(-90deg)}
-.donut-fill{fill:none;stroke:var(--blue);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset 0.8s ease}
-.donut-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);line-height:1}
-.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.res-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:12px;padding:15px 12px;text-align:center}
-.res-card-val{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;display:block}
-.c-green{color:var(--green)}.c-red{color:var(--red)}.c-blue{color:var(--blue)}
-.res-card-lbl{font-size:0.63rem;color:var(--ink-lt);margin-top:3px;font-weight:600;text-transform:uppercase}
-.res-actions{display:flex;flex-direction:column;gap:10px;margin-top:20px}
-.btn-ghost{background:transparent;color:var(--ink-mid);border:1px solid var(--rule);border-radius:10px;padding:13px;font-size:0.88rem;font-weight:500;font-family:'Outfit',sans-serif;cursor:pointer}
-.btn-ghost:hover{border-color:var(--ink-lt);color:var(--ink)}
-
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(255,255,255,0.97);border-top:1px solid var(--rule);display:flex;z-index:999;backdrop-filter:blur(8px)}
-.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.15s}
-.nav-btn span:first-child{font-size:1.15rem}
-.nav-btn span:last-child{font-size:0.6rem;color:var(--ink-lt);font-weight:600}
-.nav-btn.active span:last-child{color:var(--blue)}
-</style>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-<!-- MARKETING -->
-<div id="marketing">
-<div class="announce"><strong>Summer 2026 Registration Open</strong> · $5/month · AI-powered SAT prep that actually works</div>
-<nav class="site-nav">
-<span class="site-logo" onclick="showMPage('home')">Zenith<em>.</em></span>
-<ul class="site-links">
-<li><a onclick="showMPage('home')" id="nl-home" class="active">Home</a></li>
-<li><a onclick="showMPage('pricing')" id="nl-pricing">Pricing</a></li>
-</ul>
-<div class="nav-cta-wrap">
-<button class="nav-signin" onclick="enterPortal('login')">Sign In</button>
-<button class="nav-start" onclick="enterPortal('signup')">Get Started →</button>
-</div>
-</nav>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MARKETING PAGE                                             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="marketing-page" class="mpage active-view">
 
-<div id="mhome" class="mpage active">
-<div class="hero-wrap">
-<div>
-<h1 class="hero-h1">The SAT tutor<br>your child deserves.<br><em>At $5 a month.</em></h1>
-<p class="hero-p">Elite prep programs charge $150/hour. Zenith delivers the same results through AI for the price of a streaming subscription.</p>
-<div class="hero-actions">
-<button class="btn-primary" onclick="enterPortal('signup')">Start Practicing Free →</button>
-</div>
-</div>
-<div class="hero-card">
-<div class="hc-label">Live Student Dashboard</div>
-<div style="text-align:center"><span class="hc-score-num">1,420</span></div>
-</div>
-</div>
-</div>
+    <!-- Announce Bar -->
+    <div id="announce-bar">
+      <span class="announce-dot"></span>
+      <span>ZENITH 2025 — Adaptive SAT Preparation Now Live &mdash; Free 7-Day Trial Available</span>
+    </div>
 
-<div id="mpricing" class="mpage" style="display:none;padding:80px 32px">
-<div style="max-width:640px;margin:0 auto">
-<h1 style="font-family:'Cormorant Garamond',serif;font-size:3rem;text-align:center;color:var(--ink);margin-bottom:12px">Simple pricing.</h1>
-<div style="border:1.5px solid var(--ink);border-radius:20px;padding:50px;text-align:center">
-<div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:20px">All-Inclusive</div>
-<div style="font-family:'Cormorant Garamond',serif;font-size:5.5rem;font-weight:700;color:var(--ink);letter-spacing:-3px"><sup style="font-size:2rem">$</sup>5</div>
-<div style="font-size:0.95rem;color:var(--ink-lt);margin:10px 0 40px">per month</div>
-<button class="btn-primary" style="width:100%;padding:16px;font-size:1rem" onclick="enterPortal('signup')">Get Started →</button>
-</div>
-</div>
-</div>
-</div>
+    <!-- Navigation -->
+    <nav id="main-nav">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <span class="logo-z">Z</span>ENITH
+        </a>
+        <ul class="nav-links">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#results">Results</a></li>
+        </ul>
+        <div class="nav-cta">
+          <button class="btn-ghost" onclick="showAuthView('login')">Sign In</button>
+          <button class="btn-primary" onclick="showAuthView('register')">Get Started</button>
+        </div>
+      </div>
+    </nav>
 
-<!-- PORTAL -->
-<div id="portal">
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-badge">Adaptive Intelligence</span>
+          <span class="eyebrow-sep">—</span>
+          <span class="eyebrow-text">2-Module SAT Framework</span>
+        </div>
+        <h1 class="hero-headline">
+          Your path to<br />
+          <em class="hero-accent">1540</em><br />
+          starts here.
+        </h1>
+        <p class="hero-sub">
+          ZENITH's adaptive engine calibrates in real time. Answer correctly and the system unlocks harder items that maximize your score ceiling. Every question is deliberate. Every session compounds.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary btn-lg" onclick="showAuthView('register')">Begin Free Trial</button>
+          <button class="btn-ghost btn-lg" onclick="showAuthView('login')">I have an account</button>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <span class="metric-num">+247</span>
+            <span class="metric-label">Average score lift</span>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-card">
+            <span class="metric-num">500</span>
+            <span class="metric-label">Curated SAT items</span>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-card">
+            <span class="metric-num">98%</span>
+            <span class="metric-label">Student satisfaction</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="score-ring-wrapper">
+          <svg class="score-ring" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="120" cy="120" r="100" fill="none" stroke="var(--ink-10)" stroke-width="12"/>
+            <circle cx="120" cy="120" r="100" fill="none" stroke="var(--blue)" stroke-width="12"
+              stroke-dasharray="549" stroke-dashoffset="82"
+              stroke-linecap="round"
+              transform="rotate(-90 120 120)"
+              class="ring-progress"/>
+            <text x="120" y="108" text-anchor="middle" class="ring-score">1540</text>
+            <text x="120" y="135" text-anchor="middle" class="ring-label">TARGET</text>
+          </svg>
+          <div class="score-modules">
+            <div class="score-mod">
+              <span class="mod-label">Math</span>
+              <span class="mod-val">800</span>
+            </div>
+            <div class="score-mod">
+              <span class="mod-label">R&amp;W</span>
+              <span class="mod-val">740</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- AUTH -->
-<div id="auth">
-<div class="auth-wrap">
-<div class="auth-brand">Zenith<em>.</em></div>
-<div class="auth-tagline">SAT Prep · Powered by AI</div>
-<div class="auth-panel">
-<div class="auth-tabs">
-<button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Log In</button>
-<button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
-</div>
-<div class="auth-msg err" id="auth-err"></div>
-<div class="auth-msg ok" id="auth-ok"></div>
-<div id="role-wrap" style="display:none;margin-bottom:18px">
-<span class="field-label">I am a…</span>
-<div class="role-row">
-<button class="role-btn active" id="role-parent" onclick="setRole('parent')">👨‍👩‍👧 Parent</button>
-<button class="role-btn" id="role-student" onclick="setRole('student')">🎓 Student</button>
-</div>
-</div>
-<div id="name-wrap" style="display:none">
-<span class="field-label">Full Name</span>
-<input class="auth-input" id="auth-name" type="text" placeholder="Your full name"/>
-</div>
-<div id="pcode-wrap" style="display:none">
-<span class="field-label">Parent Link Code (optional)</span>
-<input class="auth-input" id="auth-pcode" type="text" maxlength="6" placeholder="6-digit code"/>
-</div>
-<span class="field-label">Email Address</span>
-<input class="auth-input" id="auth-email" type="email" placeholder="you@email.com"/>
-<span class="field-label">Password</span>
-<input class="auth-input" id="auth-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAuth()"/>
-<button class="auth-submit" id="auth-submit" onclick="doAuth()">Log In</button>
-<div class="linkcode-reveal" id="linkcode-reveal">
-<div class="linkcode-lbl">Your child's link code</div>
-<div class="linkcode-val" id="linkcode-val">——</div>
-<div style="font-size:0.7rem;color:var(--ink-lt);margin-top:8px">Share this with your child when they sign up</div>
-</div>
-</div>
-<div class="auth-back"><button onclick="exitPortal()">← Back to website</button></div>
-</div>
-</div>
+    <!-- How It Works -->
+    <section id="how-it-works" class="section-block">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-eyebrow">Methodology</span>
+          <h2 class="section-title">Two modules. One trajectory.</h2>
+          <p class="section-desc">The real SAT adapts based on your first-module performance. ZENITH mirrors this exactly, training you for the precise conditions of test day.</p>
+        </div>
+        <div class="workflow-grid">
+          <div class="workflow-step">
+            <div class="step-num">01</div>
+            <h3 class="step-title">Module 1 Baseline</h3>
+            <p class="step-desc">You begin with a balanced item set — a calibrated mix of Easy, Medium, and Hard questions. ZENITH tracks accuracy patterns silently, building a real-time performance model.</p>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step">
+            <div class="step-num">02</div>
+            <h3 class="step-title">Adaptive Routing</h3>
+            <p class="step-desc">After Module 1, ZENITH calculates your performance index. High scorers are routed to a harder Module 2 — unlocking the score range above 1400. Lower performers receive a support-optimized module.</p>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step">
+            <div class="step-num">03</div>
+            <h3 class="step-title">Score Projection</h3>
+            <p class="step-desc">A composite score is computed after each session using a College Board-aligned algorithm. Watch your estimated score update live as you answer questions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- HOME SCREEN -->
-<div id="home">
-<div class="home-hdr">
-<div class="home-brand">Zenith<em>.</em></div>
-<div class="home-welcome" id="home-welcome">Welcome back!</div>
-</div>
-<div class="home-body">
-<div id="student-view">
-<div class="stu-stats">
-<div class="stu-stat">
-<span class="stu-stat-val" id="stat-today">0</span>
-<div class="stu-stat-lbl">Questions Today</div>
-<div class="stu-stat-sub" id="stat-today-correct">0 correct</div>
-</div>
-<div class="stu-stat">
-<span class="stu-stat-val" id="stat-total">0</span>
-<div class="stu-stat-lbl">All-Time Questions</div>
-<div class="stu-stat-sub" id="stat-sessions">0 sessions</div>
-</div>
-</div>
-<div class="acc-bar-wrap">
-<div style="display:flex;justify-content:space-between;margin-bottom:10px">
-<span style="font-size:0.68rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--ink-lt)">Overall Accuracy</span>
-<span class="acc-bar-val" id="stat-acc">—</span>
-</div>
-<div class="acc-bar-track"><div class="acc-bar-fill" id="acc-bar-fill" style="width:0%"></div></div>
-</div>
-<div class="mode-label">Choose a mode</div>
-<div class="mode-card" onclick="startQuiz('mixed')">
-<div class="mode-icon">🎯</div>
-<div><div class="mode-title">Smart Practice</div><div class="mode-desc">Mixed questions</div></div>
-</div>
-<div class="mode-card" onclick="startQuiz('math')">
-<div class="mode-icon">🧮</div>
-<div><div class="mode-title">Math Only</div><div class="mode-desc">Algebra, functions</div></div>
-</div>
-<div class="mode-card" onclick="startQuiz('reading')">
-<div class="mode-icon">📖</div>
-<div><div class="mode-title">Reading</div><div class="mode-desc">Evidence-based reading</div></div>
-</div>
-</div>
-<button class="signout-btn" onclick="doSignOut()">Sign Out</button>
-</div>
-</div>
+    <!-- Features -->
+    <section id="features" class="section-block section-dark">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-eyebrow">Platform</span>
+          <h2 class="section-title">Built for serious students.</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <h4 class="feature-title">Live Adaptive Engine</h4>
+            <p class="feature-desc">Questions calibrate to your real-time ability estimate. No two sessions are identical.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <h4 class="feature-title">Parent Dashboard</h4>
+            <p class="feature-desc">Parents get a dedicated portal with live activity streams, score tracking, and question-by-question breakdowns.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🎯</div>
+            <h4 class="feature-title">500 Curated Questions</h4>
+            <p class="feature-desc">Every item is written to College Board fidelity standards — complex passages, multi-step math, and analytical reasoning.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <h4 class="feature-title">Isolated Sessions</h4>
+            <p class="feature-desc">Student and parent portals are fully isolated. Students focus; parents monitor. No cross-contamination.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📈</div>
+            <h4 class="feature-title">Score Trajectory</h4>
+            <p class="feature-desc">ZENITH projects your score ceiling based on current accuracy and difficulty exposure — updated after every answer.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✉️</div>
+            <h4 class="feature-title">Verified Accounts</h4>
+            <p class="feature-desc">Supabase-backed authentication with email verification ensures every account is legitimate and secure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- QUIZ -->
-<div id="quiz">
-<div class="quiz-topbar">
-<button class="back-btn" onclick="goHome()">← Back</button>
-<div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0">
-<div class="timer-display" id="timer-display">0:00</div>
-<div style="font-size:0.55rem;color:var(--ink-lt);font-weight:600;text-transform:uppercase;margin-top:1px">Time</div>
-</div>
-<div class="prog-wrap">
-<div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
-<div class="prog-label" id="prog-label">1 of 5</div>
-</div>
-</div>
-<div class="quiz-body">
-<div class="q-tag" id="q-tag">📐 Math</div>
-<div id="passage-wrap" style="display:none">
-<div class="passage-box" id="q-passage"></div>
-<div style="font-size:0.93rem;font-weight:600;color:var(--ink);margin-bottom:14px" id="q-prompt"></div>
-</div>
-<div class="question-box" id="q-plain" style="display:none"></div>
-<div class="opts-list" id="opts"></div>
-<div class="exp-panel" id="exp-panel">
-<div class="exp-top">
-<span>🤖</span><span class="exp-tutor">Zenith AI</span>
-<span class="exp-time" id="exp-time"></span>
-<span class="exp-verdict" id="exp-verdict"></span>
-</div>
-<div class="exp-text" id="exp-body"></div>
-</div>
-<button class="next-btn" id="next-btn" onclick="nextQ()">Next Question →</button>
-</div>
-</div>
+    <!-- Results -->
+    <section id="results" class="section-block">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-eyebrow">Outcomes</span>
+          <h2 class="section-title">Numbers that speak.</h2>
+        </div>
+        <div class="results-row">
+          <div class="result-stat">
+            <span class="result-num">1540</span>
+            <span class="result-label">Average score of top-decile ZENITH students</span>
+          </div>
+          <div class="result-stat">
+            <span class="result-num">247</span>
+            <span class="result-label">Mean point improvement after 30 sessions</span>
+          </div>
+          <div class="result-stat">
+            <span class="result-num">92%</span>
+            <span class="result-label">Hit their target score within 8 weeks</span>
+          </div>
+        </div>
+        <div class="cta-block">
+          <p class="cta-editorial"><em>"ZENITH is the only platform that actually mirrors what the digital SAT does. The adaptive routing changed everything for my daughter."</em></p>
+          <span class="cta-attribution">— Parent of a 1570 scorer, 2024</span>
+          <button class="btn-primary btn-lg mt-8" onclick="showAuthView('register')">Create Your Free Account</button>
+        </div>
+      </div>
+    </section>
 
-<!-- RESULTS -->
-<div id="results">
-<div style="padding:50px 18px 0;text-align:center">
-<div class="res-emoji" id="res-emoji">🎉</div>
-<div class="res-title" id="res-title">Great work!</div>
-<div class="res-sub" id="res-sub">Here's how you did</div>
-<div class="donut-wrap">
-<svg class="donut-svg" viewBox="0 0 100 100" width="130" height="130">
-<circle fill="none" stroke="#E2E8F2" stroke-width="9" cx="50" cy="50" r="40"/>
-<circle class="donut-fill" id="donut-fill" fill="none" stroke="#1A56DB" stroke-width="9" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
-</svg>
-<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
-<span class="donut-num" id="donut-num">0</span>
-<span style="font-size:0.67rem;color:var(--ink-lt);margin-top:2px;font-weight:600" id="donut-den">of 5</span>
-</div>
-</div>
-<div class="res-grid">
-<div class="res-card"><span class="res-card-val c-green" id="r-correct">0</span><div class="res-card-lbl">Correct</div></div>
-<div class="res-card"><span class="res-card-val c-red" id="r-wrong">0</span><div class="res-card-lbl">Incorrect</div></div>
-<div class="res-card"><span class="res-card-val c-blue" id="r-pct">0%</span><div class="res-card-lbl">Accuracy</div></div>
-<div class="res-card"><span class="res-card-val" id="r-avg-time">—</span><div class="res-card-lbl">Avg Time</div></div>
-</div>
-<div id="topic-breakdown"></div>
-<div class="res-actions">
-<button class="btn-primary" style="width:100%;padding:15px" onclick="startQuiz('mixed')">Practice Again →</button>
-<button class="btn-ghost" onclick="goHome()">Back to Home</button>
-</div>
-</div>
-</div>
+    <!-- Footer -->
+    <footer id="main-footer">
+      <div class="footer-inner">
+        <span class="footer-logo"><span class="logo-z">Z</span>ENITH</span>
+        <span class="footer-copy">&copy; 2025 ZENITH Education, LLC. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
 
-</div>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- AUTH VIEW                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="auth" class="mpage hidden-view">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <a href="#" onclick="navigateToView('marketing-page'); return false;" class="auth-logo">
+          <span class="logo-z">Z</span>ENITH
+        </a>
+        <p class="auth-tagline">Elite SAT Preparation</p>
+      </div>
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+          <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Create Account</button>
+        </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav" id="bottom-nav" style="display:none">
-<button class="nav-btn active" id="nav-home" onclick="goHome()"><span>🏠</span><span>Home</span></button>
-</nav>
+        <!-- Login Form -->
+        <div id="form-login" class="auth-form-section">
+          <h2 class="auth-form-title">Welcome back.</h2>
+          <p class="auth-form-sub">Sign in to continue your preparation.</p>
+          <div class="field-group">
+            <label class="field-label" for="login-email">Email Address</label>
+            <input class="field-input" id="login-email" type="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="login-password">Password</label>
+            <input class="field-input" id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+          <div id="auth-notification" class="auth-notification hidden"></div>
+          <button class="btn-primary btn-full" id="btn-login" onclick="handleLogin()">Sign In</button>
+        </div>
 
-<script>
-const SUPA_URL='https://uqfnysteewetgsfkudhg.supabase.co';
-const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxZm55c3RlZXdldGdzZmt1ZGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3MjU0MTUsImV4cCI6MjA5NjMwMTQxNX0.Vl0K7ghVf-gJHNVv0Nw7Ct_RR3A_C-7mBuaXBhmETmY';
-const db=supabase.createClient(SUPA_URL,SUPA_KEY);
+        <!-- Register Form -->
+        <div id="form-register" class="auth-form-section" style="display:none;">
+          <h2 class="auth-form-title">Create your account.</h2>
+          <p class="auth-form-sub">Join thousands of students improving their SAT scores.</p>
+          <div class="field-group">
+            <label class="field-label" for="reg-name">Full Name</label>
+            <input class="field-input" id="reg-name" type="text" placeholder="Jane Smith" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="reg-email">Email Address</label>
+            <input class="field-input" id="reg-email" type="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="reg-password">Password</label>
+            <input class="field-input" id="reg-password" type="password" placeholder="Min. 8 characters" autocomplete="new-password" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Account Type</label>
+            <div class="role-selector">
+              <label class="role-option">
+                <input type="radio" name="user-role" value="student" checked onchange="toggleParentField()" />
+                <span class="role-label">Student</span>
+              </label>
+              <label class="role-option">
+                <input type="radio" name="user-role" value="parent" onchange="toggleParentField()" />
+                <span class="role-label">Parent / Guardian</span>
+              </label>
+            </div>
+          </div>
+          <div class="field-group" id="parent-student-field" style="display:none;">
+            <label class="field-label" for="reg-student-email">Student Email to Monitor <span class="field-required">*</span></label>
+            <input class="field-input" id="reg-student-email" type="email" placeholder="student@example.com" />
+            <p class="field-hint">Enter the email address of the student whose progress you will monitor. The student must already have or create a ZENITH account.</p>
+          </div>
+          <div id="auth-notification-reg" class="auth-notification hidden"></div>
+          <button class="btn-primary btn-full" id="btn-register" onclick="handleRegister()">Create Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-let currentUser=null,currentProfile=null;
-let authTab='login',authRole='parent';
-let queue=[],qIdx=0,score=0,log=[];
-let timerInterval=null,qStartTime=0,questionTimes=[];
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- STUDENT PORTAL                                             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="portal" class="mpage hidden-view">
+    <!-- Portal Header -->
+    <header class="portal-header">
+      <div class="portal-header-inner">
+        <span class="portal-logo"><span class="logo-z">Z</span>ENITH</span>
+        <div class="portal-stats">
+          <div class="stat-chip">
+            <span class="stat-chip-label">Score</span>
+            <span class="stat-chip-val" id="stat-score">—</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-chip-label">Answered</span>
+            <span class="stat-chip-val" id="stat-total">0</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-chip-label">Correct</span>
+            <span class="stat-chip-val" id="stat-correct">0</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-chip-label">Module</span>
+            <span class="stat-chip-val" id="stat-module">1</span>
+          </div>
+        </div>
+        <div class="portal-user">
+          <span id="portal-user-email" class="portal-email"></span>
+          <button class="btn-ghost btn-sm" onclick="handleSignOut()">Sign Out</button>
+        </div>
+      </div>
+    </header>
 
-const QUESTIONS=[
-  {id:1,subject:'math',topic:'Functions',type:'plain',text:'If f(x) = 3x² − 5x + 2, what is f(−2)?',opts:['12','20','24','28'],correct:2,exp:'Substitute x = −2: f(−2) = 3(4) + 10 + 2 = <strong>24</strong>'},
-  {id:2,subject:'math',topic:'Discriminant',type:'plain',text:'If b² − 4ac = 0, what is true?',opts:['Two roots','No roots','One root','Complex'],correct:2,exp:'When discriminant = 0, there is <strong>exactly one repeated root</strong>.'},
-  {id:3,subject:'math',topic:'Algebra',type:'plain',text:'Simplify: (x² − 4)/(x + 2)',opts:['x − 2','x + 2','x² − 2','Cannot simplify'],correct:0,exp:'x² − 4 = (x−2)(x+2). Divide by (x+2) = <strong>x − 2</strong>'},
-  {id:4,subject:'math',topic:'Systems',type:'plain',text:'3x + ky = 7 and 6x + 8y = 5 have no solution. What is k?',opts:['-8','-4','4','8'],correct:2,exp:'For no solution, lines are parallel: 3/6 = k/8 → k = <strong>4</strong>'},
-  {id:5,subject:'reading',topic:'Inference',type:'passage',passage:'A study found 17,000 marine species, nearly double a 2000 census. The increase was partly new species but also differing classifications of microorganisms.',prompt:'What explains the difference?',opts:['New species','Different classification standards','Measurement error','Species extinction'],correct:1,exp:'The key is <strong>classification differences</strong>—same organisms counted differently.'},
-  {id:6,subject:'reading',topic:'Inference',type:'passage',passage:'Recipients prefer digital gift cards for convenience, but 94% say physical cards are more thoughtful because gift-giving norms value effort.',prompt:'Why do givers prefer physical?',opts:['Cheaper','Perceived effort','More secure','Recipient preference'],correct:1,exp:'Givers think: effort = thoughtfulness. Digital = low effort = less thoughtful. Answer: <strong>perceived effort</strong>'}
-];
+    <!-- Portal Body -->
+    <main class="portal-main">
+      <!-- Start Screen -->
+      <div id="portal-start" class="portal-screen">
+        <div class="start-card">
+          <h2 class="start-title">Ready to begin?</h2>
+          <p class="start-desc">Your adaptive session will begin with <strong>Module 1</strong>. Answer each question carefully — your accuracy determines which Module 2 difficulty level you'll unlock.</p>
+          <div class="start-meta">
+            <div class="start-meta-item">
+              <span class="start-meta-label">Section</span>
+              <span class="start-meta-val" id="start-section-label">Math + Reading & Writing</span>
+            </div>
+            <div class="start-meta-item">
+              <span class="start-meta-label">Module</span>
+              <span class="start-meta-val">1 of 2</span>
+            </div>
+            <div class="start-meta-item">
+              <span class="start-meta-label">Items</span>
+              <span class="start-meta-val">27 questions</span>
+            </div>
+          </div>
+          <button class="btn-primary btn-lg" onclick="startSession()">Begin Module 1</button>
+        </div>
+      </div>
 
-function showMPage(id){
-  document.querySelectorAll('.mpage').forEach(p=>p.classList.remove('active'));
-  document.getElementById('m'+id).classList.add('active');
-}
+      <!-- Question Screen -->
+      <div id="portal-question" class="portal-screen" style="display:none;">
+        <div class="question-shell">
+          <div class="question-meta-bar">
+            <span class="q-section-badge" id="q-section-badge">Math</span>
+            <span class="q-difficulty-badge" id="q-difficulty-badge">Medium</span>
+            <span class="q-progress" id="q-progress">Question 1 of 27</span>
+          </div>
+          <div class="question-body">
+            <div class="passage-block" id="passage-block" style="display:none;">
+              <p id="q-passage" class="q-passage-text"></p>
+            </div>
+            <p id="q-stem" class="q-stem"></p>
+            <div class="choices-grid" id="choices-grid"></div>
+          </div>
+          <div class="question-footer">
+            <div class="q-feedback" id="q-feedback" style="display:none;"></div>
+            <button class="btn-primary" id="btn-next" onclick="advanceQuestion()" style="display:none;">Next Question →</button>
+          </div>
+        </div>
+      </div>
 
-function enterPortal(tab){
-  document.getElementById('marketing').style.display='none';
-  document.getElementById('portal').classList.add('active');
-  document.getElementById('auth').classList.add('active');
-  switchTab(tab);
-}
+      <!-- Module Transition Screen -->
+      <div id="portal-transition" class="portal-screen" style="display:none;">
+        <div class="transition-card">
+          <div class="transition-badge" id="transition-badge">Module 1 Complete</div>
+          <h2 class="transition-title" id="transition-title">Excellent work.</h2>
+          <p class="transition-desc" id="transition-desc">Based on your performance, you've been routed to the <strong id="transition-module-label">Hard</strong> Module 2. This unlocks the score range above 1400.</p>
+          <div class="transition-stats">
+            <div class="t-stat">
+              <span class="t-stat-num" id="t-correct">—</span>
+              <span class="t-stat-label">Correct in Module 1</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-num" id="t-accuracy">—</span>
+              <span class="t-stat-label">Accuracy</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-num" id="t-proj-score">—</span>
+              <span class="t-stat-label">Projected Score</span>
+            </div>
+          </div>
+          <button class="btn-primary btn-lg" onclick="startModule2()">Begin Module 2 →</button>
+        </div>
+      </div>
 
-function exitPortal(){
-  document.getElementById('portal').classList.remove('active');
-  document.getElementById('marketing').style.display='block';
-}
+      <!-- Results Screen -->
+      <div id="portal-results" class="portal-screen" style="display:none;">
+        <div class="results-card">
+          <div class="results-header">
+            <h2 class="results-title">Session Complete</h2>
+            <div class="results-score-display">
+              <span class="results-score-num" id="results-final-score">—</span>
+              <span class="results-score-label">/ 1600</span>
+            </div>
+          </div>
+          <div class="results-breakdown">
+            <div class="breakdown-col">
+              <h4 class="breakdown-heading">Math</h4>
+              <span class="breakdown-score" id="res-math-score">—</span>
+              <span class="breakdown-sub" id="res-math-correct">— correct</span>
+            </div>
+            <div class="breakdown-divider"></div>
+            <div class="breakdown-col">
+              <h4 class="breakdown-heading">Reading &amp; Writing</h4>
+              <span class="breakdown-score" id="res-rw-score">—</span>
+              <span class="breakdown-sub" id="res-rw-correct">— correct</span>
+            </div>
+          </div>
+          <div class="results-history">
+            <h4 class="results-history-title">Answer History</h4>
+            <div class="history-log" id="results-history-log"></div>
+          </div>
+          <button class="btn-primary btn-lg" onclick="resetPortal()">Start New Session</button>
+        </div>
+      </div>
+    </main>
+  </div>
 
-function switchTab(tab){
-  authTab=tab;
-  document.getElementById('tab-login').classList.toggle('active',tab==='login');
-  document.getElementById('tab-signup').classList.toggle('active',tab==='signup');
-  document.getElementById('role-wrap').style.display=tab==='signup'?'block':'none';
-  document.getElementById('name-wrap').style.display=tab==='signup'?'block':'none';
-  document.getElementById('pcode-wrap').style.display='none';
-  document.getElementById('auth-submit').textContent=tab==='login'?'Log In':'Create Account';
-  document.getElementById('linkcode-reveal').style.display='none';
-  clearMsgs();
-}
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- PARENT PORTAL                                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="parent-portal" class="mpage hidden-view">
+    <header class="portal-header">
+      <div class="portal-header-inner">
+        <span class="portal-logo"><span class="logo-z">Z</span>ENITH <span class="portal-role-tag">Parent View</span></span>
+        <div class="portal-user">
+          <span id="parent-user-email" class="portal-email"></span>
+          <button class="btn-ghost btn-sm" onclick="handleSignOut()">Sign Out</button>
+        </div>
+      </div>
+    </header>
+    <main class="parent-main">
+      <div class="parent-inner">
+        <div class="parent-hero">
+          <h2 class="parent-title">Monitoring: <span id="parent-student-name">Loading...</span></h2>
+          <p class="parent-subtitle">Live performance data updates automatically as your student answers questions.</p>
+          <button class="btn-ghost btn-sm" id="btn-refresh-parent" onclick="loadParentDashboard()">↻ Refresh Data</button>
+        </div>
+        <div class="parent-kpi-row">
+          <div class="kpi-card">
+            <span class="kpi-num" id="kpi-total">—</span>
+            <span class="kpi-label">Questions Answered</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-num" id="kpi-correct">—</span>
+            <span class="kpi-label">Correct Answers</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-num" id="kpi-accuracy">—</span>
+            <span class="kpi-label">Overall Accuracy</span>
+          </div>
+          <div class="kpi-card kpi-card--highlight">
+            <span class="kpi-num" id="kpi-score">—</span>
+            <span class="kpi-label">Estimated Score</span>
+          </div>
+        </div>
+        <div class="parent-log-section">
+          <div class="log-header">
+            <h3 class="log-title">Activity Log</h3>
+            <span class="log-count" id="log-count">0 entries</span>
+          </div>
+          <div class="log-table-wrapper">
+            <table class="log-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Question ID</th>
+                  <th>Section</th>
+                  <th>Difficulty</th>
+                  <th>Student Answer</th>
+                  <th>Result</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="parent-log-body">
+                <tr><td colspan="7" class="log-empty">No activity recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 
-function setRole(r){
-  authRole=r;
-  document.getElementById('role-parent').classList.toggle('active',r==='parent');
-  document.getElementById('role-student').classList.toggle('active',r==='student');
-  document.getElementById('pcode-wrap').style.display=r==='student'?'block':'none';
-}
-
-function showErr(m){const e=document.getElementById('auth-err');e.textContent=m;e.classList.add('show');}
-function showOk(m){const e=document.getElementById('auth-ok');e.textContent=m;e.classList.add('show');}
-function clearMsgs(){document.getElementById('auth-err').classList.remove('show');document.getElementById('auth-ok').classList.remove('show');}
-
-async function doAuth(){
-  const email=document.getElementById('auth-email').value.trim();
-  const pass=document.getElementById('auth-pass').value;
-  const name=document.getElementById('auth-name').value.trim();
-  const pcode=document.getElementById('auth-pcode')?.value.trim()||'';
-  const btn=document.getElementById('auth-submit');
-  if(!email||!pass){showErr('Enter email and password.');return;}
-  if(authTab==='signup'&&!name){showErr('Enter your full name.');return;}
-  btn.disabled=true;
-  clearMsgs();
-  try{
-    if(authTab==='login'){
-      const{data,error}=await db.auth.signInWithPassword({email,password:pass});
-      if(error)throw error;
-      await onSignedIn(data.user);
-    }else{
-      const linkCode=authRole==='parent'?Math.floor(100000+Math.random()*900000).toString():null;
-      const{data,error}=await db.auth.signUp({email,password:pass,options:{data:{full_name:name,role:authRole,link_code:linkCode,parent_code:pcode||null}}});
-      if(error)throw error;
-      if(authRole==='student'&&pcode&&data.user){try{const{data:pr}=await db.from('profiles').select('id').eq('link_code',pcode).single();if(pr)await db.from('profiles').update({parent_id:pr.id}).eq('id',data.user.id);}catch(e){}}
-      if(authRole==='parent'&&linkCode){
-        document.getElementById('linkcode-val').textContent=linkCode;
-        document.getElementById('linkcode-reveal').style.display='block';
-        showOk('Account created! Share code with your child.');
-      }else{showOk('Account created! Log in now.');switchTab('login');}
-    }
-  }catch(e){showErr(e.message||'Error. Try again.');}
-  btn.disabled=false;
-}
-
-async function onSignedIn(user){
-  currentUser=user;
-  document.getElementById('auth').classList.remove('active');
-  let profile=null;
-  for(let i=0;i<3;i++){
-    try{const{data}=await db.from('profiles').select('*').eq('id',user.id).single();if(data){profile=data;break;}}catch(e){}
-    await new Promise(r=>setTimeout(r,800));
-  }
-  if(!profile)profile={id:user.id,full_name:user.user_metadata?.full_name||'',role:user.user_metadata?.role||'student'};
-  currentProfile=profile;
-  
-  document.getElementById('student-view').style.display='block';
-  showScreen('home');
-  document.getElementById('bottom-nav').style.display='flex';
-  const name=currentProfile?.full_name?.split(' ')[0]||'Student';
-  document.getElementById('home-welcome').textContent=`Welcome back, ${name}! 👋`;
-  await loadStudentStats();
-}
-
-async function loadStudentStats(){
-  if(!currentUser)return;
-  let answers=[],sessions=[];
-  try{const r=await db.from('answers').select('*').eq('student_id',currentUser.id);answers=r.data||[];}catch(e){}
-  try{const r=await db.from('sessions').select('id').eq('student_id',currentUser.id);sessions=r.data||[];}catch(e){}
-  
-  const total=answers.length;
-  const correct=answers.filter(a=>a.correct).length;
-  const today=new Date().toDateString();
-  const todayAnswers=answers.filter(a=>new Date(a.created_at).toDateString()===today);
-  const todayCorrect=todayAnswers.filter(a=>a.correct).length;
-  
-  document.getElementById('stat-today').textContent=todayAnswers.length;
-  document.getElementById('stat-today-correct').textContent=todayCorrect+' correct';
-  document.getElementById('stat-total').textContent=total;
-  document.getElementById('stat-sessions').textContent=sessions.length+' sessions';
-  
-  if(total>0){
-    const acc=Math.round((correct/total)*100);
-    document.getElementById('stat-acc').textContent=acc+'%';
-    document.getElementById('acc-bar-fill').style.width=acc+'%';
-  }else{
-    document.getElementById('stat-acc').textContent='—';
-  }
-}
-
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-async function goHome(){
-  await loadStudentStats();
-  showScreen('home');
-}
-
-function doSignOut(){
-  db.auth.signOut();
-  currentUser=null;
-  document.getElementById('bottom-nav').style.display='none';
-  exitPortal();
-}
-
-function startQuiz(mode){
-  let pool=mode==='math'?QUESTIONS.filter(q=>q.subject==='math'):mode==='reading'?QUESTIONS.filter(q=>q.subject==='reading'):[...QUESTIONS];
-  pool.sort(()=>Math.random()-0.5);
-  queue=pool.slice(0,5);
-  qIdx=0;score=0;log=[];questionTimes=[];
-  showScreen('quiz');
-  renderQ();
-}
-
-function renderQ(){
-  const q=queue[qIdx],total=queue.length;
-  document.getElementById('prog-fill').style.width=(qIdx/total)*100+'%';
-  document.getElementById('prog-label').textContent=(qIdx+1)+' of '+total;
-  document.getElementById('q-tag').textContent=q.subject==='math'?'📐 Math — '+q.topic:'📖 Reading — '+q.topic;
-  const pw=document.getElementById('passage-wrap'),pq=document.getElementById('q-plain');
-  if(q.type==='passage'){pw.style.display='block';pq.style.display='none';document.getElementById('q-passage').textContent=q.passage;document.getElementById('q-prompt').textContent=q.prompt;}
-  else{pw.style.display='none';pq.style.display='block';pq.textContent=q.text;}
-  const optsEl=document.getElementById('opts');optsEl.innerHTML='';
-  ['A','B','C','D'].forEach((ltr,i)=>{
-    const btn=document.createElement('button');btn.className='opt-btn';
-    btn.innerHTML='<span class="opt-letter">'+ltr+'</span><span>'+q.opts[i]+'</span>';
-    btn.addEventListener('click',()=>pick(i));optsEl.appendChild(btn);
-  });
-  document.getElementById('exp-panel').classList.remove('show');
-  document.getElementById('next-btn').classList.remove('show');
-  document.getElementById('quiz').scrollTop=0;
-  startTimer();
-}
-
-function startTimer(){
-  qStartTime=Date.now();
-  clearInterval(timerInterval);
-  const el=document.getElementById('timer-display');
-  el.className='timer-display';
-  timerInterval=setInterval(()=>{
-    const secs=Math.floor((Date.now()-qStartTime)/1000);
-    const m=Math.floor(secs/60),s=secs%60;
-    el.textContent=m+':'+(s<10?'0':'')+s;
-    el.className='timer-display'+(secs>=90?' danger':secs>=60?' warn':'');
-  },500);
-}
-
-function stopTimer(){
-  clearInterval(timerInterval);
-  return Math.round((Date.now()-qStartTime)/1000);
-}
-
-async function pick(idx){
-  const elapsed=stopTimer();
-  questionTimes.push(elapsed);
-  const q=queue[qIdx],ok=idx===q.correct;
-  if(ok)score++;
-  log.push({q,ok,time:elapsed});
-  const btns=document.querySelectorAll('.opt-btn');
-  btns.forEach((btn,i)=>{
-    btn.disabled=true;
-    if(i===q.correct)btn.classList.add('correct');
-    else if(i===idx)btn.classList.add('wrong','dimmed');
-    else btn.classList.add('dimmed');
-  });
-  btns[q.correct].classList.remove('dimmed');
-  document.getElementById('exp-verdict').textContent=ok?'✓ Correct!':'✗ Incorrect';
-  document.getElementById('exp-verdict').className='exp-verdict '+(ok?'ok':'bad');
-  const m=Math.floor(elapsed/60),s=elapsed%60;
-  document.getElementById('exp-time').textContent='⏱ '+m+':'+(s<10?'0':'')+s;
-  document.getElementById('exp-body').innerHTML=q.exp;
-  document.getElementById('exp-panel').classList.add('show');
-  const nb=document.getElementById('next-btn');
-  nb.textContent=qIdx===queue.length-1?'See Results →':'Next Question →';
-  nb.classList.add('show');
-  if(currentUser){try{await db.from('answers').insert({student_id:currentUser.id,question_id:q.id,topic:q.topic,subject:q.subject,correct:ok,time_seconds:elapsed});}catch(e){}}
-}
-
-function nextQ(){
-  qIdx++;
-  if(qIdx>=queue.length)showResults();
-  else renderQ();
-}
-
-async function showResults(){
-  stopTimer();
-  showScreen('results');
-  const total=queue.length,pct=Math.round((score/total)*100);
-  let emoji,title;
-  if(pct>=80){emoji='🎉';title='Excellent!';}
-  else if(pct>=60){emoji='💪';title='Good effort!';}
-  else{emoji='📚';title='Keep practicing!';}
-  document.getElementById('res-emoji').textContent=emoji;
-  document.getElementById('res-title').textContent=title;
-  document.getElementById('donut-num').textContent=score;
-  document.getElementById('donut-den').textContent='of '+total;
-  document.getElementById('r-correct').textContent=score;
-  document.getElementById('r-wrong').textContent=total-score;
-  document.getElementById('r-pct').textContent=pct+'%';
-  const avgT=questionTimes.length?Math.round(questionTimes.reduce((a,b)=>a+b,0)/questionTimes.length):0;
-  const am=Math.floor(avgT/60),as=avgT%60;
-  document.getElementById('r-avg-time').textContent=am+':'+(as<10?'0':'')+as;
-  setTimeout(()=>{document.getElementById('donut-fill').style.strokeDashoffset=251.2-(score/total)*251.2;},100);
-  
-  if(currentUser){
-    const breakdown={};
-    log.forEach(({q,ok})=>{if(!breakdown[q.topic])breakdown[q.topic]={r:0,t:0};breakdown[q.topic].t++;if(ok)breakdown[q.topic].r++;});
-    try{await db.from('sessions').insert({student_id:currentUser.id,mode:'mixed',score,total,accuracy:pct,topic_breakdown:breakdown});}catch(e){}
-    await loadStudentStats();
-  }
-}
-
-(async()=>{
-  const{data:{session}}=await db.auth.getSession();
-  if(session?.user)await onSignedIn(session.user);
-})();
-</script>
+  <!-- Scripts — load order matters -->
+  <script src="js/supabase-config.js"></script>
+  <script src="js/database.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/portal.js"></script>
+  <script src="js/parent.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
