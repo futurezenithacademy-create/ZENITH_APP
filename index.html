@@ -507,11 +507,14 @@
         window.ENV_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxZm55c3RlZXdldGdzZmt1ZGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3MjU0MTUsImV4cCI6MjA5NjMwMTQxNX0.Vl0K7ghVf-gJHNVv0Nw7Ct_RR3A_C-7mBuaXBhmETmY";
     </script>
 
-  <!-- Scripts — load order matters -->
-  <script src="js/database.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/portal.js"></script>
-  <script src="js/parent.js"></script>
-  <script src="js/app.js"></script>
+  <!-- 2. Connect Your Core Configuration Engine -->
+    <script src="js/supabase-config.js"></script>
+
+    <!-- 3. Connect Interface and Flow Handlers Afterwards -->
+    <script src="js/auth.js"></script>
+    <script src="js/parent.js"></script>
+    <script src="js/portal.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
+
