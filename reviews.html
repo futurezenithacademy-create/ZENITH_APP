@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student & Parent Reviews — Zenith Future Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; background-color: #ffffff; color: #0f172a; }
+    .serif-display { font-family: 'Playfair Display', serif; }
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden min-h-screen flex flex-col justify-between bg-grid relative">
+
+  <!-- Modern Navigation Bar -->
+  <nav class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-black tracking-tighter text-blue-600 flex items-center">
+        <span class="bg-blue-600 text-white px-2.5 py-1 rounded-xl text-base font-black mr-2 shadow-md shadow-blue-600/20">Z</span>
+        <span class="text-slate-900 tracking-tight">ZENITH</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-10 text-sm font-semibold tracking-wide text-slate-500">
+        <li><a href="index.html" class="hover:text-blue-600 transition">About Us</a></li>
+        <li><a href="reviews.html" class="text-blue-600 transition">Reviews</a></li>
+        <li><a href="results.html" class="hover:text-blue-600 transition">Results</a></li>
+        <li><a href="events.html" class="hover:text-blue-600 transition">Events</a></li>
+      </ul>
+      <div>
+        <a href="app.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-xs font-bold tracking-widest uppercase transition shadow-lg shadow-blue-600/20">
+          Launch SAT App
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Review Canvas -->
+  <header class="max-w-5xl mx-auto px-6 pt-20 pb-12 text-center">
+    <span class="text-xs font-black tracking-widest text-blue-600 uppercase bg-blue-50 px-4 py-1.5 rounded-full">Testimonials</span>
+    <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mt-6 mb-4">
+      Verified <span class="serif-display italic font-normal text-blue-600">Zenith success.</span>
+    </h1>
+    <p class="text-slate-500 text-lg max-w-xl mx-auto font-medium">Unfiltered analysis from students who shattered their baseline thresholds and parents who monitored the metrics.</p>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-8 w-full">
+    <!-- Card 1 -->
+    <div class="bg-white border border-slate-100 p-8 rounded-3xl shadow-xl shadow-blue-900/5">
+      <div class="flex items-center gap-1 text-amber-400 mb-4 text-lg">★★★★★</div>
+      <p class="text-slate-600 font-medium leading-relaxed mb-6">
+        "The 2-module routing inside the Zenith app was exactly identical to the live digital test environment. My daughter adjusted her pacing strategy perfectly after unlocking the harder Module 2 sets. She scored a 1560."
+      </p>
+      <div class="border-t border-slate-50 pt-4">
+        <span class="block font-bold text-slate-900">Marcus Vance</span>
+        <span class="block text-xs font-bold text-blue-600 uppercase tracking-wider mt-0.5">Parent of 1560 Scorer</span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white border border-slate-100 p-8 rounded-3xl shadow-xl shadow-blue-900/5">
+      <div class="flex items-center gap-1 text-amber-400 mb-4 text-lg">★★★★★</div>
+      <p class="text-slate-600 font-medium leading-relaxed mb-6">
+        "I was completely stuck at 1310. The system isolated my errors in multi-step advanced math items and forced me into deep accuracy loops. Ended up with a perfect 800 math score on test day."
+      </p>
+      <div class="border-t border-slate-50 pt-4">
+        <span class="block font-bold text-slate-900">Elena Rostova</span>
+        <span class="block text-xs font-bold text-blue-600 uppercase tracking-wider mt-0.5">Student &bull; Stanford Cohort</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-100 bg-slate-50 py-12 text-center text-xs font-bold tracking-widest text-slate-400 uppercase">
+    &copy; 2026 Zenith Future Academy. All rights reserved.
+  </footer>
+</body>
+</html>
