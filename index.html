@@ -6,135 +6,132 @@
   <title>Zenith Future Academy — Elite Academic Frameworks</title>
   <meta name="description" content="Zenith Future Academy. Premier educational guidance, elite preparation strategies, and adaptive diagnostic metrics." />
 
-  <!-- Google Fonts matching the SAT App -->
+  <!-- Google Fonts: Display Fonts to capture audience attention -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom Styles matching your App Theme -->
-  <link rel="stylesheet" href="css/styles.css" />
-
   <style>
-    :root {
-      --bg-dark: #090d16;
-      --card-bg: #111827;
-      --blue-accent: #38bdf8;
-      --ink-dim: #94a3b8;
-    }
     body {
       font-family: 'Outfit', sans-serif;
-      background-color: var(--bg-dark);
-      color: #f8fafc;
+      background-color: #ffffff;
+      color: #0f172a;
     }
-    .serif-accent {
-      font-family: 'Cormorant Garamond', serif;
+    .serif-display {
+      font-family: 'Playfair Display', serif;
     }
-    /* Blurry glow decorative elements */
-    .glow-orb {
+    /* Dynamic modern background mesh grid */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    }
+    /* Fluid high-tech fluid shapes */
+    .blur-blob {
       position: absolute;
-      width: 400px;
-      height: 400px;
-      background: rgba(56, 189, 248, 0.08);
-      filter: blur(100px);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%);
+      filter: blur(80px);
       border-radius: 50%;
       z-index: 0;
     }
   </style>
 </head>
-<body class="overflow-x-hidden min-h-screen flex flex-col justify-between">
+<body class="overflow-x-hidden min-h-screen flex flex-col justify-between bg-grid relative">
 
-  <!-- Glow Background Accents -->
-  <div class="glow-orb top-[-100px] right-[-100px]"></div>
-  <div class="glow-orb bottom-[200px] left-[-200px]"></div>
+  <!-- Light Fluid Blurs -->
+  <div class="blur-blob top-[-150px] right-[-100px]"></div>
+  <div class="blur-blob bottom-[100px] left-[-200px]"></div>
 
-  <!-- Announce Bar -->
-  <div class="bg-[#0f172a] border-b border-slate-800 py-2.5 text-center text-xs tracking-wider font-medium text-slate-400 z-10 relative">
-    <span class="inline-block w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse mr-2"></span>
-    ZENITH SYSTEM UPDATE: Fall 2026 Cohort Registration Now Open
+  <!-- Top Announcement Notification -->
+  <div class="bg-blue-600 py-2 text-center text-xs tracking-widest font-bold text-white uppercase z-10 relative">
+    <span class="inline-block w-2 h-2 rounded-full bg-sky-300 animate-ping mr-2"></span>
+    System Alert: Fall 2026 Registration Cohort is active
   </div>
 
-  <!-- Navigation -->
-  <nav class="border-b border-slate-800 bg-[#090d16]/80 backdrop-blur-md sticky top-0 z-50">
+  <!-- Modern Navigation Bar -->
+  <nav class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-bold tracking-widest text-white flex items-center gap-1">
-        <span class="bg-gradient-to-br from-sky-400 to-blue-600 text-slate-950 px-2 py-0.5 rounded text-sm font-black mr-1">Z</span>ENITH
+      <a href="index.html" class="text-2xl font-black tracking-tighter text-blue-600 flex items-center">
+        <span class="bg-blue-600 text-white px-2.5 py-1 rounded-xl text-base font-black mr-2 shadow-md shadow-blue-600/20">Z</span>
+        <span class="text-slate-900 tracking-tight">ZENITH</span>
       </a>
       
-      <!-- Center Nav Links -->
-      <ul class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide text-slate-400">
-        <li><a href="index.html" class="text-sky-400 transition">About Us</a></li>
-        <li><a href="reviews.html" class="hover:text-white transition">Reviews</a></li>
-        <li><a href="results.html" class="hover:text-white transition">Results</a></li>
-        <li><a href="events.html" class="hover:text-white transition">Events</a></li>
+      <!-- Horizontal Navigation links -->
+      <ul class="hidden md:flex items-center gap-10 text-sm font-semibold tracking-wide text-slate-500">
+        <li><a href="index.html" class="text-blue-600 transition">About Us</a></li>
+        <li><a href="reviews.html" class="hover:text-blue-600 transition">Reviews</a></li>
+        <li><a href="results.html" class="hover:text-blue-600 transition">Results</a></li>
+        <li><a href="events.html" class="hover:text-blue-600 transition">Events</a></li>
       </ul>
 
-      <!-- App CTA Button -->
+      <!-- Primary Action Launch CTA -->
       <div>
-        <a href="app.html" class="bg-sky-400 hover:bg-sky-500 text-slate-950 px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition shadow-lg shadow-sky-500/10">
-          Launch App
+        <a href="app.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-xs font-bold tracking-widest uppercase transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg shadow-blue-600/20">
+          Launch SAT App
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Premium High-Impact Hero Layout -->
   <header class="relative max-w-5xl mx-auto px-6 pt-24 pb-16 text-center z-10">
-    <div class="inline-flex items-center gap-2 bg-slate-900/80 border border-slate-800 rounded-full px-4 py-1.5 mb-8 text-xs tracking-wide text-slate-400">
-      <span class="text-sky-400 font-semibold uppercase">Zenith Future Academy</span>
-      <span class="text-slate-600">—</span>
-      <span>Institutional Framework</span>
+    <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-8 text-xs font-bold tracking-wider text-blue-600 uppercase">
+      ⚡ Zenith Future Academy
     </div>
     
-    <h1 class="text-5xl md:text-7xl font-light tracking-tight text-white mb-6 leading-[1.15]">
-      Architecting elite trajectories<br />
-      for <em class="serif-accent text-sky-400 italic font-medium">serious academic</em> minds.
+    <h1 class="text-5xl md:text-8xl font-black tracking-tight text-slate-900 mb-8 leading-[1.05]">
+      Architecting <br />
+      <span class="bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent serif-display italic font-normal px-2">elite metrics</span> <br />
+      for driven students.
     </h1>
     
-    <p class="max-w-2xl mx-auto text-slate-400 text-lg font-light leading-relaxed mb-10">
-      Welcome to Zenith Future Academy. We construct elite preparation strategies and custom digital blueprints engineered to isolate inefficiencies, unlock core competencies, and expand point ceilings.
+    <p class="max-w-2xl mx-auto text-slate-500 text-lg md:text-xl font-medium leading-relaxed mb-12">
+      We construct elite preparation structures and premium diagnostic execution framework platforms built specifically to push score barriers and isolate systemic tracking errors.
     </p>
 
     <div class="flex flex-wrap items-center justify-center gap-4">
-      <a href="app.html" class="bg-slate-900 border border-slate-800 hover:border-slate-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition">
-        Enter Prep Platform
+      <a href="app.html" class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl text-sm font-bold tracking-wide shadow-xl transition">
+        Enter Diagnostic Platform
       </a>
-      <a href="reviews.html" class="text-sky-400 hover:text-sky-300 text-sm font-medium flex items-center gap-1 transition">
-        Read Student Testimonials <span class="text-xs">→</span>
+      <a href="reviews.html" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 px-8 py-4 rounded-xl text-sm font-bold tracking-wide shadow-sm transition">
+        Read Testimonials
       </a>
     </div>
   </header>
 
-  <!-- Content Section / About Us -->
-  <main class="relative max-w-4xl mx-auto px-6 pb-28 z-10">
-    <div class="bg-gradient-to-b from-slate-900/60 to-slate-950/40 border border-slate-800/80 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
-      <div class="grid md:grid-items md:grid-cols-3 gap-8">
-        <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-slate-800/80 pb-6 md:pb-0 md:pr-8">
-          <span class="text-xs font-bold tracking-widest text-sky-400 uppercase block mb-2">Core Philosophy</span>
-          <h2 class="text-2xl font-bold tracking-tight text-white">Systemic Excellence</h2>
+  <!-- Deep Value Proposition and Focus (About Us Section) -->
+  <main class="relative max-w-5xl mx-auto px-6 pb-28 z-10">
+    <div class="bg-white border border-slate-100 rounded-3xl p-8 md:p-14 shadow-xl shadow-blue-900/5">
+      <div class="grid md:grid-cols-3 gap-10 items-start">
+        <div class="md:col-span-1">
+          <span class="text-xs font-black tracking-widest text-blue-600 uppercase block mb-3">Institutional Vision</span>
+          <h2 class="text-3xl font-black tracking-tight text-slate-900 leading-tight">Systemic Strategy Over Static Rules</h2>
         </div>
-        <div class="md:col-span-2 space-y-4 text-slate-400 font-light leading-relaxed">
+        <div class="md:col-span-2 space-y-6 text-slate-500 text-base md:text-lg font-medium leading-relaxed">
           <p>
-            We believe that uniform preparation structures yield uniform performance metrics. To shatter standardized baseline ceilings, students require targeted, hyper-calibrated diagnostic execution. 
+            Uniform preparation paths will consistently produce predictable baseline plateaus. To scale beyond traditional testing limits, candidates must deploy active, dynamic responses tailored directly to immediate error vectors.
           </p>
           <p>
-            Our core academy integrates human pedagogical direction with advanced technological infrastructure—exemplified by our <strong>ZENITH Adaptive SAT Engine</strong>. Through real-time 2-module routing simulation, we match actual test environments perfectly to eliminate performance volatility on test day.
+            Our organization integrates elite mentorship pathways directly with precision adaptive technology—anchored by our proprietary <strong class="text-slate-900 font-bold">ZENITH Adaptive SAT Engine</strong>. By deploying active 2-module responsive routing simulations, we build systemic confidence to isolate performance variance when it matters most.
           </p>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-900 bg-[#05080f] py-12 z-10 relative">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs tracking-wider font-medium text-slate-500">
-      <div class="flex items-center gap-1 text-slate-400">
-        <span class="font-bold text-white"><span class="text-sky-400 font-black">Z</span>ENITH</span> FUTURE ACADEMY
+  <!-- Clean Minimal Footer Structure -->
+  <footer class="border-t border-slate-100 bg-slate-50 py-12 z-10 relative">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-bold tracking-widest text-slate-400 uppercase">
+      <div class="flex items-center gap-1 text-slate-700">
+        <span class="text-blue-600 font-black">Z</span>ENITH FUTURE ACADEMY
       </div>
       <div>
-        &copy; 2026 Zenith Future Academy. Engineered for performance.
+        &copy; 2026 Zenith Future Academy. All rights reserved.
       </div>
     </div>
   </footer>
