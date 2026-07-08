@@ -20,7 +20,7 @@
 </head>
 <body class="overflow-x-hidden min-h-screen flex flex-col justify-between bg-grid relative">
 
-  <!-- Modern Navigation Bar -->
+  <!-- Navigation Bar -->
   <nav class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="index.html" class="text-2xl font-black tracking-tighter text-blue-600 flex items-center">
@@ -41,19 +41,54 @@
     </div>
   </nav>
 
-  <!-- Main Review Canvas -->
-  <header class="max-w-5xl mx-auto px-6 pt-20 pb-12 text-center">
+  <!-- Header -->
+  <header class="max-w-5xl mx-auto px-6 pt-16 pb-10 text-center">
     <span class="text-xs font-black tracking-widest text-blue-600 uppercase bg-blue-50 px-4 py-1.5 rounded-full">Testimonials</span>
     <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mt-6 mb-4">
       Verified <span class="serif-display italic font-normal text-blue-600">Zenith success.</span>
     </h1>
-    <p class="text-slate-500 text-lg max-w-xl mx-auto font-medium">Unfiltered analysis from students who shattered their baseline thresholds and parents who monitored the metrics.</p>
+    <p class="text-slate-500 text-lg max-w-xl mx-auto font-medium">Unfiltered analysis from students and parents sharing their educational progress.</p>
   </header>
 
-  <!-- Review Cards Section -->
-  <main class="max-w-5xl mx-auto px-6 pb-24 grid md:grid-cols-3 gap-6 w-full items-stretch">
+  <!-- Parent Review Submission Block -->
+  <section class="max-w-3xl mx-auto px-6 mb-16 w-full">
+    <div class="bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl">
+      <h3 class="text-xl font-bold text-slate-900 mb-2">Share Your Student's Experience</h3>
+      <p class="text-slate-500 text-sm mb-6">Are you a parent or student working with Ram? Add your feedback instantly directly to our board below.</p>
+      
+      <form id="reviewForm" onsubmit="submitLocalReview(event)" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Name</label>
+            <input type="text" id="revName" required placeholder="e.g., Eleanor Vance" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Role / Designation</label>
+            <input type="text" id="revRole" required placeholder="e.g., Parent of 1520 Scorer" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Rating</label>
+          <select id="revRating" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+            <option value="★★★★★">5 Stars ★★★★★</option>
+            <option value="★★★★☆">4 Stars ★★★★☆</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Review</label>
+          <textarea id="revText" required rows="3" placeholder="How did Ram's teaching framework or pacing guide assist your student..." class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-xl transition shadow-md shadow-blue-600/10">
+          Post Review Instantly
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Review Cards Feed -->
+  <main class="max-w-5xl mx-auto px-6 pb-24 grid md:grid-cols-3 gap-6 w-full items-stretch" id="reviewsContainer">
     
-    <!-- Review 1 (5 Stars - Custom Quote Integration) -->
+    <!-- Static Review 1 -->
     <div class="bg-white border border-slate-100 p-8 rounded-3xl shadow-xl shadow-blue-900/5 flex flex-col justify-between">
       <div>
         <div class="flex items-center gap-1 text-amber-400 mb-4 text-base">★★★★★</div>
@@ -67,7 +102,7 @@
       </div>
     </div>
 
-    <!-- Review 2 (5 Stars - Ram + App 100pt Boost Integration) -->
+    <!-- Static Review 2 -->
     <div class="bg-white border border-slate-100 p-8 rounded-3xl shadow-xl shadow-blue-900/5 flex flex-col justify-between">
       <div>
         <div class="flex items-center gap-1 text-amber-400 mb-4 text-base">★★★★★</div>
@@ -81,12 +116,10 @@
       </div>
     </div>
 
-    <!-- Review 3 (4 Stars - Balanced Structural Praise) -->
+    <!-- Static Review 3 -->
     <div class="bg-white border border-slate-100 p-8 rounded-3xl shadow-xl shadow-blue-900/5 flex flex-col justify-between">
       <div>
-        <div class="flex items-center gap-1 text-amber-400 mb-4 text-base">
-          ★★★★<span class="text-slate-200">★</span>
-        </div>
+        <div class="flex items-center gap-1 text-amber-400 mb-4 text-base">★★★★☆</div>
         <p class="text-slate-600 font-medium leading-relaxed mb-6">
           "Excellent frameworks. Ram doesn't just read off a script; he slows things down or speeds up depending on how quickly you grab a concept. Only wish we had found this adaptive system three months earlier."
         </p>
@@ -96,11 +129,42 @@
         <span class="block text-xs font-bold text-blue-600 uppercase tracking-wider mt-0.5">Student &bull; Cornell Cohort</span>
       </div>
     </div>
-
   </main>
 
   <footer class="border-t border-slate-100 bg-slate-50 py-12 text-center text-xs font-bold tracking-widest text-slate-400 uppercase">
     &copy; 2026 Zenith Future Academy. All rights reserved.
   </footer>
+
+  <script>
+    function submitLocalReview(e) {
+      e.preventDefault();
+      const name = document.getElementById('revName').value;
+      const role = document.getElementById('revRole').value;
+      const rating = document.getElementById('revRating').value.replace('☆', '★'); // Ensure clean stars display
+      const text = document.getElementById('revText').value;
+
+      const container = document.getElementById('reviewsContainer');
+      
+      // Make a fresh glassy card structure matching the look perfectly
+      const newCard = document.createElement('div');
+      newCard.className = "bg-gradient-to-br from-blue-50/50 to-white border border-blue-100 p-8 rounded-3xl shadow-xl shadow-blue-900/5 flex flex-col justify-between transform scale-95 transition-all duration-300 animate-[fadeIn_0.4s_ease-out_forwards]";
+      newCard.innerHTML = `
+        <div>
+          <div class="flex items-center gap-1 text-amber-400 mb-4 text-base">${rating}</div>
+          <p class="text-slate-600 font-medium leading-relaxed mb-6">"${text}"</p>
+        </div>
+        <div class="border-t border-blue-100/50 pt-4">
+          <span class="block font-bold text-slate-900">${name}</span>
+          <span class="block text-xs font-bold text-blue-600 uppercase tracking-wider mt-0.5">${role}</span>
+        </div>
+      `;
+      
+      // Insert at the top of the reviews display stream
+      container.insertBefore(newCard, container.firstChild);
+      
+      // Reset layout forms cleanly
+      document.getElementById('reviewForm').reset();
+    }
+  </script>
 </body>
 </html>
