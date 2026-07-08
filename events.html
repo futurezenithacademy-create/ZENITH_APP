@@ -1,37 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upcoming Events - Zenith</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #0f172a; color: white; }
-        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
-        nav .logo { font-size: 24px; font-weight: bold; margin-left: 0; color: #38bdf8; }
-        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; text-align: center; }
-        .empty-state { padding: 60px 20px; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 12px; margin-top: 40px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Symposiums & Events — Zenith Future Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; background-color: #ffffff; color: #0f172a; }
+    .serif-display { font-family: 'Playfair Display', serif; }
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    }
+  </style>
 </head>
-<body>
+<body class="overflow-x-hidden min-h-screen flex flex-col justify-between bg-grid relative">
 
-    <nav>
-        <a href="index.html" class="logo">Zenith Future Academy</a>
-        <div>
-            <a href="index.html">About Us</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="results.html">Results</a>
-            <a href="events.html">Events</a>
-            <a href="app.html" style="background: #38bdf8; color: #0f172a; padding: 8px 16px; border-radius: 6px; font-weight: bold;">Go to SAT App</a>
-        </div>
-    </nav>
+  <!-- Navigation Bar -->
+  <nav class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-black tracking-tighter text-blue-600 flex items-center">
+        <span class="bg-blue-600 text-white px-2.5 py-1 rounded-xl text-base font-black mr-2 shadow-md shadow-blue-600/20">Z</span>
+        <span class="text-slate-900 tracking-tight">ZENITH</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-10 text-sm font-semibold tracking-wide text-slate-500">
+        <li><a href="index.html" class="hover:text-blue-600 transition">About Us</a></li>
+        <li><a href="reviews.html" class="hover:text-blue-600 transition">Reviews</a></li>
+        <li><a href="results.html" class="hover:text-blue-600 transition">Results</a></li>
+        <li><a href="events.html" class="text-blue-600 transition">Events</a></li>
+      </ul>
+      <div>
+        <a href="app.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-xs font-bold tracking-widest uppercase transition shadow-lg shadow-blue-600/20">
+          Launch SAT App
+        </a>
+      </div>
+    </div>
+  </nav>
 
-    <main class="container">
-        <h2>Upcoming Events</h2>
-        <div class="empty-state">
-            <p style="font-size: 18px; color: #64748b; margin: 0;">Future events will be posted here.</p>
-        </div>
-    </main>
+  <!-- Events Briefing Header -->
+  <header class="max-w-5xl mx-auto px-6 pt-20 pb-12 text-center">
+    <span class="text-xs font-black tracking-widest text-blue-600 uppercase bg-blue-50 px-4 py-1.5 rounded-full">Academy Calendar</span>
+    <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mt-6 mb-4">
+      Live briefings & <span class="serif-display italic font-normal text-blue-600">symposiums.</span>
+    </h1>
+    <p class="text-slate-500 text-lg max-w-xl mx-auto font-medium">Join our structural analysis sessions covering advanced SAT module adaptive transitions and parent strategy alignment.</p>
+  </header>
+
+  <!-- Events Listing Row -->
+  <main class="max-w-4xl mx-auto px-6 pb-24 w-full space-y-6">
+    <div class="bg-white border border-slate-100 p-8 rounded-3xl shadow-xl shadow-blue-900/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <div>
+        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Interactive Masterclass &bull; Online</span>
+        <h3 class="text-2xl font-black text-slate-900 tracking-tight">Cracking the Module 2 Hard Adaptive Threshold</h3>
+        <p class="text-slate-500 font-medium mt-1">Strategic alignment workshop focusing on advanced multi-variable math structures and synthetic passage isolation.</p>
+      </div>
+      <a href="app.html" class="bg-slate-900 hover:bg-slate-800 text-white whitespace-nowrap px-6 py-3 rounded-xl text-xs font-bold tracking-wider uppercase transition">
+        Register Free
+      </a>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-100 bg-slate-50 py-12 text-center text-xs font-bold tracking-widest text-slate-400 uppercase">
+    &copy; 2026 Zenith Future Academy. All rights reserved.
+  </footer>
 </body>
 </html>
